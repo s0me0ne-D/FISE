@@ -1,13 +1,15 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "./_reset.scss";
+@font-face {
+	font-family: "Red Hot";
+	src: url("./fonts/Red_Hat_Text/RedHatText-VariableFont_wght.ttf");
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+	font-family: "Antonio";
+	src: url("./fonts/Antonio/Antonio-VariableFont_wght.ttf");
+}
+body {
+	background-color: #141414;
+}
+#root {
+	font-family: "Red Hot";
 }
