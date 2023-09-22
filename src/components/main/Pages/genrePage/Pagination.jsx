@@ -6,22 +6,24 @@ import { FirstPageArrows } from "../../../../images/icons/FirstPageArrows";
 import { LastPageArrows } from "../../../../images/icons/LastPageArrows";
 
 export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
-	const [painationLength, setPaginationLength] = useState([]);
-
+	const [paginationLength, setPaginationLength] = useState([]);
 	useEffect(() => {
-		if (painationLength.length === 0) {
+		if (paginationLength.length !== totalPages) {
 			const newPaginationLength = [];
 			for (let i = 1; i <= totalPages; i++) {
 				newPaginationLength.push(i);
 			}
 			setPaginationLength(newPaginationLength);
 		}
-	}, [painationLength, totalPages]);
+	}, [totalPages]);
 	return (
 		<div className="main-genre-pagination">
-			{painationLength ? (
+			{paginationLength ? (
 				<div className="numbers">
-					<div className="arrow" onClick={() => setCurrentPage(1)}>
+					<div
+						className="arrow"
+						onClick={() => setCurrentPage((prev) => (prev - 20 > 1 ? prev - 20 : 1))}
+					>
 						<FirstPageArrows />
 					</div>
 					<div
@@ -34,7 +36,7 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 					>
 						<ArrowBack />
 					</div>
-					{painationLength.map((page, index) => {
+					{paginationLength.map((page, index) => {
 						if (currentPage < 6) {
 							if (page < 11) {
 								return (
@@ -62,6 +64,8 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 									{page}{" "}
 								</span>
 							);
+						} else {
+							return null;
 						}
 					})}
 					<div
@@ -74,7 +78,12 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 					>
 						<ArrowForward />
 					</div>
-					<div className="arrow" onClick={() => setCurrentPage(totalPages)}>
+					<div
+						className="arrow"
+						onClick={() =>
+							setCurrentPage((prev) => (prev + 20 < totalPages ? prev + 20 : totalPages))
+						}
+					>
 						<LastPageArrows />
 					</div>
 				</div>

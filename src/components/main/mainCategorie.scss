@@ -34,10 +34,10 @@
 			justify-content: center;
 			top: 50%;
 			transform: translateY(-50%);
+			transition: 0.1s ease-in;
 			left: 0;
 			z-index: 999;
 			border-radius: 5px 0 0 5px;
-			transition: 0.1s ease-in;
 			-webkit-box-shadow: inset 40px 0 25px -20px rgba(255, 255, 255, 0.97);
 			-moz-box-shadow: inset 40px 0 25px -20px rgba(255, 255, 255, 0.97);
 			box-shadow: inset 40px 0 25px -20px rgba(255, 255, 255, 0.97);
@@ -58,6 +58,7 @@
 			justify-content: center;
 			top: 50%;
 			transform: translateY(-50%);
+			transition: 0.1s ease-in;
 			right: 0;
 			z-index: 999;
 			border-radius: 0 5px 5px 0;

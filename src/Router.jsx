@@ -6,6 +6,7 @@ import { MovieDetailsPage } from "./components/main/Pages/MovieDetailsPage";
 import { TvDetailsPage } from "./components/main/Pages/TvDetailsPage";
 import { MediaGenrePage } from "./components/main/Pages/genrePage/MediaGenrePage";
 import { MediaCategoriePage } from "./components/main/Pages/MediaCategoriePage";
+import { SearchResultsPage } from "./components/main/Pages/SearchResultsPage";
 
 export const router = createBrowserRouter([
 	{
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
 			},
 			{ path: "/movie/:categorieId", element: <MediaCategoriePage media_type={"movie"} /> },
 			{ path: "/tv/:categorieId", element: <MediaCategoriePage media_type={"tv"} /> },
+			{ path: "/search/:searchValue", element: <SearchResultsPage /> },
 		],
 	},
 ]);

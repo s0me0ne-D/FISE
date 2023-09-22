@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { Logo } from "../../../images/Logo";
 import "./header.scss";
-import { SearchImg } from "../../../images/icons/SearchImg";
 import { useEffect, useState } from "react";
 import { MoviesGenres } from "./MoviesGenres";
 import { TvGentres } from "./TvGenres";
 import { ArrowDropDown } from "../../../images/icons/ArrowDropDown";
+import { Search } from "./Search";
 export const Header = () => {
-	const [searchVisible, setSearchVisible] = useState(false);
 	const [currentLink, setCurrentLink] = useState("");
 	const [notActiveLink, setNotActiveLink] = useState("");
 	useEffect(() => {
@@ -50,7 +49,7 @@ export const Header = () => {
 				</NavLink>
 				<nav>
 					<ul className="header-nav-list">
-						<li className={`header-link ${currentLink === "MOVIES" ? "active" : notActiveLink}`}>
+						<li className={`header-link ${currentLink === "HOME" ? "active" : notActiveLink}`}>
 							<NavLink to={"/"}>HOME</NavLink>{" "}
 						</li>
 
@@ -71,15 +70,9 @@ export const Header = () => {
 					</ul>
 				</nav>
 			</div>
-			<div className="header-search-wrapper">
-				<SearchImg onClick={() => setSearchVisible((prev) => !prev)} />{" "}
-				<input
-					type="search"
-					className={searchVisible ? "header-search active" : "header-search"}
-					placeholder="Search"
-				></input>
-			</div>
+			<Search />{" "}
 			{currentLink !== "" ? <div className="header-genres-menu">{whatGenresShow()}</div> : null}
+			
 		</header>
 	);
 };

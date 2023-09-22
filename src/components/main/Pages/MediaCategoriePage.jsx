@@ -6,6 +6,7 @@ import { RatingIcon } from "../../../images/icons/RatingIcon";
 import { URL } from "../../../store/URL_SORE";
 import { fetchTopRated } from "../../../fetch/fetchTopRated";
 import { fetchUpcomingMovies } from "../../../fetch/fetchUpcomingMovies";
+import haveNotPoster from "../../../images/haveNotPoster.png";
 
 export const MediaCategoriePage = ({ media_type }) => {
 	const id = useParams();
@@ -37,6 +38,7 @@ export const MediaCategoriePage = ({ media_type }) => {
 	};
 	useEffect(() => {
 		whichFetch();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id, currentPage, media_type]);
 	return (
 		<main className="main-genre">
@@ -51,11 +53,15 @@ export const MediaCategoriePage = ({ media_type }) => {
 				{mediaList
 					? mediaList.map((media) => (
 							<NavLink
-								to={`/${media_type}/${media.id}`}
+								to={`/${media_type}/id/${media.id}`}
 								className="genre-media-link"
 								key={media.id}
 							>
-								<img src={URL.ORIGINAL_IMG_URL + media.poster_path} alt="POSTER" />
+								<img
+									src={media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : haveNotPoster}
+									alt="POSTER"
+									className={media.poster_path ? "poster" : "poster have-not"}
+								/>
 								<div className="media-title">
 									<span>{media_type === "movie" ? media.title : media.name}</span>
 									<span className="title-rating">

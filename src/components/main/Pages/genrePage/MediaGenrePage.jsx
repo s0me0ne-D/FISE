@@ -5,6 +5,7 @@ import "./movieGenrePage.scss";
 import { URL } from "../../../../store/URL_SORE";
 import { RatingIcon } from "../../../../images/icons/RatingIcon";
 import { Pagination } from "./Pagination";
+import haveNotPoster from "../../../../images/haveNotPoster.png";
 
 export const MediaGenrePage = ({ media_type }) => {
 	const id = useParams();
@@ -34,7 +35,11 @@ export const MediaGenrePage = ({ media_type }) => {
 								className="genre-media-link"
 								key={media.id}
 							>
-								<img src={URL.ORIGINAL_IMG_URL + media.poster_path} alt="POSTER" />
+								<img
+									src={media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : haveNotPoster}
+									alt="POSTER"
+									className={media.poster_path ? "poster" : "poster have-not"}
+								/>
 								<div className="media-title">
 									<span>{media_type === "movie" ? media.title : media.name}</span>
 									<span className="title-rating">

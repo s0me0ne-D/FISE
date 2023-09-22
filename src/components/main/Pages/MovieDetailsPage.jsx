@@ -6,6 +6,7 @@ import { URL } from "../../../store/URL_SORE";
 import { fetchTrailerId } from "../../../fetch/fetchTrailerId";
 import { TrailerButton } from "./TrailerButton";
 import { RatingIcon } from "../../../images/icons/RatingIcon";
+import haveNotPoster from "../../../images/haveNotPoster.png";
 
 export const MovieDetailsPage = () => {
 	const id = useParams();
@@ -33,16 +34,18 @@ export const MovieDetailsPage = () => {
 	}, [trailerKeys]);
 	return details ? (
 		<main className="main-details">
-			<img
-				src={URL.ORIGINAL_IMG_URL + details.backdrop_path}
-				alt="background"
-				className="background-img"
-			/>
+			{details.backdrop_path ? (
+				<img
+					src={URL.ORIGINAL_IMG_URL + details.backdrop_path}
+					alt="background"
+					className="background-img"
+				/>
+			) : null}
 			<div className="left-column">
 				<img
-					src={URL.ORIGINAL_IMG_URL + details.poster_path}
-					alt="poster"
-					className="details-poster"
+					src={details.poster_path ? URL.ORIGINAL_IMG_URL + details.poster_path : haveNotPoster}
+					alt="POSTER"
+					className={details.poster_path ? "details-poster" : "details-poster have-not"}
 				/>
 				<div className="rating-container">
 					<RatingIcon />

@@ -1,7 +1,7 @@
 .main-details {
 	width: 100%;
 	height: calc(100vh - 62px);
-	min-height: 600px;
+	min-height: 650px;
 	position: relative;
 	object-fit: cover;
 	display: grid;
@@ -23,9 +23,12 @@
 		flex-direction: column;
 		align-items: flex-end;
 		gap: 10px;
-		margin-top: 10%;
+		margin-top: 15%;
 		.details-poster {
 			width: 300px;
+			&.have-not {
+				filter: grayscale(0.8);
+			}
 		}
 		.rating-container {
 			width: 300px;
@@ -51,7 +54,7 @@
 	}
 	.right-column {
 		color: white;
-		margin-top: 6%;
+		margin-top: 10%;
 		.details-list {
 			display: flex;
 			flex-direction: column;
