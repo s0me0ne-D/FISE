@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f3ecd1a5.css",
+    "main.js": "/static/js/main.6ca0ea85.js",
+    "static/media/haveNotPoster.png": "/static/media/haveNotPoster.871e25adb7ce7282dfa8.png",
+    "static/media/RedHatText-VariableFont_wght.ttf": "/static/media/RedHatText-VariableFont_wght.80a9dd3304a601db4dbc.ttf",
+    "static/media/Antonio-VariableFont_wght.ttf": "/static/media/Antonio-VariableFont_wght.121ec6b57cfb63271ec1.ttf",
+    "index.html": "/index.html",
+    "main.f3ecd1a5.css.map": "/static/css/main.f3ecd1a5.css.map",
+    "main.6ca0ea85.js.map": "/static/js/main.6ca0ea85.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f3ecd1a5.css",
+    "static/js/main.6ca0ea85.js"
+  ]
+}
