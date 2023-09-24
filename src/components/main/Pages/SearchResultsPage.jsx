@@ -12,7 +12,6 @@ export const SearchResultsPage = () => {
 	const [mediaList, setMediaList] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(0);
-	console.log(mediaList);
 	useEffect(() => {
 		fetchSearch(searchValue, currentPage).then((response) => {
 			setMediaList(response.results);

@@ -58,21 +58,28 @@ export const Header = () => {
 							onClick={getCurrentLink}
 						>
 							MOVIES
-							<ArrowDropDown />
+							<ArrowDropDown
+								currentLink={currentLink}
+								setCurrentLink={setCurrentLink}
+								setNotActiveLink={setNotActiveLink}
+							/>
 						</li>
 						<li
 							className={`header-link ${currentLink === "TV-SHOWS" ? "active" : notActiveLink}`}
 							onClick={getCurrentLink}
 						>
 							TV-SHOWS
-							<ArrowDropDown />
+							<ArrowDropDown
+								currentLink={currentLink}
+								setCurrentLink={setCurrentLink}
+								setNotActiveLink={setNotActiveLink}
+							/>
 						</li>
 					</ul>
 				</nav>
 			</div>
 			<Search />{" "}
 			{currentLink !== "" ? <div className="header-genres-menu">{whatGenresShow()}</div> : null}
-			
 		</header>
 	);
 };

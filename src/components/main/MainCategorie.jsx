@@ -4,6 +4,7 @@ import "./mainCategorie.scss";
 import { ArrowBack } from "../../images/icons/ArrowBack";
 import { ArrowForward } from "../../images/icons/ArrowForward";
 import { useEffect, useRef, useState } from "react";
+import haveNotPoster from "../../images/haveNotPoster.png";
 
 export const MainCategorie = ({ list, categorie, title, media_type }) => {
 	const listRef = useRef();
@@ -12,7 +13,8 @@ export const MainCategorie = ({ list, categorie, title, media_type }) => {
 	const [showForward, setShowForward] = useState(true);
 	useEffect(() => {
 		setMaxScrollValue(2200 - listRef.current.offsetWidth);
-	}, []);
+	}, [list]);
+
 	const scrollLeft = () => {
 		const container = listRef.current;
 		if (container) {
@@ -65,9 +67,12 @@ export const MainCategorie = ({ list, categorie, title, media_type }) => {
 							to={`/${media_type}/id/${media.id}`}
 						>
 							<img
-								src={URL.ORIGINAL_IMG_URL + media.poster_path}
+								onLoad={() => console.log("loading")}
+								src={media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : haveNotPoster}
 								alt="poster"
-								className="categorie-movie-poster"
+								className={
+									media.poster_path ? "categorie-movie-poster" : "categorie-movie-poster have-not"
+								}
 								title={media.name ? media.name : media.title}
 							/>
 						</NavLink>

@@ -85,6 +85,9 @@
 					}
 					img {
 						width: 50px;
+						&.have-not {
+							filter: grayscale(0.8);
+						}
 					}
 					&:hover {
 						background-color: #141414cd;

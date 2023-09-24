@@ -101,6 +101,9 @@
 					width: 100px;
 					transition: 0.1s ease-in;
 					border-radius: 5px;
+					&.have-not {
+						filter: grayscale(0.8);
+					}
 				}
 			}
 		}

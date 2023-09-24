@@ -51,9 +51,11 @@ export const MovieDetailsPage = () => {
 					<RatingIcon />
 					<span>{details.vote_average}</span>
 				</div>
-				<div className="trailer-container">
-					<TrailerButton trailerKeyUrl={trailerKeyUrl} />
-				</div>
+				{trailerKeyUrl ? (
+					<div className="trailer-container">
+						<TrailerButton trailerKeyUrl={trailerKeyUrl} />
+					</div>
+				) : null}
 			</div>
 			<div className="right-column">
 				<ul className="details-list">
