@@ -6,7 +6,7 @@ import { fetchTrailerId } from "../../../fetch/fetchTrailerId";
 import { TrailerButton } from "./TrailerButton";
 import { RatingIcon } from "../../../images/icons/RatingIcon";
 import { fetchDetails } from "../../../fetch/fetchDetails";
-import haveNotPoster from "../../../images/haveNotPoster.png";
+import { DetailsPagePoster } from "./DetailsPagePoster";
 
 export const TvDetailsPage = () => {
 	const id = useParams();
@@ -40,11 +40,8 @@ export const TvDetailsPage = () => {
 				className="background-img"
 			/>
 			<div className="left-column">
-				<img
-					src={details.poster_path ? URL.ORIGINAL_IMG_URL + details.poster_path : haveNotPoster}
-					alt="POSTER"
-					className={details.poster_path ? "details-poster" : "details-poster have-not"}
-				/>
+				<DetailsPagePoster details={details} />
+
 				<div className="rating-container">
 					<RatingIcon />
 					<span>{details.vote_average}</span>

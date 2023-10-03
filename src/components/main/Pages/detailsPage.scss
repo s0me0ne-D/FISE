@@ -60,7 +60,7 @@
 			flex-direction: column;
 			padding-left: 20px;
 			gap: 10px;
-			max-width: 50%;
+			width: 50%;
 			span {
 				font-weight: bold;
 			}
@@ -75,7 +75,13 @@
 			}
 			.overview {
 				line-height: 20px;
+				width: 100%;
 			}
 		}
+	}
+}
+@media only screen and (max-device-width: 1450px) {
+	.details-list {
+		min-width: 100%;
 	}
 }

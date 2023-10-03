@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { ArrowBack } from "../../../images/icons/ArrowBack";
 import { ArrowForward } from "../../../images/icons/ArrowForward";
-import { URL } from "../../../store/URL_SORE";
 import "./titleSlider.scss";
 import { NavLink } from "react-router-dom";
+import { TitleSliderMediaPoster } from "./TitleSliderMediaPoster";
 
 export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
-	const { ORIGINAL_IMG_URL } = URL;
 	const [sliderTransform, setSliderTransform] = useState(0);
 	const [transformCounter, setTransformCounter] = useState(null);
 	const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -41,7 +40,13 @@ export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 	};
 	const backSliderTransform = () => {
 		if (sliderTransform === 0) {
-			setSliderTransform(8);
+			if (windowSize < 1451 && windowSize > 1101) {
+				setSliderTransform(11);
+			} else if (windowSize < 1101) {
+				setSliderTransform(12);
+			} else {
+				setSliderTransform(8);
+			}
 		} else {
 			setSliderTransform(sliderTransform - 1);
 		}
@@ -56,15 +61,11 @@ export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 					{allTranding.map((movie, index) => (
 						<div className="title-poster-block" key={movie.id}>
 							{" "}
-							<NavLink to={`/${movie.media_type}/id/${movie.id}`}>
-								{" "}
-								<img
-									className={`title-slider-poster ${index === currentMovieIndex ? "active" : ""}`}
-									src={ORIGINAL_IMG_URL + movie.poster_path}
-									alt="poster"
-									title={movie.name ? movie.name : movie.title}
-								/>
-							</NavLink>
+							<TitleSliderMediaPoster
+								movie={movie}
+								index={index}
+								currentMovieIndex={currentMovieIndex}
+							/>
 						</div>
 					))}
 				</div>

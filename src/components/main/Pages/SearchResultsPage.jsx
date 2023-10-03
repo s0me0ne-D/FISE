@@ -5,6 +5,7 @@ import { RatingIcon } from "../../../images/icons/RatingIcon";
 import { URL } from "../../../store/URL_SORE";
 import { fetchSearch } from "../../../fetch/fetchSearch";
 import haveNotPoster from "../../../images/haveNotPoster.png";
+import { PagePoster } from "./PagePoster";
 
 export const SearchResultsPage = () => {
 	const id = useParams();
@@ -34,13 +35,7 @@ export const SearchResultsPage = () => {
 										className="genre-media-link"
 										key={media.id}
 									>
-										<img
-											src={
-												media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : haveNotPoster
-											}
-											alt="POSTER"
-											className={media.poster_path ? "poster" : "poster have-not"}
-										/>
+										<PagePoster media={media} />
 										<div className="media-title">
 											<span>{media.media_type === "movie" ? media.title : media.name}</span>
 											<span className="title-rating">

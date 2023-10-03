@@ -20,6 +20,7 @@
 			opacity: 0.5;
 		}
 	}
+
 	.arrow-forward {
 		position: absolute;
 		top: 45%;
@@ -44,10 +45,21 @@
 			transition: 0.3s ease-in;
 			.title-poster-block {
 				min-width: 110px;
-				height: 220px;
+				height: 170px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				&:hover {
+					img {
+						transform: scale(1.1);
+						transform: scale(1.1);
+						-webkit-box-shadow: -30px 0px 40px -15px black, 30px 0px 40px -15px black;
+						-moz-box-shadow: -30px 0px 40px -15px black, 30px 0px 40px -15px black;
+						box-shadow: -30px 0px 40px -15px black, 30px 0px 40px -15px black;
+						z-index: 9999;
+					}
+				}
+
 				.title-slider-poster {
 					width: 100px;
 					transition: 0.1s ease-in;
@@ -55,11 +67,9 @@
 					&.active {
 						transform: scale(1.1);
 					}
-					&:hover {
-						transform: scale(1.1);
-						-webkit-box-shadow: 0px 0px 30px 0px black;
-						-moz-box-shadow: 0px 0px 30px 0px black;
-						box-shadow: 0px 0px 30px 0px black;
+
+					&.loading {
+						display: none;
 					}
 				}
 			}

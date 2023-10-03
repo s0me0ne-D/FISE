@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { SearchImg } from "../../../images/icons/SearchImg";
 import { useEffect, useState } from "react";
 import { fetchSearch } from "../../../fetch/fetchSearch";
@@ -10,6 +10,7 @@ export const Search = () => {
 	const [searchVisible, setSearchVisible] = useState(false);
 	const [searchValue, setSearchValue] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
+	const navigation = useNavigate();
 
 	useEffect(() => {
 		if (searchValue.length > 1) {
@@ -23,8 +24,16 @@ export const Search = () => {
 		setSearchValue(event.target.value);
 	};
 	const handleKeyPress = (event) => {
-		if (event.key === "Enter") {
-			window.location.href = `/search/${searchValue}`;
+		if (searchResults) {
+			if (event.key === "Enter") {
+				// window.location.href = `/search/${searchValue}`;
+				navigation(`/search/${searchValue}`);
+				setSearchVisible(false);
+				setSearchValue("");
+				setSearchResults([]);
+			} else {
+				return null;
+			}
 		}
 	};
 
@@ -43,7 +52,7 @@ export const Search = () => {
 						setSearchVisible((prev) => !prev);
 						event.stopPropagation();
 					}}
-				/>{" "}
+				/>
 				<input
 					type="search"
 					value={searchValue}
@@ -72,7 +81,7 @@ export const Search = () => {
 												<img
 													src={
 														movie.poster_path
-															? URL.ORIGINAL_IMG_URL + movie.poster_path
+															? URL.LAZY_LOAD_IMG_URL + movie.poster_path
 															: haveNotPoster
 													}
 													alt="poster"
@@ -97,6 +106,8 @@ export const Search = () => {
 							<li>...</li>
 						</ul>
 					</div>
+				) : searchValue ? (
+					<div className="no-results">No results found for "{searchValue}"</div>
 				) : null}
 			</div>
 		</div>

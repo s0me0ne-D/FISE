@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, createHashRouter } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import { MainPage } from "./components/main/Main";
 import { fetchAllTranding } from "./fetch/fetchAllTranding";
@@ -8,7 +8,7 @@ import { MediaGenrePage } from "./components/main/Pages/genrePage/MediaGenrePage
 import { MediaCategoriePage } from "./components/main/Pages/MediaCategoriePage";
 import { SearchResultsPage } from "./components/main/Pages/SearchResultsPage";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
 	{
 		path: "/",
 		element: <Layout />,

@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { URL } from "../../store/URL_SORE";
 import "./mainCategorie.scss";
 import { ArrowBack } from "../../images/icons/ArrowBack";
 import { ArrowForward } from "../../images/icons/ArrowForward";
 import { useEffect, useRef, useState } from "react";
-import haveNotPoster from "../../images/haveNotPoster.png";
+import { MainCategorieMediaPoster } from "./MainCategorieMediaPoster";
 
 export const MainCategorie = ({ list, categorie, title, media_type }) => {
 	const listRef = useRef();
@@ -61,21 +60,7 @@ export const MainCategorie = ({ list, categorie, title, media_type }) => {
 
 				<div className="categorie-list" ref={listRef}>
 					{list.map((media) => (
-						<NavLink
-							key={media.id}
-							className="categorie-movie"
-							to={`/${media_type}/id/${media.id}`}
-						>
-							<img
-								onLoad={() => console.log("loading")}
-								src={media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : haveNotPoster}
-								alt="poster"
-								className={
-									media.poster_path ? "categorie-movie-poster" : "categorie-movie-poster have-not"
-								}
-								title={media.name ? media.name : media.title}
-							/>
-						</NavLink>
+						<MainCategorieMediaPoster media_type={media_type} media={media} key={media.id} />
 					))}
 				</div>
 			</div>
