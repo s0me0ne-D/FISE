@@ -10,23 +10,30 @@ export const Search = () => {
 	const [searchVisible, setSearchVisible] = useState(false);
 	const [searchValue, setSearchValue] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
+	const [showNoResults, setShowNoResults] = useState(false);
 	const navigation = useNavigate();
-
 	useEffect(() => {
 		if (searchValue.length > 1) {
 			const timeoutId = setTimeout(() => {
-				fetchSearch(searchValue, 1).then((results) => setSearchResults(results.results));
+				fetchSearch(searchValue, 1).then((response) => {
+					setSearchResults(response.results);
+					response.results.length === 0 && setShowNoResults(true);
+				});
 			}, 700);
 			return () => clearTimeout(timeoutId);
+		} else {
+			setSearchResults([]);
 		}
+	}, [searchValue]);
+	useEffect(() => {
+		setShowNoResults(false);
 	}, [searchValue]);
 	const changeSearchValue = (event) => {
 		setSearchValue(event.target.value);
 	};
 	const handleKeyPress = (event) => {
 		if (searchResults) {
-			if (event.key === "Enter") {
-				// window.location.href = `/search/${searchValue}`;
+			if (event.key === "Enter" && searchResults.length > 0) {
 				navigation(`/search/${searchValue}`);
 				setSearchVisible(false);
 				setSearchValue("");
@@ -106,7 +113,7 @@ export const Search = () => {
 							<li>...</li>
 						</ul>
 					</div>
-				) : searchValue ? (
+				) : searchValue.length > 1 && showNoResults ? (
 					<div className="no-results">No results found for "{searchValue}"</div>
 				) : null}
 			</div>

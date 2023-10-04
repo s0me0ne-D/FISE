@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { ArrowBack } from "../../../images/icons/ArrowBack";
 import { ArrowForward } from "../../../images/icons/ArrowForward";
 import "./titleSlider.scss";
-import { NavLink } from "react-router-dom";
 import { TitleSliderMediaPoster } from "./TitleSliderMediaPoster";
 
 export const TitleSlider = ({ allTranding, currentMovieIndex }) => {

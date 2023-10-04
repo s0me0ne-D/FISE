@@ -36,7 +36,7 @@ export const MovieDetailsPage = () => {
 		<main className="main-details">
 			{details.backdrop_path ? (
 				<img
-					src={URL.ORIGINAL_IMG_URL + details.backdrop_path}
+					src={URL.LAZY_LOAD_IMG_URL + details.backdrop_path}
 					alt="background"
 					className="background-img"
 				/>
