@@ -8,19 +8,19 @@
 		margin-bottom: 0;
 	}
 }
-
 .footer {
 	width: 100%;
+	max-width: 1900px;
 	height: 150px;
-	margin-top: 20px;
+	margin: 20px auto 0px;
 	color: #e5e5e5;
-	padding: 10px 50px 0;
+	padding: 10px 20px 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	.footer-info {
-		width: 70%;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 
