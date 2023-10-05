@@ -11,7 +11,7 @@ export const Title = ({ allTranding, currentMovieIndex }) => {
 			</div>
 			<NavLink className="title-more-info" to={currentMovie.media_type + "/id/" + currentMovie.id}>
 				<MoreInfo />
-				MoreInfo
+				More Info
 			</NavLink>
 		</div>
 	);

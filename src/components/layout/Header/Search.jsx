@@ -5,14 +5,17 @@ import { fetchSearch } from "../../../fetch/fetchSearch";
 import "./search.scss";
 import { URL } from "../../../store/URL_SORE";
 import haveNotPoster from "../../../images/haveNotPoster.png";
+import { CubeLoader } from "../../../images/CubeLoader";
 
 export const Search = () => {
 	const [searchVisible, setSearchVisible] = useState(false);
 	const [searchValue, setSearchValue] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [showNoResults, setShowNoResults] = useState(false);
+	console.log(searchResults);
 	const navigation = useNavigate();
 	useEffect(() => {
+		setSearchResults([]);
 		if (searchValue.length > 1) {
 			const timeoutId = setTimeout(() => {
 				fetchSearch(searchValue, 1).then((response) => {
@@ -113,8 +116,13 @@ export const Search = () => {
 							<li>...</li>
 						</ul>
 					</div>
-				) : searchValue.length > 1 && showNoResults ? (
+				) : showNoResults ? (
 					<div className="no-results">No results found for "{searchValue}"</div>
+				) : searchValue.length > 1 ? (
+					<div className="no-results loader">
+						<CubeLoader width={"30px"} height={"30px"} />
+						<span>Loading ...</span>
+					</div>
 				) : null}
 			</div>
 		</div>

@@ -80,6 +80,39 @@
 		}
 	}
 }
+.media-page-loader {
+	width: 100%;
+	height: calc(100vh - 62px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		width: 200px;
+	}
+	span {
+		font-family: "Red Hot";
+		font-size: 25px;
+		color: rgba(255, 255, 255, 0.509);
+	}
+}
+.spinner_GmWz {
+	animation: spinner_Ctle 0.8s linear infinite;
+	animation-delay: -0.8s;
+}
+.spinner_NuDr {
+	animation-delay: -0.65s;
+}
+.spinner_OlQ0 {
+	animation-delay: -0.5s;
+}
+@keyframes spinner_Ctle {
+	93.75%,
+	100% {
+		opacity: 0.2;
+	}
+}
 @media only screen and (max-device-width: 1450px) {
 	.details-list {
 		min-width: 100%;

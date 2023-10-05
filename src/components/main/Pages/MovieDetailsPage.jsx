@@ -7,6 +7,7 @@ import { fetchTrailerId } from "../../../fetch/fetchTrailerId";
 import { TrailerButton } from "./TrailerButton";
 import { RatingIcon } from "../../../images/icons/RatingIcon";
 import { DetailsPagePoster } from "./DetailsPagePoster";
+import { CubeLoader } from "../../../images/CubeLoader";
 
 export const MovieDetailsPage = () => {
 	const id = useParams();
@@ -86,5 +87,10 @@ export const MovieDetailsPage = () => {
 				</ul>
 			</div>
 		</main>
-	) : null;
+	) : (
+		<div className="media-page-loader">
+			<CubeLoader width={"200px"} height={"200px"} />
+			<span>Please wait ...</span>
+		</div>
+	);
 };

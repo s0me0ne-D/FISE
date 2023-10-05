@@ -5,6 +5,7 @@ import "./movieGenrePage.scss";
 import { RatingIcon } from "../../../../images/icons/RatingIcon";
 import { Pagination } from "./Pagination";
 import { PagePoster } from "../PagePoster";
+import { CubeLoader } from "../../../../images/CubeLoader";
 
 export const MediaGenrePage = ({ media_type }) => {
 	const id = useParams();
@@ -17,6 +18,7 @@ export const MediaGenrePage = ({ media_type }) => {
 			setMediaList(response.results);
 			setTotalPages(response.total_pages);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id, currentPage, media_type]);
 	return (
 		<main className="main-genre">
@@ -27,24 +29,29 @@ export const MediaGenrePage = ({ media_type }) => {
 				<p>{genreName[0].toUpperCase()}</p>
 			</div>
 			<div className="main-genre-list">
-				{mediaList
-					? mediaList.map((media) => (
-							<NavLink
-								to={`/${media_type}/id/${media.id}`}
-								className="genre-media-link"
-								key={media.id}
-							>
-								<PagePoster media={media} />
-								<div className="media-title">
-									<span>{media_type === "movie" ? media.title : media.name}</span>
-									<span className="title-rating">
-										<RatingIcon />
-										{media.vote_average}
-									</span>
-								</div>
-							</NavLink>
-					  ))
-					: null}
+				{mediaList.length > 0 ? (
+					mediaList.map((media) => (
+						<NavLink
+							to={`/${media_type}/id/${media.id}`}
+							className="genre-media-link"
+							key={media.id}
+						>
+							<PagePoster media={media} />
+							<div className="media-title">
+								<span>{media_type === "movie" ? media.title : media.name}</span>
+								<span className="title-rating">
+									<RatingIcon />
+									{media.vote_average}
+								</span>
+							</div>
+						</NavLink>
+					))
+				) : (
+					<div className="cube-loader">
+						<CubeLoader width={"200px"} height={"200px"} />
+						<span>Please wait ...</span>
+					</div>
+				)}
 			</div>
 			{totalPages ? (
 				<Pagination
