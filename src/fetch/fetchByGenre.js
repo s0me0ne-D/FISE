@@ -1,4 +1,4 @@
-export const fetchByGenre = (mediaType, page, genreId) => {
+export const fetchByGenre = (mediaType, page = 1, genreId) => {
 	const options = {
 		method: "GET",
 		headers: {

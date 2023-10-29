@@ -12,7 +12,6 @@ export const Search = () => {
 	const [searchValue, setSearchValue] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [showNoResults, setShowNoResults] = useState(false);
-	console.log(searchResults);
 	const navigation = useNavigate();
 	useEffect(() => {
 		setSearchResults([]);

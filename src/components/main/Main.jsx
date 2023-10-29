@@ -27,13 +27,14 @@ export const MainPage = () => {
 		fetchUpcomingMovies("movie").then((response) => setUpcomingMovies(response.results));
 	}, []);
 	useEffect(() => {
-		setTimeout(
+		const timeoutId = setTimeout(
 			() =>
 				currentMovieIndex < 19
 					? setCurrentMovieIndex(currentMovieIndex + 1)
 					: setCurrentMovieIndex(0),
 			10000
 		);
+		return () => clearTimeout(timeoutId);
 	}, [currentMovieIndex]);
 
 	return (

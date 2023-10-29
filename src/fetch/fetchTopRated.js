@@ -1,4 +1,4 @@
-export const fetchTopRated = (medis_type, pageNumber) => {
+export const fetchTopRated = (medis_type, pageNumber = 1) => {
 	const options = {
 		method: "GET",
 		headers: {

@@ -18,6 +18,9 @@
 			width: 100%;
 			height: calc(100vh - 62px);
 			object-fit: cover;
+			img {
+				width: 100%;
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-export const fetchSearch = (search_value, pageNumber) => {
+export const fetchSearch = (search_value, pageNumber = 1) => {
 	const options = {
 		method: "GET",
 		headers: {
