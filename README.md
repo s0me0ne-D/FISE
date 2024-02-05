@@ -5,7 +5,7 @@ FISE is a website about movies and TV series where you can find comprehensive in
 ## Technologies used 🛠️
 
 - React
-- Java Script
+- JavaScript
 - SASS
 
 ## Libraries used 📚
