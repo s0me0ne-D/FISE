@@ -6,8 +6,15 @@
 	grid-template-rows: 1fr 100px;
 	position: relative;
 	.main-genre-title {
-		position: fixed;
+		// position: relative;
+		grid-column: 1;
+		grid-row: 1;
 		color: white;
+		&_container {
+			position: sticky;
+			top: 40px;
+			left: 0;
+		}
 		h1 {
 			font-weight: bold;
 			font-size: 30px;
