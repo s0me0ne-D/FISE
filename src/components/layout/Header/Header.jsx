@@ -6,6 +6,7 @@ import { MoviesGenres } from "./MoviesGenres";
 import { TvGentres } from "./TvGenres";
 import { ArrowDropDown } from "../../../images/icons/ArrowDropDown";
 import { Search } from "./Search";
+import { Genres } from "./genres/Genres";
 export const Header = () => {
 	const [currentLink, setCurrentLink] = useState("");
 	const [notActiveLink, setNotActiveLink] = useState("");
@@ -32,15 +33,6 @@ export const Header = () => {
 		[]
 	);
 
-	const whatGenresShow = () => {
-		if (currentLink === "MOVIES") {
-			return <MoviesGenres />;
-		} else if (currentLink === "TV-SHOWS") {
-			return <TvGentres />;
-		} else {
-			return null;
-		}
-	};
 	return (
 		<header className="header">
 			<div className="header-wrapper">
@@ -78,8 +70,7 @@ export const Header = () => {
 					</ul>
 				</nav>
 			</div>
-			<Search />{" "}
-			{currentLink !== "" ? <div className="header-genres-menu">{whatGenresShow()}</div> : null}
+			<Search /> {currentLink !== "" && <Genres currentLink={currentLink} />}
 		</header>
 	);
 };
