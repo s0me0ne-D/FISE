@@ -1,38 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { Logo } from "../../../images/Logo";
 import "./header.scss";
-import { useEffect, useState } from "react";
-import { MoviesGenres } from "./MoviesGenres";
-import { TvGentres } from "./TvGenres";
-import { ArrowDropDown } from "../../../images/icons/ArrowDropDown";
 import { Search } from "./Search";
-import { Genres } from "./genres/Genres";
-export const Header = () => {
-	const [currentLink, setCurrentLink] = useState("");
-	const [notActiveLink, setNotActiveLink] = useState("");
-	useEffect(() => {
-		if (currentLink !== "") {
-			setNotActiveLink("opacity");
-		}
-	}, [currentLink]);
-	const getCurrentLink = (event) => {
-		if (currentLink !== event.target.textContent) {
-			setCurrentLink(event.target.textContent);
-		} else {
-			setCurrentLink("");
-			setNotActiveLink("");
-		}
-		event.stopPropagation();
-	};
-	useEffect(
-		() =>
-			document.querySelector("body").addEventListener("click", () => {
-				setCurrentLink("");
-				setNotActiveLink("");
-			}),
-		[]
-	);
+import { MediaType } from "./MediaType";
 
+const mediaTypes = ["MOVIES", "TV-SHOWS"];
+
+export const Header = () => {
 	return (
 		<header className="header">
 			<div className="header-wrapper">
@@ -41,36 +15,18 @@ export const Header = () => {
 				</NavLink>
 				<nav>
 					<ul className="header-nav-list">
-						<li className={`header-link ${currentLink === "HOME" ? "active" : notActiveLink}`}>
-							<NavLink to={"/"}>HOME</NavLink>{" "}
+						<li className={`header-link`}>
+							<NavLink to={"/"}>
+								<span>HOME</span>
+							</NavLink>
 						</li>
-
-						<li
-							className={`header-link ${currentLink === "MOVIES" ? "active" : notActiveLink}`}
-							onClick={getCurrentLink}
-						>
-							MOVIES
-							<ArrowDropDown
-								currentLink={currentLink}
-								setCurrentLink={setCurrentLink}
-								setNotActiveLink={setNotActiveLink}
-							/>
-						</li>
-						<li
-							className={`header-link ${currentLink === "TV-SHOWS" ? "active" : notActiveLink}`}
-							onClick={getCurrentLink}
-						>
-							TV-SHOWS
-							<ArrowDropDown
-								currentLink={currentLink}
-								setCurrentLink={setCurrentLink}
-								setNotActiveLink={setNotActiveLink}
-							/>
-						</li>
+						{mediaTypes.map((mediaType) => (
+							<MediaType mediaType={mediaType} key={mediaType} />
+						))}
 					</ul>
 				</nav>
 			</div>
-			<Search /> {currentLink !== "" && <Genres currentLink={currentLink} />}
+			<Search />
 		</header>
 	);
 };

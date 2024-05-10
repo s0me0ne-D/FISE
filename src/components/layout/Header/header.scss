@@ -40,43 +40,34 @@
 			display: flex;
 			gap: 20px;
 
-			&:hover > li:not(:hover) {
+			&:hover > li span:not(:hover) {
 				opacity: 0.5;
 			}
 			.header-link {
-				width: 100px;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				transition: 0.2s ease-in;
-				color: #e5e5e5;
-				cursor: pointer;
-				svg {
-					transition: 0.2s ease-in;
-				}
-				a {
-					color: #e5e5e5;
-				}
-				&:hover {
-					font-weight: 500;
-					svg {
-						width: 20px;
-						height: 20px;
-					}
-				}
 				&.active {
-					font-weight: 500;
-					opacity: 1;
+					span {
+						opacity: 1 !important;
+						font-weight: 500;
+					}
 					svg {
 						width: 20px;
 						height: 20px;
 					}
 				}
-				&.opacity {
-					opacity: 0.5;
-					&:hover {
-						opacity: 1;
+				span {
+					width: 100px;
+					height: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					transition: 0.2s ease-in;
+					color: #e5e5e5;
+					cursor: pointer;
+					svg {
+						transition: 0.2s ease-in;
+					}
+					a {
+						color: #e5e5e5;
 					}
 				}
 			}
@@ -89,6 +80,7 @@
 		position: absolute;
 		z-index: 99;
 		top: 62px;
+		left: 0px;
 		width: 100%;
 		min-height: fit-content;
 		padding: 10px;
@@ -106,6 +98,7 @@
 			justify-content: center;
 			color: #e5e5e5;
 			transition: 0.2s ease-in;
+			font-weight: 300;
 		}
 	}
 }

@@ -1,11 +1,23 @@
 import React from "react";
-import { MoviesGenres } from "./MoviesGenres";
-import { TvGentres } from "./TvGenres";
+import { genresTV } from "../../../../json/genresTV";
+import { genresMovies } from "../../../../json/genresMovies";
 
-export const Genres = (currentLink) => {
+import { NavLink } from "react-router-dom";
+
+export const Genres = ({ currentLink }) => {
+	const genres = currentLink === "MOVIES" ? genresMovies : genresTV;
+	const link = `${currentLink === "MOVIES" ? "movie" : "tv"}/genre/`;
+
 	return (
 		<div className="header-genres-menu">
-			{currentLink === "MOVIES" ? <MoviesGenres /> : <TvGentres />}
+			{genres.map((genre) => {
+				const genreId = genre.name.toLowerCase() + "=" + genre.id;
+				return (
+					<NavLink to={link + genreId} className="genres-menu-genre" key={genre.id}>
+						{genre.name}
+					</NavLink>
+				);
+			})}
 		</div>
 	);
 };
