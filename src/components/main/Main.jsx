@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router-dom";
 import { URL } from "../../store/URL_SORE";
 import "./main.scss";
 import { Title } from "./titlePage/Title";
@@ -8,10 +7,10 @@ import { fetchPopular } from "../../fetch/fetchPopular";
 import { MainCategorie } from "./MainCategorie";
 import { fetchTopRated } from "../../fetch/fetchTopRated";
 import { fetchUpcomingMovies } from "../../fetch/fetchUpcomingMovies";
+import { useGetAllTrandingsQuery } from "../../redux/api";
 
 export const MainPage = () => {
-	const fetchAllTranding = useLoaderData();
-	const allTranding = fetchAllTranding.results;
+	const { data } = useGetAllTrandingsQuery();
 	const { ORIGINAL_IMG_URL } = URL;
 	const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
 	const [popularMovies, setPopularMovies] = useState(false);
@@ -38,58 +37,60 @@ export const MainPage = () => {
 	}, [currentMovieIndex]);
 
 	return (
-		<main className="main">
-			<div className="main-title">
-				<Title allTranding={allTranding} currentMovieIndex={currentMovieIndex} />{" "}
-				<TitleSlider allTranding={allTranding} currentMovieIndex={currentMovieIndex} />
-				<img
-					src={ORIGINAL_IMG_URL + allTranding[currentMovieIndex].backdrop_path}
-					alt="title-img"
-					className="title-background"
-				></img>
-			</div>
-			<div className="main-list">
-				{popularMovies ? (
-					<MainCategorie
-						list={popularMovies}
-						categorie={"Popular"}
-						title={"Movies"}
-						media_type={"movie"}
+		data && (
+			<main className="main">
+				<div className="main-title">
+					<Title allTranding={data} currentMovieIndex={currentMovieIndex} />
+					<TitleSlider allTranding={data} currentMovieIndex={currentMovieIndex} />
+					<img
+						src={ORIGINAL_IMG_URL + data[currentMovieIndex].backdrop_path}
+						alt="title-img"
+						className="title-background"
 					/>
-				) : null}
-				{populatTvSeries ? (
-					<MainCategorie
-						list={populatTvSeries}
-						categorie={"Popular"}
-						title={"TV Shows"}
-						media_type={"tv"}
-					/>
-				) : null}
-				{topRatedMovies ? (
-					<MainCategorie
-						list={topRatedMovies}
-						categorie={"Top Rated"}
-						title={"Movies"}
-						media_type={"movie"}
-					/>
-				) : null}
-				{topRatedTvSeries ? (
-					<MainCategorie
-						list={topRatedTvSeries}
-						categorie={"Top Rated"}
-						title={"TV Shows"}
-						media_type={"tv"}
-					/>
-				) : null}
-				{upcomingMovies ? (
-					<MainCategorie
-						list={upcomingMovies}
-						categorie={"Upcoming"}
-						title={"Movies"}
-						media_type={"movie"}
-					/>
-				) : null}
-			</div>
-		</main>
+				</div>
+				<div className="main-list">
+					{popularMovies ? (
+						<MainCategorie
+							list={popularMovies}
+							categorie={"Popular"}
+							title={"Movies"}
+							media_type={"movie"}
+						/>
+					) : null}
+					{populatTvSeries ? (
+						<MainCategorie
+							list={populatTvSeries}
+							categorie={"Popular"}
+							title={"TV Shows"}
+							media_type={"tv"}
+						/>
+					) : null}
+					{topRatedMovies ? (
+						<MainCategorie
+							list={topRatedMovies}
+							categorie={"Top Rated"}
+							title={"Movies"}
+							media_type={"movie"}
+						/>
+					) : null}
+					{topRatedTvSeries ? (
+						<MainCategorie
+							list={topRatedTvSeries}
+							categorie={"Top Rated"}
+							title={"TV Shows"}
+							media_type={"tv"}
+						/>
+					) : null}
+					{upcomingMovies ? (
+						<MainCategorie
+							list={upcomingMovies}
+							categorie={"Upcoming"}
+							title={"Movies"}
+							media_type={"movie"}
+						/>
+					) : null}
+				</div>
+			</main>
+		)
 	);
 };

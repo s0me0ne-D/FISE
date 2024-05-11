@@ -1,7 +1,6 @@
 import { createHashRouter } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import { MainPage } from "./components/main/Main";
-import { fetchAllTranding } from "./fetch/fetchAllTranding";
 import { MovieDetailsPage } from "./components/main/Pages/MovieDetailsPage";
 import { TvDetailsPage } from "./components/main/Pages/TvDetailsPage";
 import { MediaGenrePage } from "./components/main/Pages/genrePage/MediaGenrePage";
@@ -16,7 +15,6 @@ export const router = createHashRouter([
 			{
 				index: true,
 				element: <MainPage />,
-				loader: fetchAllTranding,
 			},
 			{
 				path: "/movie/id/:movieId",
