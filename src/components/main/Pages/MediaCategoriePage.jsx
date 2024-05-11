@@ -43,11 +43,13 @@ export const MediaCategoriePage = ({ media_type }) => {
 	return (
 		<main className="main-genre">
 			<div className="main-genre-title">
-				<h1>
-					{media_type.toUpperCase()}
-					{media_type === "tv" ? " Shows" : "S"}
-				</h1>
-				<p>{id.categorieId.toUpperCase()}</p>
+				<div className="main-genre-title_container">
+					<h1>
+						{media_type.toUpperCase()}
+						{media_type === "tv" ? " Shows" : "S"}
+					</h1>
+					<p>{id.categorieId.toUpperCase()}</p>
+				</div>
 			</div>
 			<div className="main-genre-list">
 				{mediaList.length > 0 ? (

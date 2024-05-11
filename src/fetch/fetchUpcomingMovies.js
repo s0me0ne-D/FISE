@@ -1,4 +1,4 @@
-export const fetchUpcomingMovies = (medis_type, pageNumber = 1) => {
+export const fetchUpcomingMovies = (media_type, pageNumber = 1) => {
 	const options = {
 		method: "GET",
 		headers: {
@@ -8,7 +8,7 @@ export const fetchUpcomingMovies = (medis_type, pageNumber = 1) => {
 	};
 
 	const upcomingMovies = fetch(
-		`https://api.themoviedb.org/3/${medis_type}/upcoming?language=en-US&page=${pageNumber}`,
+		`https://api.themoviedb.org/3/${media_type}/upcoming?language=en-US&page=${pageNumber}`,
 		options
 	)
 		.then((response) => response.json())

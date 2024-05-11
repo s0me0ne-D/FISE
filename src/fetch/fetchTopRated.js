@@ -1,4 +1,4 @@
-export const fetchTopRated = (medis_type, pageNumber = 1) => {
+export const fetchTopRated = (media_type, pageNumber = 1) => {
 	const options = {
 		method: "GET",
 		headers: {
@@ -8,7 +8,7 @@ export const fetchTopRated = (medis_type, pageNumber = 1) => {
 	};
 
 	const topRatedMovies = fetch(
-		`https://api.themoviedb.org/3/${medis_type}/top_rated?language=en-US&page=${pageNumber}`,
+		`https://api.themoviedb.org/3/${media_type}/top_rated?language=en-US&page=${pageNumber}`,
 		options
 	)
 		.then((response) => response.json())
