@@ -24,3 +24,17 @@
 		}
 	}
 }
+
+.cube-loader {
+	min-height: calc(100vh - 62px);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	grid-column: 2/3;
+	span {
+		color: rgba(255, 255, 255, 0.509);
+		font-size: 25px;
+	}
+}

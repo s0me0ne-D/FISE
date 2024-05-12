@@ -4,15 +4,13 @@ import { ArrowBack } from "../../images/icons/ArrowBack";
 import { ArrowForward } from "../../images/icons/ArrowForward";
 import { useEffect, useRef, useState } from "react";
 import { MainCategorieMediaPoster } from "./MainCategorieMediaPoster";
-import { useGetCategprieQuery } from "../../redux/api";
+import { useGetCategorieQuery } from "../../redux/api";
+import { handleCategoryTitle } from "../../utils/handleCategoryTitle";
 
 export const MainCategorie = ({ category, title, mediaType }) => {
-	const categoryText = category
-		.split("_")
-		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-		.join(" ");
+	const categoryText = handleCategoryTitle(category);
 
-	const { data } = useGetCategprieQuery({ mediaType, category });
+	const { data } = useGetCategorieQuery({ mediaType, category });
 	const listRef = useRef(null);
 	const [scrollValue, setScrollValue] = useState(null);
 	const [maxScrollValue, setMaxScrollValue] = useState(null);
@@ -50,7 +48,7 @@ export const MainCategorie = ({ category, title, mediaType }) => {
 		data && (
 			<div className="main-categorie">
 				<div className="categorie-title">
-					<NavLink to={mediaType + "/" + categoryText.toLowerCase()}>
+					<NavLink to={mediaType + "/" + category}>
 						{categoryText} {title}
 					</NavLink>
 				</div>
@@ -67,7 +65,7 @@ export const MainCategorie = ({ category, title, mediaType }) => {
 					) : null}
 
 					<div className="categorie-list" ref={listRef}>
-						{data.map((media) => (
+						{data.results.map((media) => (
 							<MainCategorieMediaPoster media_type={mediaType} media={media} key={media.id} />
 						))}
 					</div>
