@@ -59,7 +59,6 @@ export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 				<div className="slider-wrap" style={style}>
 					{allTranding.map((movie, index) => (
 						<div className="title-poster-block" key={movie.id}>
-							{" "}
 							<TitleSliderMediaPoster
 								movie={movie}
 								index={index}
