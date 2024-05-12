@@ -15,7 +15,12 @@ export const mediaApi = createApi({
 			query: () => "trending/all/day?language=en-US",
 			transformResponse: (response) => response.results,
 		}),
+		getCategprie: builder.query({
+			query: ({ mediaType, category, pageNumber = 1 }) =>
+				`${mediaType}/${category}?language=en-US&page=${pageNumber}`,
+			transformResponse: (response) => response.results,
+		}),
 	}),
 });
 
-export const { useGetAllTrandingsQuery } = mediaApi;
+export const { useGetAllTrandingsQuery, useGetCategprieQuery } = mediaApi;
