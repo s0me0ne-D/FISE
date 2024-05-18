@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useGetAllTrandingsQuery } from "../../../redux/api";
-import { TitleSlider } from "./TitleSlider";
-import { TitleDescription } from "./TitleDescription";
-import { URL } from "../../../store/URL_SORE";
+import React, { useState, useEffect } from 'react';
+import { useGetAllTrandingsQuery } from '../../../redux/api';
+import { TitleSlider } from './TitleSlider';
+import { TitleDescription } from './TitleDescription';
+import { URL } from '../../../store/URL_SORE';
+
+const { ORIGINAL_IMG_URL } = URL;
 
 export const Title = () => {
 	const { data } = useGetAllTrandingsQuery();
 
-	const { ORIGINAL_IMG_URL } = URL;
 	const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
 
 	const slideTitle = () => {
@@ -23,13 +24,13 @@ export const Title = () => {
 
 	return (
 		data && (
-			<div className="main-title">
+			<div className='main-title'>
 				<TitleDescription allTranding={data} currentMovieIndex={currentMovieIndex} />
 				<TitleSlider allTranding={data} currentMovieIndex={currentMovieIndex} />
 				<img
 					src={ORIGINAL_IMG_URL + data[currentMovieIndex].backdrop_path}
-					alt="title-img"
-					className="title-background"
+					alt='title-img'
+					className='title-background'
 				/>
 			</div>
 		)

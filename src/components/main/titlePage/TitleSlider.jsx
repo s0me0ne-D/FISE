@@ -1,74 +1,58 @@
-import { useState, useEffect } from "react";
-import { ArrowBack } from "../../../images/icons/ArrowBack";
-import { ArrowForward } from "../../../images/icons/ArrowForward";
-import "./titleSlider.scss";
-import { TitleSliderMediaPoster } from "./TitleSliderMediaPoster";
+import { useRef, useCallback } from 'react';
+import { ArrowBack } from '../../../images/icons/ArrowBack';
+import { ArrowForward } from '../../../images/icons/ArrowForward';
+import './titleSlider.scss';
+import { TitleSliderMediaPoster } from './TitleSliderMediaPoster';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+const breakpointsProps = {
+	300: {
+		slidesPerView: 3,
+	},
+	650: {
+		slidesPerView: 4,
+	},
+	1000: {
+		slidesPerView: 6,
+	},
+	1300: {
+		slidesPerView: 8,
+	},
+	1700: {
+		slidesPerView: 10,
+	},
+};
 
 export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
-	const [sliderTransform, setSliderTransform] = useState(0);
-	const [transformCounter, setTransformCounter] = useState(null);
-	const [windowSize, setWindowSize] = useState(window.innerWidth);
-	const style = {
-		transform: `translate(-${sliderTransform * 110}px)`,
-	};
-	//get window size
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowSize(window.innerWidth);
-		};
-		window.addEventListener("resize", handleResize);
-		return () => {
-			window.removeEventListener("resize", handleResize);
-		};
+	const swiperRef = useRef(null);
+
+	const handlePrev = useCallback(() => {
+		if (!swiperRef.current) return;
+		swiperRef.current.swiper.slidePrev();
 	}, []);
-	useEffect(() => {
-		if (windowSize < 1451 && windowSize > 1101) {
-			setTransformCounter(11);
-		} else if (windowSize < 1101) {
-			setTransformCounter(12);
-		} else {
-			setTransformCounter(8);
-		}
-	}, [windowSize]);
-	const forwardSliderTransform = () => {
-		if (sliderTransform < transformCounter) {
-			setSliderTransform(sliderTransform + 1);
-		} else {
-			setSliderTransform(0);
-		}
-	};
-	const backSliderTransform = () => {
-		if (sliderTransform === 0) {
-			if (windowSize < 1451 && windowSize > 1101) {
-				setSliderTransform(11);
-			} else if (windowSize < 1101) {
-				setSliderTransform(12);
-			} else {
-				setSliderTransform(8);
-			}
-		} else {
-			setSliderTransform(sliderTransform - 1);
-		}
-	};
+	const handleNext = useCallback(() => {
+		if (!swiperRef.current) return;
+		swiperRef.current.swiper.slideNext();
+	}, []);
+
 	return (
-		<div className="title-slider">
-			<button className="arrow-back" onClick={backSliderTransform}>
+		<div className='title-slider'>
+			<button className='slider-navigation back' onClick={handlePrev}>
 				<ArrowBack />
 			</button>
-			<div className="title-slider-container">
-				<div className="slider-wrap" style={style}>
-					{allTranding.map((movie, index) => (
-						<div className="title-poster-block" key={movie.id}>
-							<TitleSliderMediaPoster
-								movie={movie}
-								index={index}
-								currentMovieIndex={currentMovieIndex}
-							/>
-						</div>
-					))}
-				</div>
-			</div>
-			<button className="arrow-forward" onClick={forwardSliderTransform}>
+			<Swiper breakpoints={breakpointsProps} ref={swiperRef}>
+				{allTranding.map((movie, index) => (
+					<SwiperSlide>
+						<TitleSliderMediaPoster
+							movie={movie}
+							index={index}
+							currentMovieIndex={currentMovieIndex}
+						/>
+					</SwiperSlide>
+				))}
+			</Swiper>
+			<button className='slider-navigation forward' onClick={handleNext}>
 				<ArrowForward />
 			</button>
 		</div>
