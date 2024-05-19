@@ -42,7 +42,7 @@ export const MediaCategoryPage = ({ media_type }) => {
 									<span>{media_type === 'movie' ? media.title : media.name}</span>
 									<span className='title-rating'>
 										<RatingIcon />
-										{media.vote_average}
+										{media.vote_average.toFixed(1)}
 									</span>
 								</div>
 							</NavLink>
