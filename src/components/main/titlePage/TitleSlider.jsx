@@ -26,14 +26,26 @@ const breakpointsProps = {
 
 export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 	const swiperRef = useRef(null);
-
 	const handlePrev = useCallback(() => {
-		if (!swiperRef.current) return;
-		swiperRef.current.swiper.slidePrev();
+		const swiper = swiperRef.current;
+		if (!swiper) return;
+		if (swiper.swiper.isBeginning) {
+			const slidesPerView = swiper.swiper.params.slidesPerView;
+			const totalSlides = swiper.swiper.slides.length;
+			const lastIndex = Math.max(0, totalSlides - slidesPerView);
+			swiper.swiper.slideTo(lastIndex);
+		} else {
+			swiper.swiper.slidePrev();
+		}
 	}, []);
 	const handleNext = useCallback(() => {
-		if (!swiperRef.current) return;
-		swiperRef.current.swiper.slideNext();
+		const swiper = swiperRef.current;
+		if (!swiper) return;
+		if (swiper.swiper.isEnd) {
+			swiper.swiper.slideTo(0);
+		} else {
+			swiper.swiper.slideNext();
+		}
 	}, []);
 
 	return (
@@ -43,7 +55,7 @@ export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 			</button>
 			<Swiper breakpoints={breakpointsProps} ref={swiperRef}>
 				{allTranding.map((movie, index) => (
-					<SwiperSlide>
+					<SwiperSlide key={movie.id}>
 						<TitleSliderMediaPoster
 							movie={movie}
 							index={index}
