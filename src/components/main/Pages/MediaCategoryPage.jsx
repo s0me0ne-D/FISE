@@ -4,15 +4,15 @@ import { Pagination } from './genrePage/Pagination';
 import { RatingIcon } from '../../../images/icons/RatingIcon';
 import { PagePoster } from './PagePoster';
 import { CubeLoader } from '../../../images/CubeLoader';
-import { useGetCategorieQuery } from '../../../redux/api';
+import { useGetCategoryQuery } from '../../../redux/api';
 import { handleCategoryTitle } from '../../../utils/handleCategoryTitle';
 
-export const MediaCategoriePage = ({ media_type }) => {
+export const MediaCategoryPage = ({ media_type }) => {
 	const id = useParams();
 	const category = id.categoryId;
 	const categoryTitle = handleCategoryTitle(category).toUpperCase();
 	const [currentPage, setCurrentPage] = useState(1);
-	const { data } = useGetCategorieQuery({
+	const { data } = useGetCategoryQuery({
 		mediaType: media_type,
 		category,
 		pageNumber: currentPage,

@@ -1,20 +1,20 @@
 import { NavLink } from 'react-router-dom';
-import './mainCategorie.scss';
+import './mainCategory.scss';
 import { ArrowBack } from '../../images/icons/ArrowBack';
 import { ArrowForward } from '../../images/icons/ArrowForward';
 import { useCallback, useRef, useState } from 'react';
-import { MainCategorieMediaPoster } from './MainCategorieMediaPoster';
-import { useGetCategorieQuery } from '../../redux/api';
+import { MainCategoryMediaPoster } from './MainCategoryMediaPoster';
+import { useGetCategoryQuery } from '../../redux/api';
 import { handleCategoryTitle } from '../../utils/handleCategoryTitle';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-export const MainCategorie = ({ category, title, mediaType }) => {
+export const MainCategory = ({ category, title, mediaType }) => {
 	const categoryText = handleCategoryTitle(category);
 	const [showNavigationArrows, setShowNavigationArrows] = useState({ start: false, end: true });
 
-	const { data } = useGetCategorieQuery({ mediaType, category });
+	const { data } = useGetCategoryQuery({ mediaType, category });
 	const listRef = useRef(null);
 	const swiperRef = useRef(null);
 
@@ -44,30 +44,30 @@ export const MainCategorie = ({ category, title, mediaType }) => {
 
 	return (
 		data && (
-			<div className='main-categorie'>
-				<div className='categorie-title'>
+			<div className='main-category'>
+				<div className='category-title'>
 					<NavLink to={mediaType + '/' + category}>
 						{categoryText} {title}
 					</NavLink>
 				</div>
-				<div className='categorie-list-container'>
+				<div className='category-list-container'>
 					{showNavigationArrows.start && (
-						<button className='categorie-back categorie-navigate' onClick={handlePrev}>
+						<button className='category-back category-navigate' onClick={handlePrev}>
 							<ArrowBack />
 						</button>
 					)}
 
 					{showNavigationArrows.end && (
-						<button className='categorie-forward categorie-navigate' onClick={handleNext}>
+						<button className='category-forward category-navigate' onClick={handleNext}>
 							<ArrowForward />
 						</button>
 					)}
 
-					<div className='categorie-list' ref={listRef}>
+					<div className='category-list' ref={listRef}>
 						<Swiper ref={swiperRef} slidesPerView={'auto'} onSlideChange={handleOnSlideChange}>
 							{data.results.map((media) => (
 								<SwiperSlide style={{ width: 'fit-content' }} key={media.id}>
-									<MainCategorieMediaPoster media_type={mediaType} media={media} key={media.id} />
+									<MainCategoryMediaPoster media_type={mediaType} media={media} key={media.id} />
 								</SwiperSlide>
 							))}
 						</Swiper>
