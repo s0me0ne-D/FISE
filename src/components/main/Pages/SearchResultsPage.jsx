@@ -1,24 +1,18 @@
 import { useParams, NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Pagination } from './genrePage/Pagination';
 import { RatingIcon } from '../../../images/icons/RatingIcon';
 import { PagePoster } from './PagePoster';
 import { CubeLoader } from '../../../images/CubeLoader';
-import { fetchSearch } from '../../../fetch/fetchSearch';
+import { useGetSearchQuery } from '../../../redux/api';
 
 export const SearchResultsPage = () => {
 	const id = useParams();
 	const searchValue = id.searchValue;
-	const [mediaList, setMediaList] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [totalPages, setTotalPages] = useState(0);
-	useEffect(() => {
-		fetchSearch(searchValue, currentPage).then((response) => {
-			setMediaList(response.results);
-			setTotalPages(response.total_pages);
-		});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [searchValue, currentPage]);
+
+	const { data } = useGetSearchQuery({ searchValue, currentPage });
+
 	return (
 		<main className='main-genre'>
 			<div className='main-genre-title'>
@@ -26,8 +20,8 @@ export const SearchResultsPage = () => {
 				<p>{searchValue.toUpperCase()}</p>
 			</div>
 			<div className='main-genre-list'>
-				{mediaList.length > 0 ? (
-					mediaList.map((media) => {
+				{data ? (
+					data.results.map((media) => {
 						if (media.media_type !== 'person') {
 							return (
 								<NavLink
@@ -56,9 +50,9 @@ export const SearchResultsPage = () => {
 					</div>
 				)}
 			</div>
-			{totalPages ? (
+			{data ? (
 				<Pagination
-					totalPages={totalPages}
+					totalPages={data.total_pages}
 					currentPage={currentPage}
 					setCurrentPage={setCurrentPage}
 				/>
