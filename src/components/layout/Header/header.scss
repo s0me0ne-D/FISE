@@ -102,3 +102,13 @@
 		}
 	}
 }
+
+@media (width<750px) {
+	.header-wrapper {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	nav {
+		display: none;
+	}
+}
