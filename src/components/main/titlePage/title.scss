@@ -1,5 +1,5 @@
 .title {
-	width: 500px;
+	max-width: 500px;
 	height: 100%;
 	display: flex;
 	gap: 30px;
@@ -7,7 +7,7 @@
 	justify-content: flex-end;
 	margin-left: 50px;
 	.title-name {
-		font-family: "Antonio";
+		font-family: 'Antonio';
 		font-size: 50px;
 		font-weight: bold;
 	}
@@ -20,7 +20,7 @@
 		display: flex;
 		gap: 5px;
 		align-items: center;
-		
+
 		&:hover {
 			background-color: #e31c1c;
 		}

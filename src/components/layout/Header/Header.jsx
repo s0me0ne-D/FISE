@@ -11,14 +11,13 @@ const mediaTypes = ['MOVIES', 'TV-SHOWS'];
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const handleOnclick = () => setIsOpen((prev) => !prev);
 	return (
 		<header className='header'>
 			<NavLink to={'/'} className='header-logo'>
 				<Logo />
 			</NavLink>
-			<BurgerMenu isOpen={isOpen} onClick={handleOnclick} />
-			<nav className={isOpen ? 'active-nav' : ''}>
+			<BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+			<nav className={`navigation ${isOpen ? 'active-nav' : ''}`}>
 				<ul className='header-nav-list'>
 					<li className={`header-link`}>
 						<NavLink to={'/'}>
