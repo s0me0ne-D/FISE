@@ -14,24 +14,22 @@ export const Header = () => {
 	const handleOnclick = () => setIsOpen((prev) => !prev);
 	return (
 		<header className='header'>
-			<div className='header-wrapper'>
-				<NavLink to={'/'} className='header-logo'>
-					<Logo />
-				</NavLink>
-				<BurgerMenu isOpen={isOpen} onClick={handleOnclick} />
-				<nav className={isOpen ? 'active-nav' : ''}>
-					<ul className='header-nav-list'>
-						<li className={`header-link`}>
-							<NavLink to={'/'}>
-								<span>HOME</span>
-							</NavLink>
-						</li>
-						{mediaTypes.map((mediaType) => (
-							<MediaType mediaType={mediaType} key={mediaType} />
-						))}
-					</ul>
-				</nav>
-			</div>
+			<NavLink to={'/'} className='header-logo'>
+				<Logo />
+			</NavLink>
+			<BurgerMenu isOpen={isOpen} onClick={handleOnclick} />
+			<nav className={isOpen ? 'active-nav' : ''}>
+				<ul className='header-nav-list'>
+					<li className={`header-link`}>
+						<NavLink to={'/'}>
+							<span>HOME</span>
+						</NavLink>
+					</li>
+					{mediaTypes.map((mediaType) => (
+						<MediaType mediaType={mediaType} key={mediaType} />
+					))}
+				</ul>
+			</nav>
 			<Search />
 		</header>
 	);

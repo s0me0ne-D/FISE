@@ -3,13 +3,12 @@
 	height: 50px;
 	display: none;
 	background: none;
-	grid-column: 1;
 	margin: 0 auto;
 	span {
 		display: block;
 		width: 33px;
 		height: 4px;
-		margin-bottom: 5px;
+		// margin-bottom: 5px;
 		position: relative;
 
 		background: white;
@@ -40,7 +39,7 @@
 			transition: 0.3s ease-in;
 
 			&:first-child {
-				transform: rotate(45deg) translate(1px, 1px);
+				transform: rotate(45deg) translate(4px, -3px);
 			}
 
 			&:nth-child(2) {
@@ -49,7 +48,7 @@
 			}
 
 			&:nth-child(3) {
-				transform: rotate(-45deg) translate(-2px, -1px);
+				transform: rotate(-45deg) translate(2px, 2px);
 			}
 		}
 	}
@@ -57,6 +56,10 @@
 
 @media (width<750px) {
 	.burger {
-		display: block;
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		align-items: center;
+		justify-content: center;
 	}
 }

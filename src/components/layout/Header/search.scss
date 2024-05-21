@@ -1,8 +1,10 @@
 .hesder-search-menu {
 	position: relative;
+	grid-column: 3;
 	.header-search-wrapper {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
 		gap: 5px;
 		overflow: hidden;
 		margin-right: 20px;
@@ -17,10 +19,11 @@
 			opacity: 0;
 			&.active {
 				opacity: 1;
-				width: 150px;
+				width: 100%;
 			}
 		}
 		.header-search-icon {
+			min-width: 24px;
 			cursor: pointer;
 		}
 	}
