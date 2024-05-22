@@ -19,7 +19,7 @@ export const Header = () => {
 			<BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
 			<nav className={`navigation ${isOpen ? 'active-nav' : ''}`}>
 				<ul className='header-nav-list'>
-					<li className={`header-link`}>
+					<li className={`header-link home`}>
 						<NavLink to={'/'}>
 							<span>HOME</span>
 						</NavLink>
