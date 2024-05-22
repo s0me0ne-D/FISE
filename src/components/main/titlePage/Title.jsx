@@ -12,7 +12,9 @@ export const Title = () => {
 	const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
 
 	const slideTitle = () => {
-		currentMovieIndex < 19 ? setCurrentMovieIndex(currentMovieIndex + 1) : setCurrentMovieIndex(0);
+		currentMovieIndex < data.length - 1
+			? setCurrentMovieIndex(currentMovieIndex + 1)
+			: setCurrentMovieIndex(0);
 	};
 
 	useEffect(() => {
@@ -20,7 +22,7 @@ export const Title = () => {
 		return () => clearTimeout(timeoutId);
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [currentMovieIndex]);
+	}, [currentMovieIndex, data]);
 
 	return (
 		data && (
