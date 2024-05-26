@@ -1,3 +1,15 @@
+@keyframes spinner_Ctle {
+	93.75%,
+	100% {
+		opacity: 0.2;
+	}
+}
+@media only screen and (max-device-width: 1450px) {
+	.details-list {
+		min-width: 100%;
+	}
+}
+
 .main-details {
 	width: 100%;
 	height: calc(100vh - 62px);
@@ -65,7 +77,7 @@
 				font-weight: bold;
 			}
 			.details-title {
-				font-family: "Antonio";
+				font-family: 'Antonio';
 				font-size: 50px;
 				margin-bottom: 40px;
 			}
@@ -92,7 +104,7 @@
 		width: 200px;
 	}
 	span {
-		font-family: "Red Hot";
+		font-family: 'Red Hot';
 		font-size: 25px;
 		color: rgba(255, 255, 255, 0.509);
 	}
@@ -107,14 +119,16 @@
 .spinner_OlQ0 {
 	animation-delay: -0.5s;
 }
-@keyframes spinner_Ctle {
-	93.75%,
-	100% {
-		opacity: 0.2;
-	}
-}
-@media only screen and (max-device-width: 1450px) {
-	.details-list {
-		min-width: 100%;
+
+@media (width<=650px) {
+	.main-details {
+		height: 100%;
+		width: 100%;
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		.left-column {
+			align-items: center;
+		}
 	}
 }
