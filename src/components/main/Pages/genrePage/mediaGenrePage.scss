@@ -6,7 +6,6 @@
 	grid-template-rows: 1fr 100px;
 	position: relative;
 	.main-genre-title {
-		// position: relative;
 		grid-column: 1;
 		grid-row: 1;
 		color: white;
@@ -71,6 +70,19 @@
 					opacity: 1;
 				}
 			}
+		}
+	}
+}
+
+@media (width<=750px) {
+	.main-genre {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		.main-genre-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
 		}
 	}
 }

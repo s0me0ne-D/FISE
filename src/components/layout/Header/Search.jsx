@@ -83,7 +83,9 @@ export const Search = () => {
 				{searchResults.length > 0 ? (
 					<div className='search-results'>
 						<div className='search-results-title'>
-							<NavLink to={`/search/${searchValue}`}>All results</NavLink>
+							<NavLink to={`/search/${searchValue}`} onClick={closeSearch}>
+								All results
+							</NavLink>
 						</div>
 						<ul className='rearch-results-main'>
 							{searchResults.map((movie, index) => {
