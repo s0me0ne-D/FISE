@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import './movieGenrePage.scss';
+import './mediaGenrePage.scss';
 import { RatingIcon } from '../../../../images/icons/RatingIcon';
 import { Pagination } from './Pagination';
 import { PagePoster } from '../PagePoster';
