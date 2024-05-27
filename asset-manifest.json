@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/FISE/static/css/main.39ac8be7.css",
-    "main.js": "/FISE/static/js/main.f8125897.js",
+    "main.css": "/FISE/static/css/main.55cccba9.css",
+    "main.js": "/FISE/static/js/main.e55c0187.js",
     "static/media/haveNotPoster.png": "/FISE/static/media/haveNotPoster.871e25adb7ce7282dfa8.png",
     "static/media/RedHatText-VariableFont_wght.ttf": "/FISE/static/media/RedHatText-VariableFont_wght.80a9dd3304a601db4dbc.ttf",
     "static/media/Antonio-VariableFont_wght.ttf": "/FISE/static/media/Antonio-VariableFont_wght.121ec6b57cfb63271ec1.ttf",
     "static/media/TMDB_logo.svg": "/FISE/static/media/TMDB_logo.bb8aa703cb92c9aa31fc1e0b17850ed9.svg",
     "index.html": "/FISE/index.html",
-    "main.39ac8be7.css.map": "/FISE/static/css/main.39ac8be7.css.map",
-    "main.f8125897.js.map": "/FISE/static/js/main.f8125897.js.map"
+    "main.55cccba9.css.map": "/FISE/static/css/main.55cccba9.css.map",
+    "main.e55c0187.js.map": "/FISE/static/js/main.e55c0187.js.map"
   },
   "entrypoints": [
-    "static/css/main.39ac8be7.css",
-    "static/js/main.f8125897.js"
+    "static/css/main.55cccba9.css",
+    "static/js/main.e55c0187.js"
   ]
 }
