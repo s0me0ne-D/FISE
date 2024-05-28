@@ -10,7 +10,7 @@ export const MainCategoryMediaPoster = ({ media_type, media }) => {
 		<NavLink className='category-movie' to={`/${media_type}/id/${media.id}`}>
 			<img
 				onLoad={() => setLoading(false)}
-				src={media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : haveNotPoster}
+				src={media.poster_path ? URL.LAZY_LOAD_IMG_URL + media.poster_path : haveNotPoster}
 				alt='poster'
 				className={`category-movie-poster ${!media.poster_path && 'have-not'} ${
 					loading && 'loading'
