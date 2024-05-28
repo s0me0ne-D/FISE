@@ -107,3 +107,9 @@
 .swiper-button-disabled {
 	display: none;
 }
+
+@media (width<=750px) {
+	.category-navigate {
+		display: none;
+	}
+}
