@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import "./pagination.scss";
-import { ArrowBack } from "../../../../images/icons/ArrowBack";
-import { ArrowForward } from "../../../../images/icons/ArrowForward";
-import { FirstPageArrows } from "../../../../images/icons/FirstPageArrows";
-import { LastPageArrows } from "../../../../images/icons/LastPageArrows";
+import { useEffect, useState } from 'react';
+import './pagination.scss';
+import { ArrowBack } from '../../../../images/icons/ArrowBack';
+import { ArrowForward } from '../../../../images/icons/ArrowForward';
+import { FirstPageArrows } from '../../../../images/icons/FirstPageArrows';
+import { LastPageArrows } from '../../../../images/icons/LastPageArrows';
 
-export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+export const Pagination = ({ totalPages, currentPage, changePage }) => {
 	const [paginationLength, setPaginationLength] = useState([]);
 	useEffect(() => {
 		if (paginationLength.length !== totalPages) {
@@ -15,22 +15,22 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 			}
 			setPaginationLength(newPaginationLength);
 		}
-	}, [totalPages]);
+	}, [paginationLength.length, totalPages]);
 	return (
-		<div className="main-genre-pagination">
+		<div className='main-genre-pagination'>
 			{paginationLength ? (
-				<div className="numbers">
+				<div className='numbers'>
 					<div
-						className="arrow"
-						onClick={() => setCurrentPage((prev) => (prev - 20 > 1 ? prev - 20 : 1))}
+						className='arrow'
+						onClick={() => changePage(currentPage - 20 > 1 ? currentPage - 20 : 1)}
 					>
 						<FirstPageArrows />
 					</div>
 					<div
-						className="arrow"
+						className='arrow'
 						onClick={() => {
 							if (currentPage > 1) {
-								setCurrentPage((prev) => prev - 1);
+								changePage(currentPage - 1);
 							}
 						}}
 					>
@@ -42,12 +42,12 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 								return (
 									<span
 										key={index}
-										className={`pagination-page ${currentPage === page ? "active" : ""}`}
+										className={`pagination-page ${currentPage === page ? 'active' : ''}`}
 										onClick={(event) => {
-											setCurrentPage(Number(event.target.textContent));
+											changePage(Number(event.target.textContent));
 										}}
 									>
-										{page}{" "}
+										{page}{' '}
 									</span>
 								);
 							}
@@ -56,12 +56,12 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 							return (
 								<span
 									key={index}
-									className={`pagination-page ${currentPage === page ? "active" : ""}`}
+									className={`pagination-page ${currentPage === page ? 'active' : ''}`}
 									onClick={(event) => {
-										setCurrentPage(Number(event.target.textContent));
+										changePage(Number(event.target.textContent));
 									}}
 								>
-									{page}{" "}
+									{page}{' '}
 								</span>
 							);
 						} else {
@@ -69,19 +69,19 @@ export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 						}
 					})}
 					<div
-						className="arrow"
+						className='arrow'
 						onClick={() => {
 							if (currentPage < totalPages) {
-								setCurrentPage((prev) => prev + 1);
+								changePage(changePage + 1);
 							}
 						}}
 					>
 						<ArrowForward />
 					</div>
 					<div
-						className="arrow"
+						className='arrow'
 						onClick={() =>
-							setCurrentPage((prev) => (prev + 20 < totalPages ? prev + 20 : totalPages))
+							changePage(currentPage + 20 < totalPages ? currentPage + 20 : totalPages)
 						}
 					>
 						<LastPageArrows />

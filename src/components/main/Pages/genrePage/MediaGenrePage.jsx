@@ -11,13 +11,15 @@ export const MediaGenrePage = ({ media_type }) => {
 	const id = useParams();
 	const genre = id.genreId.split('=');
 
-	const [currentPage, setCurrentPage] = useState(1);
-
-	const { data } = useGetByGenreQuery({
+	const [queryParams, setQueryParams] = useState({
 		mediaType: media_type,
-		pageNumber: currentPage,
+		pageNumber: 1,
 		genreId: genre[1],
 	});
+
+	const changePage = (page) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
+
+	const { data } = useGetByGenreQuery(queryParams);
 
 	return (
 		<main className='main-genre'>
@@ -51,8 +53,8 @@ export const MediaGenrePage = ({ media_type }) => {
 					</div>
 					<Pagination
 						totalPages={data.total_pages}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
+						currentPage={queryParams.pageNumber}
+						changePage={changePage}
 					/>
 				</>
 			) : (
