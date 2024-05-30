@@ -29,6 +29,7 @@ export const Sort = ({ setQueryParams }) => {
 			...prev,
 			sortBy: sortBy.query,
 		}));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sortBy]);
 	return (
 		<div className='sort' ref={sortRef}>

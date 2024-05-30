@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import './mediaGenrePage.scss';
 import { RatingIcon } from '../../../../images/icons/RatingIcon';
@@ -18,7 +18,10 @@ export const MediaGenrePage = ({ media_type }) => {
 		genreId: genre[1],
 	});
 	const changePage = (page) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
-
+	useEffect(() => {
+		setQueryParams((prev) => ({ ...prev, mediaType: media_type, genreId: genre[1] }));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [media_type, id]);
 	const { data } = useGetByGenreQuery(queryParams);
 
 	return (

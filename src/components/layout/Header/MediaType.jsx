@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { ArrowDropDown } from '../../../images/icons/ArrowDropDown';
 import { Genres } from './genres/Genres';
 
-export const MediaType = ({ mediaType, onClick }) => {
+export const MediaType = ({ mediaType, closeMenu }) => {
 	const [showGenres, setShowGenres] = useState(false);
+	const onClick = () => {
+		closeMenu();
+		setShowGenres(false);
+	};
 	return (
 		<li
 			className={`header-link ${showGenres ? 'active' : ''}`}

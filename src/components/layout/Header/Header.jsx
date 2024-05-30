@@ -11,7 +11,6 @@ const mediaTypes = ['MOVIES', 'TV-SHOWS'];
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const closeMenu = () => setIsOpen(false);
 
 	const menuRef = useOutsideClick(closeMenu);
@@ -31,7 +30,7 @@ export const Header = () => {
 							</NavLink>
 						</li>
 						{mediaTypes.map((mediaType) => (
-							<MediaType mediaType={mediaType} key={mediaType} onClick={closeMenu} />
+							<MediaType mediaType={mediaType} key={mediaType} closeMenu={closeMenu} />
 						))}
 					</ul>
 				</nav>
