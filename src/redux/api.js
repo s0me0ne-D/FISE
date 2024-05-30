@@ -20,8 +20,8 @@ export const mediaApi = createApi({
 				`${mediaType}/${category}?language=en-US&page=${pageNumber}`,
 		}),
 		getByGenre: builder.query({
-			query: ({ mediaType, pageNumber = 1, genreId }) =>
-				`discover/${mediaType}?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&sort_by=popularity.desc&with_genres=${genreId}`,
+			query: ({ mediaType, pageNumber = 1, genreId, sortBy }) =>
+				`discover/${mediaType}?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&sort_by=${sortBy}&with_genres=${genreId}`,
 		}),
 		getDetails: builder.query({
 			query: ({ mediaType, id }) => `${mediaType}/${id}`,

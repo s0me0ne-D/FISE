@@ -6,6 +6,7 @@ import { Pagination } from './Pagination';
 import { PagePoster } from '../PagePoster';
 import { CubeLoader } from '../../../../images/CubeLoader';
 import { useGetByGenreQuery } from '../../../../redux/api';
+import { Sort } from './Sort/Sort';
 
 export const MediaGenrePage = ({ media_type }) => {
 	const id = useParams();
@@ -16,7 +17,6 @@ export const MediaGenrePage = ({ media_type }) => {
 		pageNumber: 1,
 		genreId: genre[1],
 	});
-
 	const changePage = (page) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
 
 	const { data } = useGetByGenreQuery(queryParams);
@@ -29,6 +29,7 @@ export const MediaGenrePage = ({ media_type }) => {
 						{media_type.toUpperCase()} {media_type === 'tv' ? 'Shows' : ''}
 					</h1>
 					<p>{genre[0].toUpperCase()}</p>
+					<Sort setQueryParams={setQueryParams} />
 				</div>
 			</div>
 			{data ? (
