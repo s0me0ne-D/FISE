@@ -18,10 +18,12 @@ export const MediaGenrePage = ({ media_type }) => {
 		genreId: genre[1],
 	});
 	const changePage = (page) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
+
 	useEffect(() => {
 		setQueryParams((prev) => ({ ...prev, mediaType: media_type, genreId: genre[1] }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [media_type, id]);
+
 	const { data } = useGetByGenreQuery(queryParams);
 
 	return (
@@ -32,7 +34,7 @@ export const MediaGenrePage = ({ media_type }) => {
 						{media_type.toUpperCase()} {media_type === 'tv' ? 'Shows' : ''}
 					</h1>
 					<p>{genre[0].toUpperCase()}</p>
-					<Sort setQueryParams={setQueryParams} />
+					<Sort setQueryParams={setQueryParams} mediaType={media_type} />
 				</div>
 			</div>
 			{data ? (

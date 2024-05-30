@@ -4,16 +4,24 @@ import { ArrowDropDown } from '../../../../../images/icons/ArrowDropDown';
 import './sort.scss';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 
-const sortOptions = [
-	{ title: 'Popularity', direction: 'desc', query: `popularity.desc` },
-	{ title: 'Popularity', direction: 'asc', query: `popularity.asc` },
-	{ title: 'Release', direction: 'desc', query: 'primary_release_date.desc' },
-	{ title: 'Release', direction: 'asc', query: 'primary_release_date.asc' },
-	{ title: 'Average', direction: 'desc', query: 'vote_average.desc' },
-	{ title: 'Average', direction: 'asc', query: 'vote_average.asc' },
-];
+export const Sort = ({ setQueryParams, mediaType }) => {
+	const sortOptions = [
+		{ title: 'Popularity', direction: 'desc', query: `popularity.desc` },
+		{ title: 'Popularity', direction: 'asc', query: `popularity.asc` },
+		{
+			title: 'Release',
+			direction: 'desc',
+			query: mediaType === 'movie' ? 'primary_release_date.desc' : 'first_air_date.desc',
+		},
+		{
+			title: 'Release',
+			direction: 'asc',
+			query: mediaType === 'movie' ? 'primary_release_date.asc' : 'first_air_date.asc',
+		},
+		{ title: 'Average', direction: 'desc', query: 'vote_average.desc' },
+		{ title: 'Average', direction: 'asc', query: 'vote_average.asc' },
+	];
 
-export const Sort = ({ setQueryParams }) => {
 	const [sortBy, setSortBy] = useState(sortOptions[0]);
 	const [showSortOptions, setShowSortOptions] = useState(false);
 

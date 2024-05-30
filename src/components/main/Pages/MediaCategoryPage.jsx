@@ -1,5 +1,5 @@
 import { useParams, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pagination } from './genrePage/Pagination';
 import { RatingIcon } from '../../../images/icons/RatingIcon';
 import { PagePoster } from './PagePoster';
@@ -12,11 +12,19 @@ export const MediaCategoryPage = ({ media_type }) => {
 	const category = id.categoryId;
 	const categoryTitle = handleCategoryTitle(category).toUpperCase();
 	const [currentPage, setCurrentPage] = useState(1);
-	const { data } = useGetCategoryQuery({
+
+	const [queryParams, setQueryParams] = useState({
 		mediaType: media_type,
 		category,
 		pageNumber: currentPage,
 	});
+
+	useEffect(() => {
+		setQueryParams((prev) => ({ ...prev, mediaType: media_type, pageNumber: currentPage }));
+	}, [media_type, currentPage]);
+
+	const { data } = useGetCategoryQuery(queryParams);
+
 	return (
 		<main className='main-genre'>
 			<div className='main-genre-title'>
@@ -51,7 +59,7 @@ export const MediaCategoryPage = ({ media_type }) => {
 					<Pagination
 						totalPages={data.total_pages}
 						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
+						changePage={setCurrentPage}
 					/>
 				</>
 			) : (
