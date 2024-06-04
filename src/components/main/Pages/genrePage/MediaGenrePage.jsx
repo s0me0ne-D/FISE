@@ -7,6 +7,8 @@ import { PagePoster } from '../PagePoster';
 import { CubeLoader } from '../../../../images/CubeLoader';
 import { useGetByGenreQuery } from '../../../../redux/api';
 import { Sort } from './Sort/Sort';
+import { Filter } from './Filter/Filter';
+import { useFilterOptionsByYear } from './Filter/filterOptions';
 
 export const MediaGenrePage = ({ media_type }) => {
 	const id = useParams();
@@ -26,6 +28,8 @@ export const MediaGenrePage = ({ media_type }) => {
 
 	const { data } = useGetByGenreQuery(queryParams);
 
+	const filterOptionsByYear = useFilterOptionsByYear();
+
 	return (
 		<main className='main-genre'>
 			<div className='main-genre-title'>
@@ -35,6 +39,7 @@ export const MediaGenrePage = ({ media_type }) => {
 					</h1>
 					<p>{genre[0].toUpperCase()}</p>
 					<Sort setQueryParams={setQueryParams} mediaType={media_type} />
+					<Filter title={'Release year'} filterOptions={filterOptionsByYear} />
 				</div>
 			</div>
 			{data ? (
