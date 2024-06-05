@@ -26,6 +26,13 @@ export const MediaGenrePage = ({ media_type }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [media_type, id]);
 
+	const filterByYear = (year) => {
+		const query = `${
+			media_type === 'movie' ? 'primary_release_year' : 'first_air_date_year'
+		}=${year}`;
+		setQueryParams((prev) => ({ ...prev, filterByReleaseYear: query }));
+	};
+
 	const { data } = useGetByGenreQuery(queryParams);
 
 	const filterOptionsByYear = useFilterOptionsByYear();
@@ -39,7 +46,11 @@ export const MediaGenrePage = ({ media_type }) => {
 					</h1>
 					<p>{genre[0].toUpperCase()}</p>
 					<Sort setQueryParams={setQueryParams} mediaType={media_type} />
-					<Filter title={'Release year'} filterOptions={filterOptionsByYear} />
+					<Filter
+						title={'Release year'}
+						filterOptions={filterOptionsByYear}
+						filter={filterByYear}
+					/>
 				</div>
 			</div>
 			{data ? (

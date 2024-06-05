@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './filter.scss';
 import { ArrowDropDown } from '../../../../../images/icons/ArrowDropDown';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 
-export const Filter = ({ title, filterOptions }) => {
+export const Filter = ({ title, filterOptions, filter }) => {
 	const [filterBy, setFilterBy] = useState(null);
 	const [showOptions, setShowOptions] = useState(false);
 
@@ -17,6 +17,10 @@ export const Filter = ({ title, filterOptions }) => {
 		setFilterBy(null);
 		setShowOptions(false);
 	};
+	useEffect(() => {
+		filterBy && filter(filterBy);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [filterBy]);
 	return (
 		<div className='filter'>
 			<span className='filter_title'>{title}:</span>
