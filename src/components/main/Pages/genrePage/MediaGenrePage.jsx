@@ -46,12 +46,14 @@ export const MediaGenrePage = ({ media_type }) => {
 						{media_type.toUpperCase()} {media_type === 'tv' ? 'Shows' : ''}
 					</h1>
 					<p>{genre[0].toUpperCase()}</p>
-					<Sort setQueryParams={setQueryParams} mediaType={media_type} />
-					<Filter
-						title={'Release year'}
-						filterOptions={filterOptionsByYear}
-						filter={filterByYear}
-					/>
+					<div className='main-genre-title_container_options'>
+						<Sort setQueryParams={setQueryParams} mediaType={media_type} />
+						<Filter
+							title={'Release year'}
+							filterOptions={filterOptionsByYear}
+							filter={filterByYear}
+						/>
+					</div>
 				</div>
 			</div>
 			{data ? (
