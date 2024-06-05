@@ -16,9 +16,10 @@ export const Filter = ({ title, filterOptions, filter }) => {
 	const handleOnclickAll = () => {
 		setFilterBy(null);
 		setShowOptions(false);
+		filter(null);
 	};
 	useEffect(() => {
-		filterBy && filter(filterBy);
+		filterBy !== null && filter(filterBy);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [filterBy]);
 	return (

@@ -19,6 +19,7 @@ export const MediaGenrePage = ({ media_type }) => {
 		pageNumber: 1,
 		genreId: genre[1],
 	});
+
 	const changePage = (page) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
 
 	useEffect(() => {
