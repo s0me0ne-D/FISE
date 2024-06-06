@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URL } from '../store/URL_SORE';
+import { configuration } from '../configuration';
 
 export const mediaApi = createApi({
 	reducerPath: 'mediaApi',
@@ -7,7 +8,7 @@ export const mediaApi = createApi({
 		baseUrl: URL.BASE_URL,
 		prepareHeaders(headers) {
 			headers.set('Accept', 'application/json');
-			headers.set('Authorization', `${process.env.REACT_APP_AUTHORIZATION_TOKEN}`);
+			headers.set('Authorization', `${configuration.apiAuthorizationToken}`);
 		},
 	}),
 	endpoints: (builder) => ({
