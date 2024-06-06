@@ -6,6 +6,7 @@ import { MediaType } from './MediaType';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import { useState } from 'react';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import { AuthSection } from './Authentication/AuthSection';
 
 const mediaTypes = ['MOVIES', 'TV-SHOWS'];
 
@@ -35,7 +36,10 @@ export const Header = () => {
 					</ul>
 				</nav>
 			</div>
-			<Search />
+			<div className='header_menu'>
+				<Search />
+				<AuthSection />
+			</div>
 		</header>
 	);
 };

@@ -59,6 +59,7 @@ export const Search = () => {
 	return (
 		<div ref={searchRef} className='hesder-search-menu'>
 			<button
+				className='hesder-search-btn'
 				onClick={(event) => {
 					setSearchVisible((prev) => !prev);
 					event.stopPropagation();
