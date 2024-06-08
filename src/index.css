@@ -1,15 +1,16 @@
-@import "./_reset.scss";
+@import './_reset.scss';
 @font-face {
-	font-family: "Red Hot";
-	src: url("./fonts/Red_Hat_Text/RedHatText-VariableFont_wght.ttf");
+	font-family: 'Red Hot';
+	src: url('./fonts/Red_Hat_Text/RedHatText-VariableFont_wght.ttf');
 }
 @font-face {
-	font-family: "Antonio";
-	src: url("./fonts/Antonio/Antonio-VariableFont_wght.ttf");
+	font-family: 'Antonio';
+	src: url('./fonts/Antonio/Antonio-VariableFont_wght.ttf');
 }
 body {
 	background-color: #141414;
+	/* overflow: hidden; */
 }
 #root {
-	font-family: "Red Hot";
+	font-family: 'Red Hot';
 }

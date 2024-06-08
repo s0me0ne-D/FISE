@@ -1,9 +1,55 @@
+$TRANSITION: 0.1s ease-in;
+
 .user-menu {
+	padding: 10px 20px 10px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 	position: absolute;
 	top: 62px;
-	right: 0;
+	right: 0px;
 	z-index: 9;
-	width: 100px;
-	height: 100px;
-	background-color: aliceblue;
+	background-color: #1e1e1e;
+	transition: 0.2s ease-in;
+	transform: translateX(100%);
+	&.active-user-menu {
+		transform: translateX(0px);
+	}
+	&_option {
+		display: flex;
+		align-items: center;
+		color: white;
+		opacity: 0.8;
+		transition: $TRANSITION;
+		svg {
+			width: 20px;
+		}
+		&:hover {
+			opacity: 1;
+		}
+	}
+	&_line {
+		width: 90%;
+		height: 1px;
+		background-color: white;
+		margin: 0 auto;
+		border-radius: 2px;
+		opacity: 0.5;
+	}
+	&_log-out {
+		$HOVER_COLOR: #d01a1a;
+		width: 90px;
+		padding: 3px;
+		background: transparent;
+		color: white;
+		border: 1px solid white;
+		opacity: 0.8;
+		border-radius: 3px;
+		transition: $TRANSITION;
+		&:hover {
+			border-color: $HOVER_COLOR;
+			color: $HOVER_COLOR;
+			opacity: 1;
+		}
+	}
 }
