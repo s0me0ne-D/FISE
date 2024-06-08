@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Logo } from '../../../images/Logo';
 import './header.scss';
-import { Search } from './Search';
+import { Search } from './Search/Search';
 import { MediaType } from './MediaType';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import { useState } from 'react';
