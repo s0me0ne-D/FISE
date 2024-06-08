@@ -5,7 +5,7 @@ import { UserSettingsMenu } from './UserSettingsMenu';
 import { LogIn } from './LogIn';
 
 export const AuthSection = () => {
-	const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
+	const { isAuthenticated, user } = useAuth0();
 
 	return (
 		<div className='profile'>{isAuthenticated && user ? <UserSettingsMenu /> : <LogIn />}</div>
