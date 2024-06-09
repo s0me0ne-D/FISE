@@ -1,18 +1,19 @@
 import React from 'react';
 import './userMenu.scss';
 import { NavLink } from 'react-router-dom';
-import { ProfileIcon } from '../../../../../images/icons/ProfileIcon';
-import { useAuth0 } from '@auth0/auth0-react';
+import { ProfileIcon } from '../../../../../assets/icons/ProfileIcon';
+import { useDispatch } from 'react-redux';
+import { setShowPopUp } from '../../../../../redux/popUpSlice';
 
 export const UserMenu = ({ isShow, onClick }) => {
-	const { logout } = useAuth0();
-
-	const handleLogout = () => {
-		logout({
-			logoutParams: {
-				returnTo: window.location.origin,
-			},
-		});
+	const dispatch = useDispatch();
+	const handleOnClick = () => {
+		dispatch(
+			setShowPopUp({
+				showPopUp: true,
+				popUpType: 'logOut',
+			})
+		);
 	};
 
 	return (
@@ -22,7 +23,7 @@ export const UserMenu = ({ isShow, onClick }) => {
 				<span>Your profile</span>
 			</NavLink>
 			<span className='user-menu_line' />
-			<button className='user-menu_log-out' onClick={handleLogout}>
+			<button className='user-menu_log-out' onClick={handleOnClick}>
 				Log out
 			</button>
 		</div>

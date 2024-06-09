@@ -1,6 +1,6 @@
 import React from 'react';
-import { AscIcon } from '../../../../../images/icons/AscIcon';
-import { DescIcon } from '../../../../../images/icons/DescIcon';
+import { AscIcon } from '../../../../../assets/icons/AscIcon';
+import { DescIcon } from '../../../../../assets/icons/DescIcon';
 import './sortOption.scss';
 
 export const SortOption = ({ option }) => {

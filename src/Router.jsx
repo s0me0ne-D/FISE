@@ -3,7 +3,7 @@ import { Layout } from './components/layout/Layout';
 import { MainPage } from './components/main/Main';
 import { MovieDetailsPage } from './components/main/Pages/MovieDetailsPage';
 import { TvDetailsPage } from './components/main/Pages/TvDetailsPage';
-import { MediaGenrePage } from './components/main/Pages/genrePage/MediaGenrePage';
+import { MediaGenrePage } from './components/main/Pages/MediaGenrePage/MediaGenrePage';
 import { MediaCategoryPage } from './components/main/Pages/MediaCategoryPage';
 import { SearchResultsPage } from './components/main/Pages/SearchResultsPage';
 

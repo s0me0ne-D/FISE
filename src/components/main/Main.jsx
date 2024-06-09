@@ -1,6 +1,6 @@
 import './main.scss';
 import { MainCategory } from './MainCategory';
-import { Title } from './titlePage/Title';
+import { Title } from './TitlePage/Title';
 
 const categories = [
 	{

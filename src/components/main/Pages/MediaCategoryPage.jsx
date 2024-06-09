@@ -1,9 +1,9 @@
 import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Pagination } from './genrePage/Pagination';
-import { RatingIcon } from '../../../images/icons/RatingIcon';
+import { Pagination } from './MediaGenrePage/Pagination';
+import { RatingIcon } from '../../../assets/icons/RatingIcon';
 import { PagePoster } from './PagePoster';
-import { CubeLoader } from '../../../images/CubeLoader';
+import { CubeLoader } from '../../../assets/CubeLoader';
 import { useGetCategoryQuery } from '../../../redux/api';
 import { handleCategoryTitle } from '../../../utils/handleCategoryTitle';
 

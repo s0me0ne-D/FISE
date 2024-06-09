@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SortOption } from './SortOption';
-import { ArrowDropDown } from '../../../../../images/icons/ArrowDropDown';
+import { ArrowDropDown } from '../../../../../assets/icons/ArrowDropDown';
 import './sort.scss';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 

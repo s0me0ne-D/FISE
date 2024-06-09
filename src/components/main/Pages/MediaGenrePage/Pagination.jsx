@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './pagination.scss';
-import { ArrowBack } from '../../../../images/icons/ArrowBack';
-import { ArrowForward } from '../../../../images/icons/ArrowForward';
-import { FirstPageArrows } from '../../../../images/icons/FirstPageArrows';
-import { LastPageArrows } from '../../../../images/icons/LastPageArrows';
+import { ArrowBack } from '../../../../assets/icons/ArrowBack';
+import { ArrowForward } from '../../../../assets/icons/ArrowForward';
+import { FirstPageArrows } from '../../../../assets/icons/FirstPageArrows';
+import { LastPageArrows } from '../../../../assets/icons/LastPageArrows';
 
 export const Pagination = ({ totalPages, currentPage, changePage }) => {
 	const [paginationLength, setPaginationLength] = useState([]);

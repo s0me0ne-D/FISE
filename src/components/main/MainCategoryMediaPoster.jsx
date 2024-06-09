@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import haveNotPoster from '../../images/haveNotPoster.png';
+import haveNotPoster from '../../assets/haveNotPoster.png';
 import { NavLink } from 'react-router-dom';
 import { URL } from '../../store/URL_SORE';
 import Loader from '../Loader';

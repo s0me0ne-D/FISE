@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import './mediaGenrePage.scss';
-import { RatingIcon } from '../../../../images/icons/RatingIcon';
+import { RatingIcon } from '../../../../assets/icons/RatingIcon';
 import { Pagination } from './Pagination';
 import { PagePoster } from '../PagePoster';
-import { CubeLoader } from '../../../../images/CubeLoader';
+import { CubeLoader } from '../../../../assets/CubeLoader';
 import { useGetByGenreQuery } from '../../../../redux/api';
 import { Sort } from './Sort/Sort';
 import { Filter } from './Filter/Filter';

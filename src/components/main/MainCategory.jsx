@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './mainCategory.scss';
-import { ArrowBack } from '../../images/icons/ArrowBack';
-import { ArrowForward } from '../../images/icons/ArrowForward';
+import { ArrowBack } from '../../assets/icons/ArrowBack';
+import { ArrowForward } from '../../assets/icons/ArrowForward';
 import { useCallback, useRef, useState } from 'react';
 import { MainCategoryMediaPoster } from './MainCategoryMediaPoster';
 import { useGetCategoryQuery } from '../../redux/api';

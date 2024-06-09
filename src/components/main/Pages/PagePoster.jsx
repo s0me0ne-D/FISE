@@ -1,6 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { URL } from '../../../store/URL_SORE';
-import haveNotPoster from '../../../images/haveNotPoster.png';
+import haveNotPoster from '../../../assets/haveNotPoster.png';
 
 export const PagePoster = ({ media }) => {
 	return (

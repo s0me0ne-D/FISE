@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { URL } from '../../../../store/URL_SORE';
-import haveNotPoster from '../../../../images/haveNotPoster.png';
-import { CubeLoader } from '../../../../images/CubeLoader';
+import haveNotPoster from '../../../../assets/haveNotPoster.png';
+import { CubeLoader } from '../../../../assets/CubeLoader';
 
 export const SearchResults = ({ searchResults, searchValue, closeSearch, showNoResults }) => {
 	return (

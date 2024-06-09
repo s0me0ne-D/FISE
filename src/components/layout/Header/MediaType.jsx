@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowDropDown } from '../../../images/icons/ArrowDropDown';
-import { Genres } from './genres/Genres';
+import { ArrowDropDown } from '../../../assets/icons/ArrowDropDown';
+import { Genres } from './Genres/Genres';
 
 export const MediaType = ({ mediaType, closeMenu }) => {
 	const [showGenres, setShowGenres] = useState(false);

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { SearchImg } from '../../../../images/icons/SearchImg';
+import { SearchImg } from '../../../../assets/icons/SearchImg';
 import { useEffect, useState } from 'react';
 import { fetchSearch } from '../../../../fetch/fetchSearch';
 import './search.scss';

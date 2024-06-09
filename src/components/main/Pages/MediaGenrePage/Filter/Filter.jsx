@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './filter.scss';
-import { ArrowDropDown } from '../../../../../images/icons/ArrowDropDown';
+import { ArrowDropDown } from '../../../../../assets/icons/ArrowDropDown';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 
 export const Filter = ({ title, filterOptions, filter }) => {

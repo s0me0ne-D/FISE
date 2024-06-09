@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import './detailsPage.scss';
 import { URL } from '../../../store/URL_SORE';
 import { TrailerButton } from './TrailerButton';
-import { RatingIcon } from '../../../images/icons/RatingIcon';
+import { RatingIcon } from '../../../assets/icons/RatingIcon';
 import { DetailsPagePoster } from './DetailsPagePoster';
-import { CubeLoader } from '../../../images/CubeLoader';
+import { CubeLoader } from '../../../assets/CubeLoader';
 import { useGetDetailsQuery, useGetTrailersListQuery } from '../../../redux/api';
 
 const mediaType = 'movie';

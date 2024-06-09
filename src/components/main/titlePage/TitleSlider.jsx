@@ -1,6 +1,6 @@
 import { useRef, useCallback } from 'react';
-import { ArrowBack } from '../../../images/icons/ArrowBack';
-import { ArrowForward } from '../../../images/icons/ArrowForward';
+import { ArrowBack } from '../../../assets/icons/ArrowBack';
+import { ArrowForward } from '../../../assets/icons/ArrowForward';
 import './titleSlider.scss';
 import { TitleSliderMediaPoster } from './TitleSliderMediaPoster';
 import { Swiper, SwiperSlide } from 'swiper/react';
