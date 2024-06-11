@@ -1,12 +1,13 @@
 import { useRef, useCallback } from 'react';
 import { ArrowBack } from '../../../assets/icons/ArrowBack';
 import { ArrowForward } from '../../../assets/icons/ArrowForward';
-import './titleSlider.scss';
-import { TitleSliderMediaPoster } from './TitleSliderMediaPoster';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import { MediaPoster } from '../MediaPoster/MediaPoster';
 
-const breakpointsProps = {
+import 'swiper/css';
+import './titleSlider.scss';
+
+const sliderBreakpointsProps = {
 	300: {
 		slidesPerView: 3,
 	},
@@ -53,11 +54,12 @@ export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 			<button className='slider-navigation back' onClick={handlePrev}>
 				<ArrowBack />
 			</button>
-			<Swiper breakpoints={breakpointsProps} ref={swiperRef}>
-				{allTranding.map((movie, index) => (
-					<SwiperSlide key={movie.id}>
-						<TitleSliderMediaPoster
-							movie={movie}
+			<Swiper breakpoints={sliderBreakpointsProps} ref={swiperRef}>
+				{allTranding.map((media, index) => (
+					<SwiperSlide key={media.id}>
+						<MediaPoster
+							media_type={media.media_type}
+							media={media}
 							index={index}
 							currentMovieIndex={currentMovieIndex}
 						/>

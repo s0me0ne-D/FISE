@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import './mainCategory.scss';
 import { ArrowBack } from '../../assets/icons/ArrowBack';
 import { ArrowForward } from '../../assets/icons/ArrowForward';
 import { useCallback, useRef, useState } from 'react';
-import { MainCategoryMediaPoster } from './MainCategoryMediaPoster';
 import { useGetCategoryQuery } from '../../redux/api';
 import { handleCategoryTitle } from '../../utils/handleCategoryTitle';
-
+import { MediaPoster } from './MediaPoster/MediaPoster';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import './mainCategory.scss';
 import 'swiper/css';
 
 export const MainCategory = ({ category, title, mediaType }) => {
@@ -67,7 +67,7 @@ export const MainCategory = ({ category, title, mediaType }) => {
 						<Swiper ref={swiperRef} slidesPerView={'auto'} onSlideChange={handleOnSlideChange}>
 							{data.results.map((media) => (
 								<SwiperSlide style={{ width: 'fit-content' }} key={media.id}>
-									<MainCategoryMediaPoster media_type={mediaType} media={media} key={media.id} />
+									<MediaPoster media_type={mediaType} media={media} key={media.id} />
 								</SwiperSlide>
 							))}
 						</Swiper>
