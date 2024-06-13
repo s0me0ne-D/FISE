@@ -5,7 +5,7 @@ import { ProfileIcon } from '../../../../../assets/icons/ProfileIcon';
 import { useDispatch } from 'react-redux';
 import { setShowPopUp } from '../../../../../redux/popUpSlice';
 
-export const UserMenu = ({ isShow, onClick }) => {
+export const UserMenu = ({ isShow, closeUserMenu }) => {
 	const dispatch = useDispatch();
 	const handleOnClick = () => {
 		dispatch(
@@ -18,7 +18,7 @@ export const UserMenu = ({ isShow, onClick }) => {
 
 	return (
 		<div className={`user-menu ${isShow ? 'active-user-menu' : ''}`}>
-			<NavLink to={'/'} className={'user-menu_option '} onClick={onClick}>
+			<NavLink to={'/'} className={'user-menu_option '} onClick={closeUserMenu}>
 				<ProfileIcon />
 				<span>Your profile</span>
 			</NavLink>
