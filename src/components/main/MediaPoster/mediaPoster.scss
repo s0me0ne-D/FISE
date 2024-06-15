@@ -5,36 +5,35 @@
 	justify-content: center;
 	align-items: center;
 	transition: 0.3s ease-in;
-	// &:hover {
-	// 	img {
-	// 		transform: scale(1.1);
-	// 		transform: scale(1.1);
-	// 		-webkit-box-shadow: -30px 0px 40px -15px black, 30px 0px 40px -15px black;
-	// 		-moz-box-shadow: -30px 0px 40px -15px black, 30px 0px 40px -15px black;
-	// 		box-shadow: -30px 0px 40px -15px black, 30px 0px 40px -15px black;
-	// 		z-index: 9999;
-	// 	}
-	// }
+}
+
+.poster-block {
+	position: relative;
+	overflow: hidden;
+	transition: 0.1s ease-in;
+	&.active {
+		transform: scale(1.1);
+	}
+
 	.media-card-poster {
 		width: 100px;
 		transition: 0.1s ease-in;
 		border-radius: 5px;
-		&.active {
-			transform: scale(1.1);
-		}
+		position: relative;
 		&.loading {
 			display: none;
 		}
-		&:hover {
-			transform: scale(1.1);
-			transform: scale(1.1);
+		&.have-not {
+			filter: grayscale(0.8);
+		}
+	}
+	&:hover {
+		transform: scale(1.1);
+		.media-card-poster {
 			-webkit-box-shadow: 0px -5px 20px -10px black, 0px -5px 20px -10px black;
 			-moz-box-shadow: 0px -5px 20px -10px black, 0px -5px 20px -10px black;
 			box-shadow: 0px -5px 20px -10px black, 0px -5px 20px -10px black;
 			z-index: 9999;
-		}
-		&.have-not {
-			filter: grayscale(0.8);
 		}
 	}
 }
