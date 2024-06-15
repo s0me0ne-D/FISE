@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { URL } from '../../../../store/URL_SORE';
-import haveNotPoster from '../../../../assets/haveNotPoster.png';
+import posterPlaceholder from '../../../../assets/posterPlaceholder.png';
 import { CubeLoader } from '../../../../assets/CubeLoader';
 
 export const SearchResults = ({ searchResults, searchValue, closeSearch, showNoResults }) => {
@@ -28,7 +28,7 @@ export const SearchResults = ({ searchResults, searchValue, closeSearch, showNoR
 												src={
 													movie.poster_path
 														? URL.LAZY_LOAD_IMG_URL + movie.poster_path
-														: haveNotPoster
+														: posterPlaceholder
 												}
 												alt='poster'
 												className={!movie.poster_path ? 'have-not' : null}

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Loader from '../../Loader';
 import './mediaPoster.scss';
 import { AuthenticationMediaMenu } from './AuthenticationMediaMenu/AuthenticationMediaMenu';
+import posterPlaceholder from '../../../assets/posterPlaceholder.png';
 
 export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => {
 	const { LAZY_LOAD_IMG_URL } = URL;
@@ -29,7 +30,7 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => 
 					className={`media-card-poster  ${!media.poster_path && 'have-not'} ${
 						loading && 'loading'
 					} `}
-					src={LAZY_LOAD_IMG_URL + media.poster_path}
+					src={media.poster_path ? LAZY_LOAD_IMG_URL + media.poster_path : posterPlaceholder}
 					alt='poster'
 					title={media.name ? media.name : media.title}
 				/>
