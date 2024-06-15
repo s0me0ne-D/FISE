@@ -6,6 +6,7 @@ import Loader from '../../Loader';
 import './mediaPoster.scss';
 import { AuthenticationMediaMenu } from './AuthenticationMediaMenu/AuthenticationMediaMenu';
 import posterPlaceholder from '../../../assets/posterPlaceholder.png';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => {
 	const { LAZY_LOAD_IMG_URL } = URL;
@@ -18,12 +19,17 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => 
 		}
 	}, [index, currentMovieIndex]);
 
+	const { isAuthenticated } = useAuth0();
+
+	const handleMouseEnter = () => isAuthenticated && setShowMediaMenu(true);
+	const handleMouseLeave = () => isAuthenticated && setShowMediaMenu(false);
+
 	return (
 		<NavLink className='media-card' to={`/${media_type}/id/${media.id}`}>
 			<div
 				className={`poster-block ${isActive ? 'active' : ''}`}
-				onMouseEnter={() => setShowMediaMenu(true)}
-				onMouseLeave={() => setShowMediaMenu(false)}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
 			>
 				<img
 					onLoad={() => setLoading(false)}
