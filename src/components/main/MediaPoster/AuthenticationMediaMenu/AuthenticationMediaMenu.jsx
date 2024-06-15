@@ -6,10 +6,10 @@ import { AddIcon } from '../../../../assets/icons/AddIcon';
 export const AuthenticationMediaMenu = () => {
 	return (
 		<div className='media-menu'>
-			<span className='information'>
+			<span className='information media-menu-option'>
 				<InfoIcon />
 			</span>
-			<button className='add-media'>
+			<button className='add-media media-menu-option'>
 				<AddIcon />
 			</button>
 		</div>
