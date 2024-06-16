@@ -73,12 +73,14 @@ export const MovieDetailsPage = () => {
 							))}
 						</ul>
 					</li>
-					<li className='overview'>
-						<span>
-							Overview: <br />
-						</span>
-						{data.overview}
-					</li>
+					{data.overview && (
+						<li className='overview'>
+							<span>
+								Overview: <br />
+							</span>
+							{data.overview}
+						</li>
+					)}
 				</ul>
 			</div>
 		</main>
