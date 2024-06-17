@@ -40,7 +40,7 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => 
 					alt='poster'
 					title={media.name ? media.name : media.title}
 				/>
-				{showMediaMenu && <AuthenticationMediaMenu />}
+				{showMediaMenu && <AuthenticationMediaMenu media={media} />}
 			</div>
 			{loading && <Loader className={'media-card-poster'} />}
 		</NavLink>

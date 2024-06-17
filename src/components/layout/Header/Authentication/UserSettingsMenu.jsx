@@ -10,7 +10,6 @@ export const UserSettingsMenu = () => {
 	const userSettingsRef = useOutsideClick(() => setShowUserMenu(false));
 
 	const closeUserMenu = () => setShowUserMenu(false);
-
 	return (
 		<div ref={userSettingsRef} className='user-settings'>
 			<button className='user-settings_btn' onClick={() => setShowUserMenu((prev) => !prev)}>

@@ -15,7 +15,6 @@ export const Header = () => {
 	const closeMenu = () => setIsOpen(false);
 
 	const menuRef = useOutsideClick(closeMenu);
-
 	return (
 		<header className='header'>
 			<NavLink to={'/'} className='header-logo'>

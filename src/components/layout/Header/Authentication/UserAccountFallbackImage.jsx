@@ -10,6 +10,5 @@ export const UserAccountFallbackImage = () => {
 	const handleImageError = () => {
 		setImgSrs(fallbackImg);
 	};
-
 	return <img src={imgSrc} alt='user' onError={handleImageError} />;
 };
