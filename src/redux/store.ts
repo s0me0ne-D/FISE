@@ -7,3 +7,5 @@ export const store = configureStore({
 	reducer: { [mediaApi.reducerPath]: mediaApi.reducer, popUpReducer, favoritesMediaReducer },
 	middleware: (gDM) => gDM().concat(mediaApi.middleware),
 });
+
+export type RootStore = ReturnType<typeof store.getState>;
