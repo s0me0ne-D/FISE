@@ -13,6 +13,7 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => 
 	const [loading, setLoading] = useState(true);
 	const [isActive, setIsActive] = useState(false);
 	const [showMediaMenu, setShowMediaMenu] = useState(false);
+	console.log(media);
 	useEffect(() => {
 		if (index || index === 0) {
 			index === currentMovieIndex ? setIsActive(true) : setIsActive(false);
