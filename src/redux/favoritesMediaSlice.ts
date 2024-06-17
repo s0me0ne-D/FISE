@@ -1,6 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Media } from '../interfaces/media_interface';
 
-const initialState = {
+interface InitialState {
+	mail: string;
+	favorites: Media[];
+}
+
+const initialState: InitialState = {
 	mail: '',
 	favorites: [],
 };
@@ -9,7 +15,7 @@ const favoritesMediaSlice = createSlice({
 	name: 'favoritesMedia',
 	initialState,
 	reducers: {
-		addFavorite: (state, action) => {
+		addFavorite: (state, action: PayloadAction<Media>) => {
 			state.favorites.push(action.payload);
 		},
 		changeMail: (state, action) => {

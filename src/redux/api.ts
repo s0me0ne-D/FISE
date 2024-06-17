@@ -1,6 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URL } from '../store/URL_SORE';
 import { configuration } from '../configuration';
+import { Media } from '../interfaces/media_interface';
+
+interface ApiResult<TResult> {
+	page: number;
+	results: TResult[];
+	total_pages: number;
+	total_results: number;
+}
 
 export const mediaApi = createApi({
 	reducerPath: 'mediaApi',
@@ -12,9 +20,9 @@ export const mediaApi = createApi({
 		},
 	}),
 	endpoints: (builder) => ({
-		getAllTrandings: builder.query({
+		getAllTrandings: builder.query<Media[], string>({
 			query: () => 'trending/all/day?language=en-US',
-			transformResponse: (response) => response.results,
+			transformResponse: (response: ApiResult<Media>) => response.results,
 		}),
 		getCategory: builder.query({
 			query: ({ mediaType, category, pageNumber = 1 }) =>

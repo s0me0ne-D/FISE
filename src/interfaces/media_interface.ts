@@ -5,7 +5,7 @@ export interface Media {
 	original_name?: string;
 	overview: string;
 	poster_path: string;
-	media_type: 'movie' | 'tv';
+	media_type: MediaType;
 	adult: boolean;
 	name?: string;
 	title?: string;
@@ -19,3 +19,5 @@ export interface Media {
 	vote_count: number;
 	origin_country?: string[];
 }
+
+export type MediaType = 'movie' | 'tv';
