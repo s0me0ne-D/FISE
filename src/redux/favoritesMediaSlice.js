@@ -12,8 +12,11 @@ const favoritesMediaSlice = createSlice({
 		addFavorite: (state, action) => {
 			state.favorites.push(action.payload);
 		},
+		changeMail: (state, action) => {
+			state.mail = action.payload;
+		},
 	},
 });
 
 export const favoritesMediaReducer = favoritesMediaSlice.reducer;
-export const { addFavorite } = favoritesMediaSlice.actions;
+export const { addFavorite, changeMail } = favoritesMediaSlice.actions;

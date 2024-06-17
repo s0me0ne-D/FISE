@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import './main.scss';
 import { MainCategory } from './MainCategory';
 import { Title } from './TitlePage/Title';
