@@ -9,7 +9,6 @@ const { ORIGINAL_IMG_URL, LAZY_LOAD_IMG_URL } = URL;
 
 export const Title = () => {
 	const { data } = useGetAllTrandingsQuery();
-	console.log(data);
 
 	const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
 	const [isLoadingPoster, setIsLoadingPoster] = useState(true);
