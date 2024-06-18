@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URL } from '../store/URL_SORE';
 import { configuration } from '../configuration';
 import { Media } from '../interfaces/media_interface';
+import { QueryParams } from '../interfaces/queryParams_interface';
 
 interface ApiResult<TResult> {
 	page: number;
@@ -24,11 +25,11 @@ export const mediaApi = createApi({
 			query: () => 'trending/all/day?language=en-US',
 			transformResponse: (response: ApiResult<Media>) => response.results,
 		}),
-		getCategory: builder.query({
+		getByCategory: builder.query<Media[], QueryParams>({
 			query: ({ mediaType, category, pageNumber = 1 }) =>
 				`${mediaType}/${category}?language=en-US&page=${pageNumber}`,
 		}),
-		getByGenre: builder.query({
+		getByGenre: builder.query<Media[], QueryParams>({
 			query: ({ mediaType, pageNumber = 1, genreId, sortBy, filterByReleaseYear }) =>
 				`discover/${mediaType}?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&sort_by=${sortBy}${
 					filterByReleaseYear && `&${filterByReleaseYear}`
@@ -49,7 +50,7 @@ export const mediaApi = createApi({
 
 export const {
 	useGetAllTrandingsQuery,
-	useGetCategoryQuery,
+	useGetByCategoryQuery,
 	useGetByGenreQuery,
 	useGetDetailsQuery,
 	useGetTrailersListQuery,

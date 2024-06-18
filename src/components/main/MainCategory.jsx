@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { ArrowBack } from '../../assets/icons/ArrowBack';
 import { ArrowForward } from '../../assets/icons/ArrowForward';
 import { useCallback, useRef, useState } from 'react';
-import { useGetCategoryQuery } from '../../redux/api';
+import { useGetByCategoryQuery } from '../../redux/api';
 import { handleCategoryTitle } from '../../utils/handleCategoryTitle';
 import { MediaPoster } from './MediaPoster/MediaPoster';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,7 +14,7 @@ export const MainCategory = ({ category, title, mediaType }) => {
 	const categoryText = handleCategoryTitle(category);
 	const [showNavigationArrows, setShowNavigationArrows] = useState({ start: false, end: true });
 
-	const { data } = useGetCategoryQuery({ mediaType, category });
+	const { data } = useGetByCategoryQuery({ mediaType, category });
 	const listRef = useRef(null);
 	const swiperRef = useRef(null);
 

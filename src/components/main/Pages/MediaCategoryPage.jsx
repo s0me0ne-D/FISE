@@ -4,7 +4,7 @@ import { Pagination } from './MediaGenrePage/Pagination';
 import { RatingIcon } from '../../../assets/icons/RatingIcon';
 import { PagePoster } from './PagePoster';
 import { CubeLoader } from '../../../assets/CubeLoader';
-import { useGetCategoryQuery } from '../../../redux/api';
+import { useGetByCategoryQuery } from '../../../redux/api';
 import { handleCategoryTitle } from '../../../utils/handleCategoryTitle';
 
 export const MediaCategoryPage = ({ media_type }) => {
@@ -23,7 +23,7 @@ export const MediaCategoryPage = ({ media_type }) => {
 		setQueryParams((prev) => ({ ...prev, mediaType: media_type, pageNumber: currentPage }));
 	}, [media_type, currentPage]);
 
-	const { data } = useGetCategoryQuery(queryParams);
+	const { data } = useGetByCategoryQuery(queryParams);
 
 	return (
 		<main className='main-genre'>
