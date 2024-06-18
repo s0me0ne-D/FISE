@@ -1,6 +1,6 @@
 import React from 'react';
-import { genresTV } from '../../../../json/genresTV';
-import { genresMovies } from '../../../../json/genresMovies';
+import { genresTV } from '../../../../store/genres/genresTV';
+import { genresMovies } from '../../../../store/genres/genresMovies';
 
 import { NavLink } from 'react-router-dom';
 
