@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URL } from '../store/URL_SORE';
 import { configuration } from '../configuration';
-import { Media } from '../interfaces/media_interface';
+import { Media, MediaDetails } from '../interfaces/media_interface';
 import { QueryParams } from '../interfaces/queryParams_interface';
+import { Trailers } from '../interfaces/trailers_interface';
 
 interface ApiResult<TResult> {
 	page: number;
@@ -35,13 +36,13 @@ export const mediaApi = createApi({
 					filterByReleaseYear && `&${filterByReleaseYear}`
 				}&with_genres=${genreId}`,
 		}),
-		getDetails: builder.query({
+		getDetails: builder.query<MediaDetails, QueryParams>({
 			query: ({ mediaType, id }) => `${mediaType}/${id}`,
 		}),
-		getTrailersList: builder.query({
+		getTrailersList: builder.query<Trailers, QueryParams>({
 			query: ({ mediaType, id }) => `${mediaType}/${id}/videos?language=en-US`,
 		}),
-		getSearch: builder.query({
+		getSearch: builder.query<Media[], QueryParams>({
 			query: ({ searchValue, currentPage }) =>
 				`search/multi?query=${searchValue}&include_adult=false&language=en-US&page=${currentPage}`,
 		}),

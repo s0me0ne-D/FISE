@@ -18,7 +18,7 @@ export const MovieDetailsPage = () => {
 
 	const { data } = useGetDetailsQuery(queryParams);
 	const { data: trailers } = useGetTrailersListQuery(queryParams);
-	console.log(data);
+	console.log(trailers);
 
 	useEffect(() => {
 		if (trailers) {
