@@ -4,13 +4,7 @@ import { configuration } from '../configuration';
 import { Media, MediaDetails } from '../interfaces/media_interface';
 import { QueryParams } from '../interfaces/queryParams_interface';
 import { Trailers } from '../interfaces/trailers_interface';
-
-interface ApiResult<TResult> {
-	page: number;
-	results: TResult[];
-	total_pages: number;
-	total_results: number;
-}
+import { ApiResult } from '../interfaces/api_results';
 
 export const mediaApi = createApi({
 	reducerPath: 'mediaApi',
@@ -30,7 +24,7 @@ export const mediaApi = createApi({
 			query: ({ mediaType, category, pageNumber = 1 }) =>
 				`${mediaType}/${category}?language=en-US&page=${pageNumber}`,
 		}),
-		getByGenre: builder.query<Media[], QueryParams>({
+		getByGenre: builder.query<ApiResult<Media[]>, QueryParams>({
 			query: ({ mediaType, pageNumber = 1, genreId, sortBy, filterByReleaseYear }) =>
 				`discover/${mediaType}?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&sort_by=${sortBy}${
 					filterByReleaseYear && `&${filterByReleaseYear}`
@@ -42,7 +36,7 @@ export const mediaApi = createApi({
 		getTrailersList: builder.query<Trailers, QueryParams>({
 			query: ({ mediaType, id }) => `${mediaType}/${id}/videos?language=en-US`,
 		}),
-		getSearch: builder.query<Media[], QueryParams>({
+		getSearch: builder.query<ApiResult<Media[]>, QueryParams>({
 			query: ({ searchValue, currentPage }) =>
 				`search/multi?query=${searchValue}&include_adult=false&language=en-US&page=${currentPage}`,
 		}),
