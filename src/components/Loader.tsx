@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const Loader = ({ className }) => (
+export const Loader = ({ className }: { className: string }) => (
 	<ContentLoader
 		speed={2}
 		width={'100%'}
