@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const initialPopUpState = { showPopUp: false, popUpType: '' };
+type PopUpType = 'logOut' | '';
+interface InitialPopUpState {
+	showPopUp: boolean;
+	popUpType: PopUpType;
+}
+export const initialPopUpState: InitialPopUpState = { showPopUp: false, popUpType: '' };
 
 export const popUpSlice = createSlice({
 	name: 'popUp',

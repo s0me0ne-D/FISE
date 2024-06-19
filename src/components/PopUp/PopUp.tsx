@@ -3,18 +3,25 @@ import './popUp.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogOut } from '../../hooks/useLogOut';
 import { initialPopUpState, setShowPopUp } from '../../redux/popUpSlice';
+import { RootStore } from '../../redux/store';
 
-const popUpVariables = {
+interface PopUpVariables {
+	logOut: {
+		message: string;
+	};
+}
+
+const popUpVariables: PopUpVariables = {
 	logOut: {
 		message: 'Are you sure you want to logout?',
 	},
 };
 
 export const PopUp = () => {
-	const { popUpType } = useSelector((store) => store.popUpReducer);
+	const { popUpType } = useSelector((store: RootStore) => store.popUpReducer);
 	const logout = useLogOut();
 
-	const message = popUpVariables[popUpType].message;
+	const message = popUpType !== '' ? popUpVariables[popUpType].message : '';
 
 	const handleOnClick = () => {
 		if (popUpType === 'logOut') {
