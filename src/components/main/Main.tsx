@@ -2,7 +2,17 @@ import './main.scss';
 import { MainCategory } from './MainCategory';
 import { Title } from './TitlePage/Title';
 
-const categories = [
+type CategoryType = 'popular' | 'top_rated' | 'upcoming';
+type CategoryTitle = 'Movies' | 'TV Shows';
+type MediaType = 'tv' | 'movie';
+
+interface Category {
+	category: CategoryType;
+	title: CategoryTitle;
+	mediaType: MediaType;
+}
+
+const categories: Category[] = [
 	{
 		category: 'popular',
 		title: 'Movies',
