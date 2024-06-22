@@ -33,7 +33,7 @@ export const Title = () => {
 	return (
 		data && (
 			<div className='main-title'>
-				<TitleDescription allTranding={data} currentMovieIndex={currentMovieIndex} />
+				<TitleDescription currentMedia={data[currentMovieIndex]} />
 				<TitleSlider allTranding={data} currentMovieIndex={currentMovieIndex} />
 				<LazyLoadImage
 					onLoad={() => {
