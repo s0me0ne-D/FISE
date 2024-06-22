@@ -14,9 +14,11 @@ export const Title = () => {
 	const [isLoadingPoster, setIsLoadingPoster] = useState(true);
 
 	const slideTitle = () => {
-		currentMovieIndex < data.length - 1
-			? setCurrentMovieIndex(currentMovieIndex + 1)
-			: setCurrentMovieIndex(0);
+		if (data) {
+			currentMovieIndex < data.length - 1
+				? setCurrentMovieIndex(currentMovieIndex + 1)
+				: setCurrentMovieIndex(0);
+		}
 	};
 
 	useEffect(() => {

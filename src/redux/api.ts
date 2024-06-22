@@ -16,7 +16,7 @@ export const mediaApi = createApi({
 		},
 	}),
 	endpoints: (builder) => ({
-		getAllTrandings: builder.query<Media[], string>({
+		getAllTrandings: builder.query<Media[], void>({
 			query: () => 'trending/all/day?language=en-US',
 			transformResponse: (response: ApiResult<Media>) => response.results,
 		}),
