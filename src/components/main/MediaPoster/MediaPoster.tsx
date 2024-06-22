@@ -7,12 +7,20 @@ import './mediaPoster.scss';
 import { AuthenticationMediaMenu } from './AuthenticationMediaMenu/AuthenticationMediaMenu';
 import posterPlaceholder from '../../../assets/posterPlaceholder.png';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Media, MediaType } from '../../../interfaces/media_interface';
 
-export const MediaPoster = ({ media_type, media, index, currentMovieIndex }) => {
+interface MediaPosterProps {
+	media_type: MediaType;
+	media: Media;
+	index?: number;
+	currentMovieIndex?: number;
+}
+
+export const MediaPoster = ({ media_type, media, index, currentMovieIndex }: MediaPosterProps) => {
 	const { LAZY_LOAD_IMG_URL } = URL;
-	const [loading, setLoading] = useState(true);
-	const [isActive, setIsActive] = useState(false);
-	const [showMediaMenu, setShowMediaMenu] = useState(false);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [isActive, setIsActive] = useState<boolean>(false);
+	const [showMediaMenu, setShowMediaMenu] = useState<boolean>(false);
 	useEffect(() => {
 		if (index || index === 0) {
 			index === currentMovieIndex ? setIsActive(true) : setIsActive(false);

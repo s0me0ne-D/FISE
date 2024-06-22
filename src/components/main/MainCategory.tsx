@@ -24,22 +24,27 @@ export const MainCategory = ({ category, title, mediaType }: Category) => {
 		if (!swiper) return;
 		swiper.slidePrev();
 	}, []);
+
+	const disableArrowNext = (swiper: SwiperClass) => {
+		swiper.isEnd && setShowNavigationArrows((prev) => ({ ...prev, end: false }));
+	};
+
 	const handleNext = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (!swiper) return;
 		swiper.slideNext();
+		disableArrowNext(swiper);
 	}, []);
 
 	const handleOnSlideChange = () => {
 		const swiper = swiperRef.current;
-		if (swiper) {
-			if (swiper.isBeginning) {
-				setShowNavigationArrows((prev) => ({ ...prev, start: false }));
-			} else if (swiper.isEnd) {
-				setShowNavigationArrows((prev) => ({ ...prev, end: false }));
-			} else {
-				setShowNavigationArrows({ start: true, end: true });
-			}
+		if (swiper?.isBeginning) {
+			console.log('start');
+			setShowNavigationArrows((prev) => ({ ...prev, start: false }));
+		} else if (swiper?.isEnd) {
+			disableArrowNext(swiper);
+		} else {
+			setShowNavigationArrows({ start: true, end: true });
 		}
 	};
 
