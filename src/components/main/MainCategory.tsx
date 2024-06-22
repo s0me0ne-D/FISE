@@ -5,36 +5,37 @@ import { useCallback, useRef, useState } from 'react';
 import { useGetByCategoryQuery } from '../../redux/api';
 import { handleCategoryTitle } from '../../utils/handleCategoryTitle';
 import { MediaPoster } from './MediaPoster/MediaPoster';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperClass, Swiper, SwiperSlide } from 'swiper/react';
+import { Category } from './Main';
 
 import './mainCategory.scss';
 import 'swiper/css';
 
-export const MainCategory = ({ category, title, mediaType }) => {
+export const MainCategory = ({ category, title, mediaType }: Category) => {
 	const categoryText = handleCategoryTitle(category);
 	const [showNavigationArrows, setShowNavigationArrows] = useState({ start: false, end: true });
 
 	const { data } = useGetByCategoryQuery({ mediaType, category });
 	const listRef = useRef(null);
-	const swiperRef = useRef(null);
+	const swiperRef = useRef<SwiperClass | null>(null);
 
 	const handlePrev = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (!swiper) return;
-		swiper.swiper.slidePrev();
+		swiper.slidePrev();
 	}, []);
 	const handleNext = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (!swiper) return;
-		swiper.swiper.slideNext();
+		swiper.slideNext();
 	}, []);
 
 	const handleOnSlideChange = () => {
 		const swiper = swiperRef.current;
 		if (swiper) {
-			if (swiper.swiper.isBeginning) {
+			if (swiper.isBeginning) {
 				setShowNavigationArrows((prev) => ({ ...prev, start: false }));
-			} else if (swiper.swiper.isEnd) {
+			} else if (swiper.isEnd) {
 				setShowNavigationArrows((prev) => ({ ...prev, end: false }));
 			} else {
 				setShowNavigationArrows({ start: true, end: true });
@@ -64,7 +65,13 @@ export const MainCategory = ({ category, title, mediaType }) => {
 					)}
 
 					<div className='category-list' ref={listRef}>
-						<Swiper ref={swiperRef} slidesPerView={'auto'} onSlideChange={handleOnSlideChange}>
+						<Swiper
+							onSwiper={(swiper) => {
+								swiperRef.current = swiper;
+							}}
+							slidesPerView={'auto'}
+							onSlideChange={handleOnSlideChange}
+						>
 							{data.results.map((media) => (
 								<SwiperSlide style={{ width: 'fit-content' }} key={media.id}>
 									<MediaPoster media_type={mediaType} media={media} key={media.id} />

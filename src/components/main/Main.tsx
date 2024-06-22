@@ -6,7 +6,7 @@ type CategoryType = 'popular' | 'top_rated' | 'upcoming';
 type CategoryTitle = 'Movies' | 'TV Shows';
 type MediaType = 'tv' | 'movie';
 
-interface Category {
+export interface Category {
 	category: CategoryType;
 	title: CategoryTitle;
 	mediaType: MediaType;

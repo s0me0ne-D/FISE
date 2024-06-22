@@ -20,7 +20,7 @@ export const mediaApi = createApi({
 			query: () => 'trending/all/day?language=en-US',
 			transformResponse: (response: ApiResult<Media>) => response.results,
 		}),
-		getByCategory: builder.query<Media[], QueryParams>({
+		getByCategory: builder.query<ApiResult<Media>, QueryParams>({
 			query: ({ mediaType, category, pageNumber = 1 }) =>
 				`${mediaType}/${category}?language=en-US&page=${pageNumber}`,
 		}),
