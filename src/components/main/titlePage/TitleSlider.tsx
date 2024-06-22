@@ -1,11 +1,12 @@
 import { useRef, useCallback } from 'react';
 import { ArrowBack } from '../../../assets/icons/ArrowBack';
 import { ArrowForward } from '../../../assets/icons/ArrowForward';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import { MediaPoster } from '../MediaPoster/MediaPoster';
 
 import 'swiper/css';
 import './titleSlider.scss';
+import { Media } from '../../../interfaces/media_interface';
 
 const sliderBreakpointsProps = {
 	300: {
@@ -25,27 +26,32 @@ const sliderBreakpointsProps = {
 	},
 };
 
-export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
-	const swiperRef = useRef(null);
+interface TitleSliderProps {
+	allTranding: Media[];
+	currentMovieIndex: number;
+}
+
+export const TitleSlider = ({ allTranding, currentMovieIndex }: TitleSliderProps) => {
+	const swiperRef = useRef<SwiperClass | null>(null);
 	const handlePrev = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (!swiper) return;
-		if (swiper.swiper.isBeginning) {
-			const slidesPerView = swiper.swiper.params.slidesPerView;
-			const totalSlides = swiper.swiper.slides.length;
+		if (swiper.isBeginning) {
+			const slidesPerView = swiper.params.slidesPerView as number;
+			const totalSlides = swiper.slides.length;
 			const lastIndex = Math.max(0, totalSlides - slidesPerView);
-			swiper.swiper.slideTo(lastIndex);
+			swiper.slideTo(lastIndex);
 		} else {
-			swiper.swiper.slidePrev();
+			swiper.slidePrev();
 		}
 	}, []);
 	const handleNext = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (!swiper) return;
-		if (swiper.swiper.isEnd) {
-			swiper.swiper.slideTo(0);
+		if (swiper.isEnd) {
+			swiper.slideTo(0);
 		} else {
-			swiper.swiper.slideNext();
+			swiper.slideNext();
 		}
 	}, []);
 
@@ -54,7 +60,12 @@ export const TitleSlider = ({ allTranding, currentMovieIndex }) => {
 			<button className='slider-navigation back' onClick={handlePrev}>
 				<ArrowBack />
 			</button>
-			<Swiper breakpoints={sliderBreakpointsProps} ref={swiperRef}>
+			<Swiper
+				breakpoints={sliderBreakpointsProps}
+				onSwiper={(swiper) => {
+					swiperRef.current = swiper;
+				}}
+			>
 				{allTranding.map((media, index) => (
 					<SwiperSlide key={media.id}>
 						<MediaPoster

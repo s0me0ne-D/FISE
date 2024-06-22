@@ -36,17 +36,16 @@ export const MainCategory = ({ category, title, mediaType }: Category) => {
 		disableArrowNext(swiper);
 	}, []);
 
-	const handleOnSlideChange = () => {
+	const handleOnSlideChange = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (swiper?.isBeginning) {
-			console.log('start');
 			setShowNavigationArrows((prev) => ({ ...prev, start: false }));
 		} else if (swiper?.isEnd) {
 			disableArrowNext(swiper);
 		} else {
 			setShowNavigationArrows({ start: true, end: true });
 		}
-	};
+	}, []);
 
 	return (
 		data && (
