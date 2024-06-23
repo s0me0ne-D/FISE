@@ -6,12 +6,13 @@ import { PagePoster } from './PagePoster';
 import { CubeLoader } from '../../../assets/CubeLoader';
 import { useGetByCategoryQuery } from '../../../redux/api';
 import { handleCategoryTitle } from '../../../utils/handleCategoryTitle';
+import { MediaType } from '../../../interfaces/media_interface';
 
-export const MediaCategoryPage = ({ media_type }) => {
+export const MediaCategoryPage = ({ media_type }: { media_type: MediaType }) => {
 	const id = useParams();
 	const category = id.categoryId;
-	const categoryTitle = handleCategoryTitle(category).toUpperCase();
-	const [currentPage, setCurrentPage] = useState(1);
+	const categoryTitle = handleCategoryTitle(category!).toUpperCase();
+	const [currentPage, setCurrentPage] = useState<number>(1);
 
 	const [queryParams, setQueryParams] = useState({
 		mediaType: media_type,
