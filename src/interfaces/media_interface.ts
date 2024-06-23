@@ -12,8 +12,8 @@ export interface Media {
 	original_language: string;
 	genre_ids: number[];
 	popularity: number;
-	release_date?: Date;
-	first_air_date?: Date;
+	release_date?: string;
+	first_air_date?: string;
 	video?: boolean;
 	vote_average: number;
 	vote_count: number;
@@ -27,7 +27,7 @@ export interface MediaDetails {
 	backdrop_path: string;
 	created_by: CreatedBy;
 	episode_run_time: number[];
-	first_air_date: Date;
+	first_air_date: string;
 	belongs_to_collection?: null;
 	budget?: number;
 	genres: Genre[];
@@ -35,7 +35,7 @@ export interface MediaDetails {
 	id: number;
 	in_production?: boolean;
 	languages?: string[];
-	last_air_date?: Date;
+	last_air_date?: string;
 	last_episode_to_air?: TEpisodeToAir;
 	next_episode_to_air?: TEpisodeToAir;
 	imdb_id?: string;
@@ -50,7 +50,7 @@ export interface MediaDetails {
 	poster_path: string;
 	production_companies: ProductionCompany[];
 	production_countries: ProductionCountry[];
-	release_date?: Date;
+	release_date?: string;
 	revenue?: number;
 	runtime?: number;
 	spoken_languages: SpokenLanguage[];
@@ -65,7 +65,7 @@ export interface MediaDetails {
 }
 
 export interface Season {
-	air_date: Date | null;
+	air_date: string | null;
 	episode_count: number;
 	id: number;
 	name: string;
@@ -95,7 +95,7 @@ export interface TEpisodeToAir {
 	name: string;
 	vote_average: number;
 	vote_count: number;
-	air_date: Date;
+	air_date: string;
 	episode_number: number;
 	episode_type: string;
 	production_code: string;

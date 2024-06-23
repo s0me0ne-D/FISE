@@ -7,7 +7,7 @@ export interface QueryParams {
 	filterByReleaseYear?: string;
 	sortBy?: string;
 	category?: string;
-	id?: number;
+	id?: string | number | undefined;
 	searchValue?: string;
 	currentPage?: number;
 }
