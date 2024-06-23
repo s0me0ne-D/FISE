@@ -1,8 +1,9 @@
 import posterPlaceholder from '../../../assets/posterPlaceholder.png';
+import { MediaDetails } from '../../../interfaces/media_interface';
 import { URL } from '../../../store/URL_SORE';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-export const DetailsPagePoster = ({ details }) => {
+export const DetailsPagePoster = ({ details }: { details: MediaDetails }) => {
 	return (
 		<LazyLoadImage
 			src={details.poster_path ? URL.ORIGINAL_IMG_URL + details.poster_path : posterPlaceholder}
