@@ -17,7 +17,7 @@ export const SearchResultsPage = () => {
 		<main className='main-genre'>
 			<div className='main-genre-title'>
 				<h1>SEARCH: </h1>
-				<p>{searchValue.toUpperCase()}</p>
+				<p>{searchValue?.toUpperCase()}</p>
 			</div>
 			<div className='main-genre-list'>
 				{data ? (

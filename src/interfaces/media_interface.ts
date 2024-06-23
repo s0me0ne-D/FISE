@@ -20,7 +20,7 @@ export interface Media {
 	origin_country?: string[];
 }
 
-export type MediaType = 'movie' | 'tv';
+export type MediaType = 'movie' | 'tv' | 'person';
 
 export interface MediaDetails {
 	adult: boolean;

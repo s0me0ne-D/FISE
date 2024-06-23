@@ -36,7 +36,7 @@ export const mediaApi = createApi({
 		getTrailersList: builder.query<Trailers, QueryParams>({
 			query: ({ mediaType, id }) => `${mediaType}/${id}/videos?language=en-US`,
 		}),
-		getSearch: builder.query<ApiResult<Media[]>, QueryParams>({
+		getSearch: builder.query<ApiResult<Media>, QueryParams>({
 			query: ({ searchValue, currentPage }) =>
 				`search/multi?query=${searchValue}&include_adult=false&language=en-US&page=${currentPage}`,
 		}),
