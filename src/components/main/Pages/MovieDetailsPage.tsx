@@ -7,12 +7,14 @@ import { RatingIcon } from '../../../assets/icons/RatingIcon';
 import { DetailsPagePoster } from './DetailsPagePoster';
 import { CubeLoader } from '../../../assets/CubeLoader';
 import { useGetDetailsQuery, useGetTrailersListQuery } from '../../../redux/api';
+import { MediaType } from '../../../interfaces/media_interface';
+import { Result } from '../../../interfaces/trailers_interface';
 
-const mediaType = 'movie';
+const mediaType: MediaType = 'movie';
 
 export const MovieDetailsPage = () => {
 	const id = useParams();
-	const [trailerKeyUrl, setTrailerKeyUrl] = useState(false);
+	const [trailerKeyUrl, setTrailerKeyUrl] = useState<Result | null>(null);
 
 	const queryParams = { mediaType, id: id.movieId };
 
@@ -45,7 +47,7 @@ export const MovieDetailsPage = () => {
 				</div>
 				{trailerKeyUrl ? (
 					<div className='trailer-container'>
-						<TrailerButton trailerKeyUrl={trailerKeyUrl} />
+						<TrailerButton trailerKeyUrl={trailerKeyUrl.key} />
 					</div>
 				) : null}
 			</div>
