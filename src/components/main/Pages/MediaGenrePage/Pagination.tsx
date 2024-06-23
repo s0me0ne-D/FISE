@@ -8,7 +8,7 @@ import { LastPageArrows } from '../../../../assets/icons/LastPageArrows';
 interface PaginationProps {
 	totalPages: number;
 	currentPage: number;
-	changePage: React.Dispatch<React.SetStateAction<number>>;
+	changePage: React.Dispatch<React.SetStateAction<number>> | ((page: number) => void);
 }
 
 export const Pagination = ({ totalPages, currentPage, changePage }: PaginationProps) => {

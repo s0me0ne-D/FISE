@@ -9,25 +9,27 @@ import { useGetByGenreQuery } from '../../../../redux/api';
 import { Sort } from './Sort/Sort';
 import { Filter } from './Filter/Filter';
 import { useFilterOptionsByYear } from './Filter/filterOptions';
+import { MediaType } from '../../../../interfaces/media_interface';
+import { QueryParams } from '../../../../interfaces/queryParams_interface';
 
-export const MediaGenrePage = ({ media_type }) => {
+export const MediaGenrePage = ({ media_type }: { media_type: MediaType }) => {
 	const id = useParams();
-	const genre = id.genreId.split('=');
+	const genre = id.genreId!.split('=');
 
-	const [queryParams, setQueryParams] = useState({
+	const [queryParams, setQueryParams] = useState<QueryParams>({
 		mediaType: media_type,
 		pageNumber: 1,
-		genreId: genre[1],
+		genreId: Number(genre[1]),
 	});
 
-	const changePage = (page) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
+	const changePage = (page: number) => setQueryParams((prev) => ({ ...prev, pageNumber: page }));
 
 	useEffect(() => {
-		setQueryParams((prev) => ({ ...prev, mediaType: media_type, genreId: genre[1] }));
+		setQueryParams((prev) => ({ ...prev, mediaType: media_type, genreId: Number(genre[1]) }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [media_type, id]);
 
-	const filterByYear = (year) => {
+	const filterByYear = (year: number) => {
 		const query = `${
 			media_type === 'movie' ? 'primary_release_year' : 'first_air_date_year'
 		}=${year}`;
@@ -78,7 +80,7 @@ export const MediaGenrePage = ({ media_type }) => {
 					</div>
 					<Pagination
 						totalPages={data.total_pages}
-						currentPage={queryParams.pageNumber}
+						currentPage={queryParams.pageNumber!}
 						changePage={changePage}
 					/>
 				</>
