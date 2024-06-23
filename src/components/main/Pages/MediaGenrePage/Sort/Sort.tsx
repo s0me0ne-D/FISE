@@ -3,9 +3,22 @@ import { SortOption } from './SortOption';
 import { ArrowDropDown } from '../../../../../assets/icons/ArrowDropDown';
 import './sort.scss';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+import { MediaType } from '../../../../../interfaces/media_interface';
+import { QueryParams } from '../../../../../interfaces/queryParams_interface';
 
-export const Sort = ({ setQueryParams, mediaType }) => {
-	const sortOptions = [
+interface SortProps {
+	setQueryParams: React.Dispatch<React.SetStateAction<QueryParams>>;
+	mediaType: MediaType;
+}
+
+interface Option {
+	title: 'Popularity' | 'Release' | 'Average';
+	direction: 'desc' | 'asc';
+	query: string;
+}
+
+export const Sort = ({ setQueryParams, mediaType }: SortProps) => {
+	const sortOptions: Option[] = [
 		{ title: 'Popularity', direction: 'desc', query: `popularity.desc` },
 		{ title: 'Popularity', direction: 'asc', query: `popularity.asc` },
 		{
@@ -27,7 +40,7 @@ export const Sort = ({ setQueryParams, mediaType }) => {
 
 	const sortRef = useOutsideClick(() => setShowSortOptions(false));
 
-	const handleOnClickOption = (option) => {
+	const handleOnClickOption = (option: Option) => {
 		setSortBy(option);
 		setShowSortOptions(false);
 	};
