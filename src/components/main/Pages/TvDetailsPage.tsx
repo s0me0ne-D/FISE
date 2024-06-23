@@ -46,7 +46,7 @@ export const TvDetailsPage = () => {
 				</div>
 				{trailerKeyUrl ? (
 					<div className='trailer-container'>
-						<TrailerButton trailerKeyUrl={trailerKeyUrl} />
+						<TrailerButton trailerKeyUrl={trailerKeyUrl.key} />
 					</div>
 				) : null}
 			</div>
