@@ -11,7 +11,7 @@ interface SortProps {
 	mediaType: MediaType;
 }
 
-interface Option {
+export interface Option {
 	title: 'Popularity' | 'Release' | 'Average';
 	direction: 'desc' | 'asc';
 	query: string;

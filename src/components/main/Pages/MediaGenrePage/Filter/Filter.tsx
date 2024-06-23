@@ -3,13 +3,19 @@ import './filter.scss';
 import { ArrowDropDown } from '../../../../../assets/icons/ArrowDropDown';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 
-export const Filter = ({ title, filterOptions, filter }) => {
-	const [filterBy, setFilterBy] = useState(null);
+interface FilterProps {
+	title: string;
+	filterOptions: number[];
+	filter: (year: number | null) => void;
+}
+
+export const Filter = ({ title, filterOptions, filter }: FilterProps) => {
+	const [filterBy, setFilterBy] = useState<number | null>(null);
 	const [showOptions, setShowOptions] = useState(false);
 
 	const filterRef = useOutsideClick(() => setShowOptions(false));
 
-	const handleOnClickOption = (option) => {
+	const handleOnClickOption = (option: number) => {
 		setFilterBy(option);
 		setShowOptions(false);
 	};

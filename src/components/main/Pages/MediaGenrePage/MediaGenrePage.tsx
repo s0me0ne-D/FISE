@@ -8,7 +8,7 @@ import { CubeLoader } from '../../../../assets/CubeLoader';
 import { useGetByGenreQuery } from '../../../../redux/api';
 import { Sort } from './Sort/Sort';
 import { Filter } from './Filter/Filter';
-import { useFilterOptionsByYear } from './Filter/filterOptions';
+import { useFilterOptionsByYear } from './Filter/useFilterOptionsByYear';
 import { MediaType } from '../../../../interfaces/media_interface';
 import { QueryParams } from '../../../../interfaces/queryParams_interface';
 
@@ -29,7 +29,7 @@ export const MediaGenrePage = ({ media_type }: { media_type: MediaType }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [media_type, id]);
 
-	const filterByYear = (year: number) => {
+	const filterByYear = (year: number | null) => {
 		const query = `${
 			media_type === 'movie' ? 'primary_release_year' : 'first_air_date_year'
 		}=${year}`;

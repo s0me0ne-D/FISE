@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useFilterOptionsByYear = () => {
-	const [years, setYears] = useState([]);
+	const [years, setYears] = useState<number[]>([]);
 
 	useEffect(() => {
 		const currentYear = new Date().getFullYear();
