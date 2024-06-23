@@ -54,7 +54,7 @@ export const SearchResultsPage = () => {
 				<Pagination
 					totalPages={data.total_pages}
 					currentPage={currentPage}
-					setCurrentPage={setCurrentPage}
+					changePage={setCurrentPage}
 				/>
 			) : null}
 		</main>

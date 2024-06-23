@@ -5,8 +5,14 @@ import { ArrowForward } from '../../../../assets/icons/ArrowForward';
 import { FirstPageArrows } from '../../../../assets/icons/FirstPageArrows';
 import { LastPageArrows } from '../../../../assets/icons/LastPageArrows';
 
-export const Pagination = ({ totalPages, currentPage, changePage }) => {
-	const [paginationLength, setPaginationLength] = useState([]);
+interface PaginationProps {
+	totalPages: number;
+	currentPage: number;
+	changePage: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const Pagination = ({ totalPages, currentPage, changePage }: PaginationProps) => {
+	const [paginationLength, setPaginationLength] = useState<number[]>([]);
 	useEffect(() => {
 		if (paginationLength.length !== totalPages) {
 			const newPaginationLength = [];
@@ -44,7 +50,8 @@ export const Pagination = ({ totalPages, currentPage, changePage }) => {
 										key={index}
 										className={`pagination-page ${currentPage === page ? 'active' : ''}`}
 										onClick={(event) => {
-											changePage(Number(event.target.textContent));
+											const target = event.target as HTMLSpanElement;
+											changePage(Number(target.textContent));
 										}}
 									>
 										{page}{' '}
@@ -58,7 +65,8 @@ export const Pagination = ({ totalPages, currentPage, changePage }) => {
 									key={index}
 									className={`pagination-page ${currentPage === page ? 'active' : ''}`}
 									onClick={(event) => {
-										changePage(Number(event.target.textContent));
+										const target = event.target as HTMLSpanElement;
+										changePage(Number(target.textContent));
 									}}
 								>
 									{page}{' '}
@@ -72,7 +80,7 @@ export const Pagination = ({ totalPages, currentPage, changePage }) => {
 						className='arrow'
 						onClick={() => {
 							if (currentPage < totalPages) {
-								changePage(changePage + 1);
+								changePage(currentPage + 1);
 							}
 						}}
 					>
