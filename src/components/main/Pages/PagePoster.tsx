@@ -1,8 +1,9 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { URL } from '../../../store/URL_SORE';
 import posterPlaceholder from '../../../assets/posterPlaceholder.png';
+import { Media } from '../../../interfaces/media_interface';
 
-export const PagePoster = ({ media }) => {
+export const PagePoster = ({ media }: { media: Media }) => {
 	return (
 		<>
 			<LazyLoadImage
