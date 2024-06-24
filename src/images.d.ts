@@ -19,6 +19,6 @@ declare module '*.gif' {
 }
 
 declare module '*.svg' {
-	const value: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+	const value: string;
 	export default value;
 }

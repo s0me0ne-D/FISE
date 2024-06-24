@@ -6,6 +6,7 @@ import { TelegramIcons } from '../../assets/icons/TelegramIcons';
 import './footer.scss';
 import TMDBLogo from '../../assets/TMDB_logo.svg';
 import { Mail } from '../../assets/icons/Mail';
+
 export const Footer = () => {
 	return (
 		<footer className='footer'>
