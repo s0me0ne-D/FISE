@@ -5,7 +5,7 @@ import { useOutsideClick } from '../../../../hooks/useOutsideClick';
 import { UserAccountFallbackImage } from './UserAccountFallbackImage';
 
 export const UserSettingsMenu = () => {
-	const [showUserMenu, setShowUserMenu] = useState(false);
+	const [showUserMenu, setShowUserMenu] = useState<boolean>(false);
 
 	const userSettingsRef = useOutsideClick(() => setShowUserMenu(false));
 
