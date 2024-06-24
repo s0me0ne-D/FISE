@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type PopUpType = 'logOut' | '';
 interface InitialPopUpState {
@@ -11,7 +11,7 @@ export const popUpSlice = createSlice({
 	name: 'popUp',
 	initialState: initialPopUpState,
 	reducers: {
-		setShowPopUp: (state, action) => {
+		setShowPopUp: (state, action: PayloadAction<InitialPopUpState>) => {
 			state.showPopUp = action.payload.showPopUp;
 			state.popUpType = action.payload.popUpType;
 		},

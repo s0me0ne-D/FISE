@@ -5,7 +5,12 @@ import { ProfileIcon } from '../../../../../assets/icons/ProfileIcon';
 import { useDispatch } from 'react-redux';
 import { setShowPopUp } from '../../../../../redux/popUpSlice';
 
-export const UserMenu = ({ isShow, closeUserMenu }) => {
+interface UserMenuProps {
+	isShow: boolean;
+	closeUserMenu: () => void;
+}
+
+export const UserMenu = ({ isShow, closeUserMenu }: UserMenuProps) => {
 	const dispatch = useDispatch();
 	const handleOnClick = () => {
 		dispatch(
