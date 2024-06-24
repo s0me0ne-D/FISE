@@ -4,7 +4,12 @@ import { genresMovies } from '../../../../store/genres/genresMovies';
 
 import { NavLink } from 'react-router-dom';
 
-export const Genres = ({ currentLink, onClick }) => {
+interface GenresProps {
+	currentLink: string;
+	onClick: () => void;
+}
+
+export const Genres = ({ currentLink, onClick }: GenresProps) => {
 	const genres = currentLink === 'MOVIES' ? genresMovies : genresTV;
 	const link = `${currentLink === 'MOVIES' ? 'movie' : 'tv'}/genre/`;
 
