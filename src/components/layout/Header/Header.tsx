@@ -8,10 +8,10 @@ import { useState } from 'react';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
 import { AuthSection } from './Authentication/AuthSection';
 
-const mediaTypes = ['MOVIES', 'TV-SHOWS'];
+const mediaCategories = ['MOVIES', 'TV-SHOWS'];
 
 export const Header = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const closeMenu = () => setIsOpen(false);
 
 	const menuRef = useOutsideClick(closeMenu);
@@ -29,8 +29,8 @@ export const Header = () => {
 								<span>HOME</span>
 							</NavLink>
 						</li>
-						{mediaTypes.map((mediaType) => (
-							<MediaType mediaType={mediaType} key={mediaType} closeMenu={closeMenu} />
+						{mediaCategories.map((mediaCategory) => (
+							<MediaType mediaCategory={mediaCategory} key={mediaCategory} closeMenu={closeMenu} />
 						))}
 					</ul>
 				</nav>

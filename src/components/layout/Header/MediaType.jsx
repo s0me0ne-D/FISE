@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArrowDropDown } from '../../../assets/icons/ArrowDropDown';
 import { Genres } from './Genres/Genres';
 
-export const MediaType = ({ mediaType, closeMenu }) => {
+export const MediaType = ({ mediaCategory, closeMenu }) => {
 	const [showGenres, setShowGenres] = useState(false);
 	const onClick = () => {
 		closeMenu();
@@ -15,11 +15,11 @@ export const MediaType = ({ mediaType, closeMenu }) => {
 			onMouseLeave={() => setShowGenres(false)}
 		>
 			<span>
-				{mediaType}
+				{mediaCategory}
 				<ArrowDropDown />
 			</span>
 
-			{showGenres && <Genres currentLink={mediaType} onClick={onClick} />}
+			{showGenres && <Genres currentLink={mediaCategory} onClick={onClick} />}
 		</li>
 	);
 };
