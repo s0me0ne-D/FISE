@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { ArrowDropDown } from '../../../assets/icons/ArrowDropDown';
 import { Genres } from './Genres/Genres';
 
-export const MediaType = ({ mediaCategory, closeMenu }) => {
-	const [showGenres, setShowGenres] = useState(false);
+interface MediaTypeProps {
+	mediaCategory: string;
+	closeMenu: () => void;
+}
+
+export const MediaCategory = ({ mediaCategory, closeMenu }: MediaTypeProps) => {
+	const [showGenres, setShowGenres] = useState<boolean>(false);
 	const onClick = () => {
 		closeMenu();
 		setShowGenres(false);

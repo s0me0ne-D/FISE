@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Logo } from '../../../assets/Logo';
 import './header.scss';
 import { Search } from './Search/Search';
-import { MediaType } from './MediaType';
+import { MediaCategory } from './MediaCategory';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import { useState } from 'react';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
@@ -30,7 +30,11 @@ export const Header = () => {
 							</NavLink>
 						</li>
 						{mediaCategories.map((mediaCategory) => (
-							<MediaType mediaCategory={mediaCategory} key={mediaCategory} closeMenu={closeMenu} />
+							<MediaCategory
+								mediaCategory={mediaCategory}
+								key={mediaCategory}
+								closeMenu={closeMenu}
+							/>
 						))}
 					</ul>
 				</nav>
