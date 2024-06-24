@@ -6,6 +6,7 @@ import { TvDetailsPage } from './components/main/Pages/TvDetailsPage';
 import { MediaGenrePage } from './components/main/Pages/MediaGenrePage/MediaGenrePage';
 import { MediaCategoryPage } from './components/main/Pages/MediaCategoryPage';
 import { SearchResultsPage } from './components/main/Pages/SearchResultsPage';
+import { UnderConstructionPage } from './UnderConstructionPage/UnderConstructionPage';
 
 export const router = createHashRouter([
 	{
@@ -35,6 +36,7 @@ export const router = createHashRouter([
 			{ path: '/movie/:categoryId', element: <MediaCategoryPage media_type={'movie'} /> },
 			{ path: '/tv/:categoryId', element: <MediaCategoryPage media_type={'tv'} /> },
 			{ path: '/search/:searchValue', element: <SearchResultsPage /> },
+			{ path: 'profile', element: <UnderConstructionPage /> },
 		],
 	},
 ]);
