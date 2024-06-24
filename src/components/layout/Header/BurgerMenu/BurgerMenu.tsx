@@ -1,7 +1,12 @@
 import React from 'react';
 import './burgerMenu.scss';
 
-export const BurgerMenu = ({ isOpen, setIsOpen }) => {
+interface BurgerMenuProps {
+	isOpen: boolean;
+	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const BurgerMenu = ({ isOpen, setIsOpen }: BurgerMenuProps) => {
 	const handleOnClick = () => {
 		setIsOpen((prev) => !prev);
 	};
