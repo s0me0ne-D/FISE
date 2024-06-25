@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './mediaGenrePage.scss';
-import { RatingIcon } from '../../../../assets/icons/RatingIcon';
 import { Pagination } from './Pagination';
-import { PagePoster } from '../PagePoster';
+import { PosterCard } from '../PosterCard/PagePoster';
 import { CubeLoader } from '../../../../assets/CubeLoader';
 import { useGetByGenreQuery } from '../../../../redux/api';
 import { Sort } from './Sort/Sort';
@@ -62,20 +61,7 @@ export const MediaGenrePage = ({ media_type }: { media_type: MediaType }) => {
 				<>
 					<div className='main-genre-list'>
 						{data.results.map((media) => (
-							<NavLink
-								to={`/${media_type}/id/${media.id}`}
-								className='genre-media-link'
-								key={media.id}
-							>
-								<PagePoster media={media} />
-								<div className='media-title'>
-									<span>{media_type === 'movie' ? media.title : media.name}</span>
-									<span className='title-rating'>
-										<RatingIcon />
-										{media.vote_average.toFixed(1)}
-									</span>
-								</div>
-							</NavLink>
+							<PosterCard media={media} key={media.id} mediaType={media_type} />
 						))}
 					</div>
 					<Pagination

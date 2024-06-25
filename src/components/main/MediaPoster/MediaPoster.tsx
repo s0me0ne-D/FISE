@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../Loader';
 import './mediaPoster.scss';
-import { AuthenticationMediaMenu } from './AuthenticationMediaMenu/AuthenticationMediaMenu';
+import { AuthenticationMediaMenu } from '../AuthenticationMediaMenu/AuthenticationMediaMenu';
+
 import posterPlaceholder from '../../../assets/posterPlaceholder.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Media, MediaType } from '../../../interfaces/media_interface';

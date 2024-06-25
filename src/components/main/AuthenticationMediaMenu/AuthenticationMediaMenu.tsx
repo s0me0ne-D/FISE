@@ -1,10 +1,10 @@
 import React from 'react';
 import './authenticationMediaMenu.scss';
-import { InfoIcon } from '../../../../assets/icons/InfoIcon';
-import { AddIcon } from '../../../../assets/icons/AddIcon';
+import { InfoIcon } from '../../../assets/icons/InfoIcon';
+import { AddIcon } from '../../../assets/icons/AddIcon';
 import { useDispatch } from 'react-redux';
-import { addFavorite } from '../../../../redux/favoritesMediaSlice';
-import { Media } from '../../../../interfaces/media_interface';
+import { addFavorite } from '../../../redux/favoritesMediaSlice';
+import { Media } from '../../../interfaces/media_interface';
 
 export const AuthenticationMediaMenu = ({ media }: { media: Media }) => {
 	const dispatch = useDispatch();

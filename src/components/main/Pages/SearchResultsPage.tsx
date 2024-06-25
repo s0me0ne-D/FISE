@@ -1,8 +1,7 @@
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Pagination } from './MediaGenrePage/Pagination';
-import { RatingIcon } from '../../../assets/icons/RatingIcon';
-import { PagePoster } from './PagePoster';
+import { PosterCard } from './PosterCard/PagePoster';
 import { CubeLoader } from '../../../assets/CubeLoader';
 import { useGetSearchQuery } from '../../../redux/api';
 
@@ -23,22 +22,7 @@ export const SearchResultsPage = () => {
 				{data ? (
 					data.results.map((media) => {
 						if (media.media_type !== 'person') {
-							return (
-								<NavLink
-									to={`/${media.media_type}/id/${media.id}`}
-									className='genre-media-link'
-									key={media.id}
-								>
-									<PagePoster media={media} />
-									<div className='media-title'>
-										<span>{media.media_type === 'movie' ? media.title : media.name}</span>
-										<span className='title-rating'>
-											<RatingIcon />
-											{media.vote_average.toFixed(1)}
-										</span>
-									</div>
-								</NavLink>
-							);
+							return <PosterCard media={media} mediaType={media.media_type} key={media.id} />;
 						} else {
 							return null;
 						}
