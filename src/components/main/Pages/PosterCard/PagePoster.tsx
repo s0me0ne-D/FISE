@@ -1,4 +1,3 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { URL } from '../../../../store/URL_SORE';
 import posterPlaceholder from '../../../../assets/posterPlaceholder.png';
 import { Media, MediaType } from '../../../../interfaces/media_interface';
@@ -8,13 +7,19 @@ import { NavLink } from 'react-router-dom';
 import './posterCard.scss';
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import Loader from '../../../Loader';
 
 export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: MediaType }) => {
 	const { isAuthenticated } = useAuth0();
 	const [showMediaMenu, setShowMediaMenu] = useState<boolean>(false);
+	const [isLoadingPoster, setIsLoadingPoster] = useState(true);
 
 	const handleMouseEnter = () => isAuthenticated && setShowMediaMenu(true);
 	const handleMouseLeave = () => isAuthenticated && setShowMediaMenu(false);
+
+	const lazyImageSrc = media.poster_path
+		? URL.LAZY_LOAD_IMG_URL + media.poster_path
+		: posterPlaceholder;
 
 	return (
 		<NavLink
@@ -25,13 +30,13 @@ export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: Medi
 			onMouseLeave={handleMouseLeave}
 		>
 			{showMediaMenu && <AuthenticationMediaMenu media={media} />}
-			<LazyLoadImage
-				src={media.poster_path ? URL.ORIGINAL_IMG_URL + media.poster_path : posterPlaceholder}
-				className={`poster ${media.poster_path ? '' : 'have-not'}`}
-				placeholderSrc={
-					media.poster_path ? URL.LAZY_LOAD_IMG_URL + media.poster_path : posterPlaceholder
-				}
+			<img
+				src={lazyImageSrc}
+				onLoad={() => setIsLoadingPoster(false)}
+				className={`poster ${media.poster_path ? '' : 'have-not'} ${isLoadingPoster && 'loading'}`}
+				alt='poster'
 			/>
+			{isLoadingPoster && <Loader className='poster' />}
 			<div className='media-title'>
 				<span>{mediaType === 'movie' ? media.title : media.name}</span>
 				<span className='title-rating'>

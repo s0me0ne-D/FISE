@@ -33,6 +33,8 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }: Med
 	const handleMouseEnter = () => isAuthenticated && setShowMediaMenu(true);
 	const handleMouseLeave = () => isAuthenticated && setShowMediaMenu(false);
 
+	const imageSrc = media.poster_path ? LAZY_LOAD_IMG_URL + media.poster_path : posterPlaceholder;
+
 	return (
 		<NavLink className='media-card' to={`/${media_type}/id/${media.id}`}>
 			<div
@@ -45,13 +47,13 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }: Med
 					className={`media-card-poster  ${!media.poster_path && 'have-not'} ${
 						loading && 'loading'
 					} `}
-					src={media.poster_path ? LAZY_LOAD_IMG_URL + media.poster_path : posterPlaceholder}
+					src={imageSrc}
 					alt='poster'
 					title={media.name ? media.name : media.title}
 				/>
 				{showMediaMenu && <AuthenticationMediaMenu media={media} />}
 			</div>
-			{loading && <Loader className={'media-card-poster'} />}
+			{loading && <Loader className={'media-card-poster'} height={150} />}
 		</NavLink>
 	);
 };

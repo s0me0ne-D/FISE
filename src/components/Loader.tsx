@@ -1,11 +1,11 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const Loader = ({ className }: { className: string }) => (
+export const Loader = ({ className, height }: { className: string; height?: number }) => (
 	<ContentLoader
 		speed={2}
 		width={'100%'}
-		height={150}
+		height={height}
 		viewBox='0 0 100 150'
 		backgroundColor='#404040'
 		foregroundColor='#616161'
