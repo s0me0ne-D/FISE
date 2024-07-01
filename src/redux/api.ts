@@ -27,7 +27,7 @@ export const mediaApi = createApi({
 		getByGenre: builder.query<ApiResult<Media>, QueryParams>({
 			query: ({ mediaType, pageNumber = 1, genreId, sortBy, filterByReleaseYear }) =>
 				`discover/${mediaType}?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&sort_by=${sortBy}${
-					filterByReleaseYear && `&${filterByReleaseYear}`
+					filterByReleaseYear ? `&${filterByReleaseYear}` : ''
 				}&with_genres=${genreId}`,
 		}),
 		getDetails: builder.query<MediaDetails, QueryParams>({
