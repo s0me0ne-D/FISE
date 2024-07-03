@@ -45,7 +45,7 @@ export const MediaPoster = ({ media_type, media, index, currentMovieIndex }: Med
 				<img
 					onLoad={() => setLoading(false)}
 					className={`media-card-poster  ${!media.poster_path && 'have-not'} ${
-						loading && 'loading'
+						loading ? 'loading' : ''
 					} `}
 					src={imageSrc}
 					alt='poster'
