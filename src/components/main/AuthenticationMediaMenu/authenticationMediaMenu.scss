@@ -4,7 +4,7 @@
 	50% {
 	}
 	100% {
-		top: 0;
+		opacity: 1;
 	}
 }
 .media-menu {
@@ -14,15 +14,14 @@
 	display: flex;
 	justify-content: space-between;
 	position: absolute;
-	top: 0px;
-	top: -20px;
+	top: 0;
 	left: 0;
 	z-index: 99999;
 	background-color: #d11a1a;
-	opacity: 0.9;
+	opacity: 0;
 	border-radius: 5px 5px 0 0;
 	cursor: default;
-	animation: 0.1s menu-appears ease-in forwards;
+	animation: 0.15s menu-appears ease-in forwards;
 }
 .add-media {
 	background: transparent;
