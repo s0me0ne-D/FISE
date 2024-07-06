@@ -7,6 +7,7 @@ export const useLogOut = () => {
 		logout({
 			logoutParams: {
 				returnTo: window.location.origin,
+				//FOR DEV USE configuration.PAGE_BASE_URL for redirect_uri
 			},
 		});
 	};

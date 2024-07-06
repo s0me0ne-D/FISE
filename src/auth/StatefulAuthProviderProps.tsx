@@ -5,6 +5,7 @@ const authConfig: Auth0ProviderOptions = {
 	domain: configuration.auth0Domain!,
 	clientId: configuration.auth0ClientId!,
 	authorizationParams: { redirect_uri: window.location.origin },
+	//FOR DEV USE configuration.PAGE_BASE_URL for redirect_uri
 };
 
 interface StatefulAuthProviderProps {
