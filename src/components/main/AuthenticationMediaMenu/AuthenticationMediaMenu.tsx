@@ -16,7 +16,7 @@ export const AuthenticationMediaMenu = ({ media }: { media: Media }) => {
 			className='media-menu'
 			onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => event.preventDefault()}
 		>
-			<MediaInformation />
+			<MediaInformation media={media} />
 			<button className='add-media media-menu-option' onClick={handleOnClick}>
 				<AddIcon />
 			</button>
