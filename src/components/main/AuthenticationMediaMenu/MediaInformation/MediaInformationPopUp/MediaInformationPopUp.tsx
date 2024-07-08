@@ -5,36 +5,45 @@ import { useEffect, useState } from 'react';
 const initialPosition = { x: 0, y: 0 };
 
 export const MediaInformationPopUp = ({ media }: { media: Media }) => {
-	const [mousePos, setMousePos] = useState(initialPosition);
+	const [popUpPosition, setPopUpPosition] = useState(initialPosition);
+
 	const element = document.getElementById('root');
+	const { innerWidth } = window;
 
 	useEffect(() => {
-		const handleMouseMove = (event: MouseEvent) => {
+		const handlePopUpPosition = (event: MouseEvent) => {
 			if (element) {
 				const rect = element.getBoundingClientRect();
-				setMousePos({
-					x: event.clientX - rect.left,
-					y: event.clientY - rect.top,
+
+				const mousePositionX = event.clientX - rect.left;
+				const rightSideDistance = innerWidth - mousePositionX;
+				const positionX = rightSideDistance < 220 ? mousePositionX - 200 : mousePositionX;
+				const positionY = event.clientY - rect.top - 20;
+
+				setPopUpPosition({
+					x: positionX,
+					y: positionY,
 				});
 			}
 		};
 
-		if (element && mousePos === initialPosition) {
-			element.addEventListener('mousemove', handleMouseMove);
+		if (element && popUpPosition === initialPosition) {
+			element.addEventListener('mousemove', handlePopUpPosition);
 		}
 
 		return () => {
-			if (element && mousePos === initialPosition) {
-				element.removeEventListener('mousemove', handleMouseMove);
+			if (element && popUpPosition === initialPosition) {
+				element.removeEventListener('mousemove', handlePopUpPosition);
 			}
 		};
-	}, [element, mousePos]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [element, popUpPosition]);
 
-	if (mousePos === initialPosition) {
+	if (popUpPosition === initialPosition) {
 		return null;
 	}
 	return (
-		<div style={{ top: mousePos.y, left: mousePos.x }} className='information-popup'>
+		<div style={{ top: popUpPosition.y, left: popUpPosition.x }} className='information-popup'>
 			InformationPopup
 		</div>
 	);
