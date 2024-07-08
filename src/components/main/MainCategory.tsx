@@ -25,23 +25,24 @@ export const MainCategory = ({ category, title, mediaType }: Category) => {
 		swiper.slidePrev();
 	}, []);
 
-	const disableArrowNext = (swiper: SwiperClass) => {
-		swiper.isEnd && setShowNavigationArrows((prev) => ({ ...prev, end: false }));
+	const disableArrowNext = () => {
+		setShowNavigationArrows((prev) => ({ ...prev, end: false }));
 	};
 
 	const handleNext = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (!swiper) return;
 		swiper.slideNext();
-		disableArrowNext(swiper);
+		swiper.isEnd && disableArrowNext();
 	}, []);
 
 	const handleOnSlideChange = useCallback(() => {
 		const swiper = swiperRef.current;
 		if (swiper?.isBeginning) {
-			setShowNavigationArrows((prev) => ({ ...prev, start: false }));
+			setShowNavigationArrows(() => ({ start: false, end: true }));
 		} else if (swiper?.isEnd) {
-			disableArrowNext(swiper);
+			disableArrowNext();
+			setShowNavigationArrows((prev) => ({ ...prev, start: true }));
 		} else {
 			setShowNavigationArrows({ start: true, end: true });
 		}
