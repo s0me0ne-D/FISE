@@ -5,6 +5,8 @@ import { getMediaType } from '../../../../../utils/getMediaType';
 import { useGetDetailsQuery } from '../../../../../redux/api';
 import { PopUpTitle } from './PopUpComponents/PopUpTitle';
 import { PopUpRating } from './PopUpComponents/PopUpRating';
+import { PopUpOverview } from './PopUpComponents/PopUpOverview';
+import { PopUpGenres } from './PopUpComponents/PopUpGenres';
 
 const initialPosition = { x: 0, y: 0 };
 
@@ -57,6 +59,8 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 				mediaId={media.id}
 			/>
 			<PopUpRating rating={data.vote_average} />
+			<PopUpOverview overview={data.overview} />
+			<PopUpGenres genres={data.genres} />
 		</div>
 	) : null;
 };
