@@ -7,6 +7,7 @@ import { PopUpTitle } from './PopUpComponents/PopUpTitle';
 import { PopUpRating } from './PopUpComponents/PopUpRating';
 import { PopUpOverview } from './PopUpComponents/PopUpOverview';
 import { PopUpGenres } from './PopUpComponents/PopUpGenres';
+import { PopUpReleaseDate } from './PopUpComponents/PopUpReleaseDate';
 
 const initialPosition = { x: 0, y: 0 };
 
@@ -59,6 +60,7 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 				mediaId={media.id}
 			/>
 			<PopUpRating rating={data.vote_average} />
+			<PopUpReleaseDate date={mediaType === 'movie' ? data.release_date! : data.first_air_date!} />
 			<PopUpOverview overview={data.overview} />
 			<PopUpGenres genres={data.genres} />
 		</div>
