@@ -2,6 +2,8 @@ import './mediaInformationPopUp.scss';
 import { Media } from '../../../../../interfaces/media_interface';
 import { useEffect, useState } from 'react';
 import { getMediaType } from '../../../../../utils/getMediaType';
+import { useGetDetailsQuery } from '../../../../../redux/api';
+import { PopUpTitle } from './PopUpComponents/PopUpTitle';
 
 const initialPosition = { x: 0, y: 0 };
 
@@ -11,6 +13,8 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 	const element = document.getElementById('root');
 	const { innerWidth } = window;
 	const mediaType = getMediaType(media);
+
+	const { data } = useGetDetailsQuery({ mediaType, id: media.id });
 
 	useEffect(() => {
 		const handlePopUpPosition = (event: MouseEvent) => {
@@ -46,7 +50,11 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 	}
 	return (
 		<div style={{ top: popUpPosition.y, left: popUpPosition.x }} className='information-popup'>
-			InformationPopup
+			<PopUpTitle
+				title={data?.original_name ? data.original_name : data?.original_title!}
+				mediaType={mediaType}
+				mediaId={media.id}
+			/>
 		</div>
 	);
 };
