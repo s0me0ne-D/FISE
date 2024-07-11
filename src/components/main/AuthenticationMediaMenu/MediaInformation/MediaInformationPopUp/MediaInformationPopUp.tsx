@@ -1,6 +1,7 @@
 import './mediaInformationPopUp.scss';
 import { Media } from '../../../../../interfaces/media_interface';
 import { useEffect, useState } from 'react';
+import { getMediaType } from '../../../../../utils/getMediaType';
 
 const initialPosition = { x: 0, y: 0 };
 
@@ -9,6 +10,7 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 
 	const element = document.getElementById('root');
 	const { innerWidth } = window;
+	const mediaType = getMediaType(media);
 
 	useEffect(() => {
 		const handlePopUpPosition = (event: MouseEvent) => {
