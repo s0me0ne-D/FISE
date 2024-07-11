@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMediaType } from '../../../../../utils/getMediaType';
 import { useGetDetailsQuery } from '../../../../../redux/api';
 import { PopUpTitle } from './PopUpComponents/PopUpTitle';
+import { PopUpRating } from './PopUpComponents/PopUpRating';
 
 const initialPosition = { x: 0, y: 0 };
 
@@ -48,13 +49,14 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 	if (popUpPosition === initialPosition) {
 		return null;
 	}
-	return (
+	return data ? (
 		<div style={{ top: popUpPosition.y, left: popUpPosition.x }} className='information-popup'>
 			<PopUpTitle
-				title={data?.original_name ? data.original_name : data?.original_title!}
+				title={data.original_name ? data.original_name : data.original_title!}
 				mediaType={mediaType}
 				mediaId={media.id}
 			/>
+			<PopUpRating rating={data.vote_average} />
 		</div>
-	);
+	) : null;
 };
