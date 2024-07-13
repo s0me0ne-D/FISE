@@ -9,5 +9,9 @@ interface PopUpTitleProps {
 }
 
 export const PopUpTitle = ({ title, mediaId, mediaType }: PopUpTitleProps) => {
-	return <NavLink to={`${mediaType}/id/${mediaId}`}>{title}</NavLink>;
+	return (
+		<NavLink className='information-popup_title' to={`${mediaType}/id/${mediaId}`}>
+			{title}
+		</NavLink>
+	);
 };

@@ -1,6 +1,8 @@
 .information-popup {
-	position: absolute;
 	width: 300px;
+	padding: 10px;
+
+	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 99999999999;
@@ -11,4 +13,13 @@
 	background-color: #141414;
 
 	color: white;
+
+	&_title {
+		font-family: 'Antonio';
+		color: white;
+		transition: 0.1s ease-in;
+		&:hover {
+			color: rgb(208, 208, 208);
+		}
+	}
 }
