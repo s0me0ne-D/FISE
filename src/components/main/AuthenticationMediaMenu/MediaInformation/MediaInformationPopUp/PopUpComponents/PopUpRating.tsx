@@ -3,10 +3,12 @@ import { RatingIcon } from '../../../../../../assets/icons/RatingIcon';
 
 export const PopUpRating = ({ rating }: { rating: number }) => {
 	return (
-		<div>
+		<div className='information-popup_rating'>
 			<span>Rating:</span>
-			<span>{rating.toFixed(1)}</span>
-			<RatingIcon />
+			<div>
+				<span className='information-popup_rating_value'>{rating.toFixed(1)}</span>
+				<RatingIcon />
+			</div>
 		</div>
 	);
 };

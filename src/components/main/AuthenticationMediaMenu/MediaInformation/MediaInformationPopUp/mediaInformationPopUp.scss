@@ -1,3 +1,5 @@
+$TITLE_OPASITY: 0.7;
+
 .information-popup {
 	width: 300px;
 	padding: 10px;
@@ -7,6 +9,10 @@
 	left: 0;
 	z-index: 99999999999;
 
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+
 	border: 1px solid white;
 	border-radius: 5px;
 
@@ -14,12 +20,34 @@
 
 	color: white;
 
+	font-size: 0.8em;
+
 	&_title {
 		font-family: 'Antonio';
+		font-size: 1.2em;
 		color: white;
 		transition: 0.1s ease-in;
 		&:hover {
 			color: rgb(208, 208, 208);
+		}
+	}
+	&_rating {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		span {
+			opacity: $TITLE_OPASITY;
+		}
+		&_value {
+			opacity: 1 !important;
+		}
+		div {
+			display: flex;
+			align-items: center;
+
+			svg {
+				width: 12px;
+			}
 		}
 	}
 }
