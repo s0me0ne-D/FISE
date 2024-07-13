@@ -27,7 +27,7 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 
 				const mousePositionX = event.clientX - rect.left;
 				const rightSideDistance = innerWidth - mousePositionX;
-				const positionX = rightSideDistance < 220 ? mousePositionX - 200 : mousePositionX;
+				const positionX = rightSideDistance < 320 ? mousePositionX - 300 : mousePositionX;
 				const positionY = event.clientY - rect.top - 20;
 
 				setPopUpPosition({
