@@ -50,4 +50,12 @@ $TITLE_OPASITY: 0.7;
 			}
 		}
 	}
+	&_release {
+		display: flex;
+		gap: 5px;
+
+		span:nth-child(1) {
+			opacity: $TITLE_OPASITY;
+		}
+	}
 }
