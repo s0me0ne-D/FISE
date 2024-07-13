@@ -49,13 +49,15 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [element, popUpPosition]);
 
+	console.log(data);
+
 	if (popUpPosition === initialPosition) {
 		return null;
 	}
 	return data ? (
 		<div style={{ top: popUpPosition.y, left: popUpPosition.x }} className='information-popup'>
 			<PopUpTitle
-				title={data.original_name ? data.original_name : data.original_title!}
+				title={data.original_name ? data.original_name : data.title!}
 				mediaType={mediaType}
 				mediaId={media.id}
 			/>
