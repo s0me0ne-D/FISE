@@ -58,4 +58,15 @@ $TITLE_OPASITY: 0.7;
 			opacity: $TITLE_OPASITY;
 		}
 	}
+	&_overview {
+		line-height: 13px;
+	}
+	&_genres {
+		display: flex;
+		gap: 5px;
+
+		span:nth-child(1) {
+			opacity: $TITLE_OPASITY;
+		}
+	}
 }
