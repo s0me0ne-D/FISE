@@ -20,25 +20,34 @@ interface MediaPosterProps {
 export const MediaPoster = ({ media_type, media, index, currentMovieIndex }: MediaPosterProps) => {
 	const { LAZY_LOAD_IMG_URL } = URL;
 	const [loading, setLoading] = useState<boolean>(true);
-	const [isActive, setIsActive] = useState<boolean>(false);
+	const [isCurrentCard, setIsCurrentCard] = useState<boolean>(false);
 	const [showMediaMenu, setShowMediaMenu] = useState<boolean>(false);
+	const [isActiveCard, setIsActiveCard] = useState<boolean>(false);
 	useEffect(() => {
 		if (index || index === 0) {
-			index === currentMovieIndex ? setIsActive(true) : setIsActive(false);
+			index === currentMovieIndex ? setIsCurrentCard(true) : setIsCurrentCard(false);
 		}
 	}, [index, currentMovieIndex]);
 
 	const { isAuthenticated } = useAuth0();
 
-	const handleMouseEnter = () => isAuthenticated && setShowMediaMenu(true);
-	const handleMouseLeave = () => isAuthenticated && setShowMediaMenu(false);
+	const handleMouseEnter = () => {
+		isAuthenticated && setShowMediaMenu(true);
+		setIsActiveCard(true);
+	};
+	const handleMouseLeave = () => {
+		isAuthenticated && setShowMediaMenu(false);
+		setIsActiveCard(false);
+	};
 
 	const imageSrc = media.poster_path ? LAZY_LOAD_IMG_URL + media.poster_path : posterPlaceholder;
 
 	return (
 		<NavLink className='media-card' to={`/${media_type}/id/${media.id}`}>
 			<div
-				className={`poster-block ${isActive ? 'active' : ''}`}
+				className={`poster-block ${isCurrentCard ? 'isCurrentCard' : ''} ${
+					isActiveCard ? 'isActive' : ''
+				}`}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>
