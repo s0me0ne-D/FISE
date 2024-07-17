@@ -62,10 +62,15 @@ $TITLE_OPASITY: 0.7;
 		line-height: 13px;
 	}
 	&_genres {
-		display: flex;
+		display: grid;
+		grid-template-columns: auto 1fr;
 		gap: 5px;
-
-		span:nth-child(1) {
+		&_container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+		}
+		&_title {
 			opacity: $TITLE_OPASITY;
 		}
 	}
