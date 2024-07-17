@@ -11,14 +11,23 @@ import { PopUpReleaseDate } from './PopUpComponents/PopUpReleaseDate';
 
 const initialPosition = { x: 0, y: 0 };
 
-export const MediaInformationPopUp = ({ media }: { media: Media }) => {
+interface MediaInformationPopUpProps {
+	media: Media;
+	showLoader: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const MediaInformationPopUp = ({ media, showLoader }: MediaInformationPopUpProps) => {
 	const [popUpPosition, setPopUpPosition] = useState(initialPosition);
 
 	const element = document.getElementById('root');
 	const { innerWidth } = window;
 	const mediaType = getMediaType(media);
 
-	const { data } = useGetDetailsQuery({ mediaType, id: media.id });
+	const { data, isLoading } = useGetDetailsQuery({ mediaType, id: media.id });
+
+	useEffect(() => {
+		isLoading ? showLoader(true) : showLoader(false);
+	}, [isLoading, showLoader]);
 
 	useEffect(() => {
 		const handlePopUpPosition = (event: MouseEvent) => {
@@ -49,15 +58,13 @@ export const MediaInformationPopUp = ({ media }: { media: Media }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [element, popUpPosition]);
 
-	console.log(data);
-
 	if (popUpPosition === initialPosition) {
 		return null;
 	}
 	return data ? (
 		<div style={{ top: popUpPosition.y, left: popUpPosition.x }} className='information-popup'>
 			<PopUpTitle
-				title={data.original_name ? data.original_name : data.title!}
+				title={data.name ? data.name! : data.title!}
 				mediaType={mediaType}
 				mediaId={media.id}
 			/>

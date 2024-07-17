@@ -3,9 +3,11 @@ import { InfoIcon } from '../../../../assets/icons/InfoIcon';
 import { MediaInformationPopUp } from './MediaInformationPopUp/MediaInformationPopUp';
 import { Media } from '../../../../interfaces/media_interface';
 import { Portal } from './MediaInformationPopUp/Portal';
+import { SpinerLoader } from '../../../../assets/SpinerLoader/SpinnerLoader';
 
 export const MediaInformation = ({ media }: { media: Media }) => {
 	const [isShowPopUp, setIsShowPopUp] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	return (
 		<span
 			className='information media-menu-option'
@@ -14,10 +16,11 @@ export const MediaInformation = ({ media }: { media: Media }) => {
 		>
 			{isShowPopUp && (
 				<Portal>
-					<MediaInformationPopUp media={media} />
+					<MediaInformationPopUp media={media} showLoader={setIsLoading} />
 				</Portal>
 			)}
-			<InfoIcon />
+			{/* <InfoIcon /> */}
+			{isLoading ? <SpinerLoader /> : <InfoIcon />}
 		</span>
 	);
 };
