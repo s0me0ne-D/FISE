@@ -19,7 +19,6 @@ export const MediaInformation = ({ media }: { media: Media }) => {
 					<MediaInformationPopUp media={media} showLoader={setIsLoading} />
 				</Portal>
 			)}
-			{/* <InfoIcon /> */}
 			{isLoading ? <SpinerLoader /> : <InfoIcon />}
 		</span>
 	);
