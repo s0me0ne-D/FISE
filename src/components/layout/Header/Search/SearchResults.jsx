@@ -54,7 +54,7 @@ export const SearchResults = ({ searchResults, searchValue, closeSearch, showNoR
 			) : showNoResults ? (
 				<div className='no-results'>No results found for "{searchValue}"</div>
 			) : searchValue.length > 1 ? (
-				<div className='no-results loader'>
+				<div className='no-results search-loader'>
 					<CubeLoader width={'30px'} height={'30px'} />
 					<span>Loading ...</span>
 				</div>
