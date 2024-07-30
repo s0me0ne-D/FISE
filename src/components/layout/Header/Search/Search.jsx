@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { SearchImg } from '../../../../assets/icons/SearchImg';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchSearch } from '../../../../fetch/fetchSearch';
 import './search.scss';
 import { useOutsideClick } from '../../../../hooks/useOutsideClick';
@@ -18,7 +18,8 @@ export const Search = () => {
 		setSearchResults([]);
 	};
 
-	const searchRef = useOutsideClick(() => closeSearch());
+	const searchIconRef = useOutsideClick(() => closeSearch());
+	const searchInputRef = useRef(null);
 
 	const navigation = useNavigate();
 	useEffect(() => {
@@ -38,6 +39,9 @@ export const Search = () => {
 	useEffect(() => {
 		setShowNoResults(false);
 	}, [searchValue]);
+	useEffect(() => {
+		searchVisible && searchInputRef.current.focus();
+	}, [searchVisible]);
 	const changeSearchValue = (event) => {
 		setSearchValue(event.target.value);
 	};
@@ -55,7 +59,7 @@ export const Search = () => {
 	};
 
 	return (
-		<div ref={searchRef} className='hesder-search-menu'>
+		<div ref={searchIconRef} className='hesder-search-menu'>
 			<button
 				className='hesder-search-btn'
 				onClick={(event) => {
@@ -68,6 +72,7 @@ export const Search = () => {
 			{searchVisible && (
 				<div className='header-search-wrapper'>
 					<input
+						ref={searchInputRef}
 						type='search'
 						value={searchValue}
 						onClick={(event) => event.stopPropagation()}
