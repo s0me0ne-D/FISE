@@ -23,7 +23,7 @@ export const UserMenu = ({ isShow, closeUserMenu }: UserMenuProps) => {
 
 	return (
 		<div className={`user-menu ${isShow ? 'active-user-menu' : ''}`}>
-			<NavLink to='/profile' className={'user-menu_option '} onClick={closeUserMenu}>
+			<NavLink to='/profile' className={'user-menu_option'} onClick={closeUserMenu}>
 				<ProfileIcon />
 				<span>Your profile</span>
 			</NavLink>
