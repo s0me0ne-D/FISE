@@ -37,6 +37,7 @@ export const router = createHashRouter([
 			{ path: '/tv/:categoryId', element: <MediaCategoryPage media_type={'tv'} /> },
 			{ path: '/search/:searchValue', element: <SearchResultsPage /> },
 			{ path: 'profile', element: <UnderConstructionPage /> },
+			{ path: '/favorites', element: <UnderConstructionPage /> },
 		],
 	},
 ]);
