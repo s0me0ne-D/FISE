@@ -18,6 +18,11 @@ const favoritesMediaSlice = createSlice({
 		addFavorite: (state, action: PayloadAction<Media>) => {
 			state.favorites.push(action.payload);
 		},
+		deleteFromFavorites: (state, action: PayloadAction<number>) => {
+			const newFavoritesList = state.favorites.filter((media) => media.id !== action.payload);
+			console.log(newFavoritesList);
+			state.favorites = newFavoritesList;
+		},
 		changeMail: (state, action) => {
 			state.mail = action.payload;
 		},
@@ -25,4 +30,4 @@ const favoritesMediaSlice = createSlice({
 });
 
 export const favoritesMediaReducer = favoritesMediaSlice.reducer;
-export const { addFavorite, changeMail } = favoritesMediaSlice.actions;
+export const { addFavorite, deleteFromFavorites, changeMail } = favoritesMediaSlice.actions;

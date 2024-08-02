@@ -38,7 +38,12 @@ export const UserMenu = ({ isShow, closeUserMenu }: UserMenuProps) => {
 		<div className={`user-menu ${isShow ? 'active-user-menu' : ''}`}>
 			<div>
 				{userMenuList.map((option) => (
-					<NavLink to={option.path} className={'user-menu_option'} onClick={closeUserMenu}>
+					<NavLink
+						to={option.path}
+						className={'user-menu_option'}
+						onClick={closeUserMenu}
+						key={option.path}
+					>
 						{option.icon}
 						<span>{option.title}</span>
 					</NavLink>
