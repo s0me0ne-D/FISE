@@ -11,7 +11,9 @@ export const AuthenticationMediaMenu = ({ media }: { media: Media }) => {
 	const { favorites } = useSelector((store: RootStore) => store.favoritesMediaReducer);
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 	useEffect(() => {
-		favorites.includes(media) ? setIsFavorite(true) : setIsFavorite(false);
+		favorites.forEach((favoriteMedia) =>
+			favoriteMedia.id === media.id ? setIsFavorite(true) : setIsFavorite(false)
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [favorites]);
 	return (
