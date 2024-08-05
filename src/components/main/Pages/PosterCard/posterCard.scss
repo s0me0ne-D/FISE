@@ -40,7 +40,7 @@
 			filter: grayscale(0.8);
 		}
 	}
-	&.isActive {
+	&:hover {
 		background-color: $RED_COLOR;
 		.poster {
 			transform: scale(1.01);

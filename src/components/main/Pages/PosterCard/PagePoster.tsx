@@ -13,15 +13,12 @@ export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: Medi
 	const { isAuthenticated } = useAuth0();
 	const [showMediaMenu, setShowMediaMenu] = useState<boolean>(false);
 	const [isLoadingPoster, setIsLoadingPoster] = useState(true);
-	const [isActiveCard, setIsActiveCard] = useState<boolean>(false);
 
 	const handleMouseEnter = () => {
 		isAuthenticated && setShowMediaMenu(true);
-		setIsActiveCard(true);
 	};
 	const handleMouseLeave = () => {
 		isAuthenticated && setShowMediaMenu(false);
-		setIsActiveCard(false);
 	};
 
 	const lazyImageSrc = media.poster_path
@@ -31,7 +28,8 @@ export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: Medi
 	return (
 		<NavLink
 			to={`/${mediaType}/id/${media.id}`}
-			className={`genre-media-link ${isActiveCard ? 'isActive' : ''}`}
+			className={`genre-media-link 
+				`}
 			key={media.id}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
