@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './authenticationMediaMenu.scss';
 import { Media } from '../../../interfaces/media_interface';
 import { MediaInformation } from './MediaInformation/MediaInformation';
 import { AddToFavorites } from './AddToFavorites';
-import { useSelector } from 'react-redux';
-import { RootStore } from '../../../redux/store';
 import { DeleteFromFavorites } from './DeleteFromFavorites';
+import { useSearchInFavoritesList } from '../../../hooks/useSearchInFavoritesList';
 
 export const AuthenticationMediaMenu = ({ media }: { media: Media }) => {
-	const { favorites } = useSelector((store: RootStore) => store.favoritesMediaReducer);
-	const [isFavorite, setIsFavorite] = useState<boolean>(false);
-	useEffect(() => {
-		const isInFavoritesList = favorites.find((favorite) => favorite.id === media.id);
-		isInFavoritesList ? setIsFavorite(true) : setIsFavorite(false);
+	const isInFavoritesList = useSearchInFavoritesList(media.id);
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [favorites]);
 	return (
 		<div
-			className='media-menu'
+			className={`media-menu ${isInFavoritesList ? 'isFavorite' : ''}`}
 			onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => event.preventDefault()}
 		>
 			<MediaInformation media={media} />
-			{isFavorite ? <DeleteFromFavorites media={media} /> : <AddToFavorites media={media} />}
+			{isInFavoritesList ? <DeleteFromFavorites media={media} /> : <AddToFavorites media={media} />}
 		</div>
 	);
 };
