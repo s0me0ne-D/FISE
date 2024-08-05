@@ -42,6 +42,9 @@
 	}
 	&:hover {
 		background-color: $RED_COLOR;
+		&.isFavorite {
+			background-color: $GREEN_COLOR;
+		}
 		.poster {
 			transform: scale(1.01);
 		}

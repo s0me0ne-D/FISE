@@ -8,11 +8,15 @@ import './posterCard.scss';
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Loader from '../../../Loader';
+import { useSearchInFavoritesList } from '../../../../hooks/useSearchInFavoritesList';
 
 export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: MediaType }) => {
 	const { isAuthenticated } = useAuth0();
 	const [showMediaMenu, setShowMediaMenu] = useState<boolean>(false);
 	const [isLoadingPoster, setIsLoadingPoster] = useState(true);
+
+	const isFavorite = useSearchInFavoritesList(media.id);
+	console.log(isFavorite);
 
 	const handleMouseEnter = () => {
 		isAuthenticated && setShowMediaMenu(true);
@@ -28,8 +32,7 @@ export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: Medi
 	return (
 		<NavLink
 			to={`/${mediaType}/id/${media.id}`}
-			className={`genre-media-link 
-				`}
+			className={`genre-media-link ${isFavorite ? 'isFavorite' : ''}`}
 			key={media.id}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}

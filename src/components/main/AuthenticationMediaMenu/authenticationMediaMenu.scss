@@ -24,6 +24,10 @@
 	border-radius: 5px 5px 0 0;
 	cursor: default;
 	animation: 0.15s menu-appears ease-in forwards;
+	transition: 0.15s ease-in;
+	&.isFavorite {
+		background-color: $GREEN_COLOR;
+	}
 }
 .add-media {
 	background: transparent;
