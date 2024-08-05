@@ -6,18 +6,6 @@ interface InitialState {
 	favorites: Media[];
 }
 
-// const loadStateFromLocalStorage = (): InitialState | null => {
-// 	try {
-// 		const serializedState = localStorage.getItem('favoritesMedia');
-// 		if (serializedState === null) {
-// 			return null;
-// 		}
-// 		return JSON.parse(serializedState);
-// 	} catch (error) {
-// 		console.error('Could not load state from localStorage', error);
-// 		return null;
-// 	}
-// };
 const initialState: InitialState = {
 	mail: '',
 	favorites: [],
@@ -48,8 +36,12 @@ const favoritesMediaSlice = createSlice({
 		changeMail: (state, action) => {
 			state.mail = action.payload;
 		},
+		addFavoritesFromLocalStorage: (state, action: PayloadAction<Media[]>) => {
+			state.favorites = action.payload;
+		},
 	},
 });
 
 export const favoritesMediaReducer = favoritesMediaSlice.reducer;
-export const { addFavorite, deleteFromFavorites, changeMail } = favoritesMediaSlice.actions;
+export const { addFavorite, deleteFromFavorites, changeMail, addFavoritesFromLocalStorage } =
+	favoritesMediaSlice.actions;
