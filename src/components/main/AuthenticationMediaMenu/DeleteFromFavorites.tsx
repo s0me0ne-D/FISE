@@ -12,7 +12,7 @@ export const DeleteFromFavorites = ({ media }: { media: Media }) => {
 	return (
 		<button
 			className='add-media media-menu-option'
-			title='Add to favorites'
+			title='Remove from favorites'
 			onClick={handleOnClick}
 		>
 			<CheckIcon />
