@@ -1,3 +1,5 @@
+@import '../../../styles/global_styles';
+
 @keyframes menu-appears {
 	0% {
 	}
@@ -17,7 +19,7 @@
 	top: 0;
 	left: 0;
 	z-index: 99999;
-	background-color: #d11a1a;
+	background-color: $RED_COLOR;
 	opacity: 0;
 	border-radius: 5px 5px 0 0;
 	cursor: default;

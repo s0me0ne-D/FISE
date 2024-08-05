@@ -1,3 +1,5 @@
+@import '../../../styles//global_styles';
+
 .title {
 	max-width: 500px;
 	height: 100%;
@@ -12,7 +14,7 @@
 		font-weight: bold;
 	}
 	.title-more-info {
-		background-color: #d01a1a;
+		background-color: $RED_COLOR;
 		border-radius: 5px;
 		width: fit-content;
 		padding: 5px 25px 5px 15px;

@@ -1,5 +1,6 @@
+@import '../../../styles/global_styles';
+
 @keyframes spinner_Ctle {
-	93.75%,
 	100% {
 		opacity: 0.2;
 	}
@@ -52,7 +53,7 @@
 			width: 300px;
 			margin-top: 10px;
 			.trailer-btn {
-				background-color: #d01a1a;
+				background-color: $RED_COLOR;
 				border-radius: 5px;
 				padding: 5px 20px;
 				color: #e5e5e5;

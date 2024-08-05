@@ -1,3 +1,5 @@
+@import '../../../../styles/global_styles';
+
 .genre-media-link {
 	max-width: 220px;
 	position: relative;
@@ -39,7 +41,7 @@
 		}
 	}
 	&.isActive {
-		background-color: #ba1818;
+		background-color: $RED_COLOR;
 		.poster {
 			transform: scale(1.01);
 		}

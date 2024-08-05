@@ -1,3 +1,5 @@
+@import '../../../../../styles/global_styles';
+
 $TRANSITION: 0.1s ease-in;
 
 .user-menu {
@@ -39,7 +41,6 @@ $TRANSITION: 0.1s ease-in;
 		opacity: 0.5;
 	}
 	&_log-out {
-		$HOVER_COLOR: #d01a1a;
 		width: 90px;
 		padding: 3px;
 		background: transparent;
@@ -49,8 +50,8 @@ $TRANSITION: 0.1s ease-in;
 		border-radius: 3px;
 		transition: $TRANSITION;
 		&:hover {
-			border-color: $HOVER_COLOR;
-			color: $HOVER_COLOR;
+			border-color: $RED_COLOR;
+			color: $RED_COLOR;
 			opacity: 1;
 		}
 	}

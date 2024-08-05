@@ -1,4 +1,4 @@
-@import './_reset.scss';
+@import './styles/_reset.scss';
 @font-face {
 	font-family: 'Red Hot';
 	src: url('./fonts/Red_Hat_Text/RedHatText-VariableFont_wght.ttf');
