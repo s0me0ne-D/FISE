@@ -1,3 +1,10 @@
 .favorites {
+	width: 100%;
+	padding: 30px;
 	flex: 1 0 auto;
+	&_container {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+	}
 }

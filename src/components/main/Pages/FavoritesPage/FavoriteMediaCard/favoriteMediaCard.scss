@@ -1,0 +1,37 @@
+.favorite-media {
+	width: 20%;
+	height: fit-content;
+	padding: 10px;
+	display: grid;
+	place-content: center;
+	color: white;
+	.lazy-load-image-background {
+		width: 100%;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+@media (width <=1399px) {
+	.favorite-media {
+		width: 25%;
+	}
+}
+@media (width <=1099px) {
+	.favorite-media {
+		width: 33.333333%;
+	}
+}
+@media (width <=799px) {
+	.favorite-media {
+		width: 50%;
+	}
+}
+@media (width <=500px) {
+	.favorite-media {
+		width: 100%;
+	}
+}

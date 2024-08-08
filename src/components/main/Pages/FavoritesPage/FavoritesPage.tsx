@@ -9,9 +9,11 @@ export const FavoritesPage = () => {
 
 	return (
 		<div className='favorites'>
-			{favorites.map((media) => (
-				<FavoriteMediaCard media={media} />
-			))}
+			<div className='favorites_container'>
+				{favorites.map((media) => (
+					<FavoriteMediaCard media={media} key={media.id} />
+				))}
+			</div>
 		</div>
 	);
 };

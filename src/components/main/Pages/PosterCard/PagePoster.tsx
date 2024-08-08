@@ -16,7 +16,6 @@ export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: Medi
 	const [isLoadingPoster, setIsLoadingPoster] = useState(true);
 
 	const isFavorite = useSearchInFavoritesList(media.id);
-	console.log(isFavorite);
 
 	const handleMouseEnter = () => {
 		isAuthenticated && setShowMediaMenu(true);
@@ -33,7 +32,6 @@ export const PosterCard = ({ media, mediaType }: { media: Media; mediaType: Medi
 		<NavLink
 			to={`/${mediaType}/id/${media.id}`}
 			className={`genre-media-link ${isFavorite ? 'isFavorite' : ''}`}
-			key={media.id}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 		>
