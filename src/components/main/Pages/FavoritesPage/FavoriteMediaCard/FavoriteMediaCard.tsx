@@ -21,7 +21,7 @@ export const FavoriteMediaCard = ({ media }: { media: Media }) => {
 					placeholderSrc={URL.LAZY_LOAD_IMG_URL + media.backdrop_path}
 				/>
 				<div className='favorite-media_description'>
-					{trailerKeyUrl && <TrailerButton trailerKeyUrl={trailerKeyUrl} />}
+					{trailerKeyUrl && <TrailerButton trailerKeyUrl={trailerKeyUrl} isInFavoritesList />}
 				</div>
 			</div>
 		</NavLink>

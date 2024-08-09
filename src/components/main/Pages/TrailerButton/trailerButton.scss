@@ -10,4 +10,8 @@
 	&:hover {
 		background-color: #e31c1c;
 	}
+	&.inFavorites {
+		font-size: 12px;
+		padding: 2.5px 10px;
+	}
 }
