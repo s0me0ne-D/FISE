@@ -6,8 +6,9 @@ import { deleteFromFavorites } from '../../../redux/favoritesMediaSlice';
 
 export const DeleteFromFavorites = ({ media }: { media: Media }) => {
 	const dispatch = useDispatch();
-	const handleOnClick = () => {
+	const handleOnClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		dispatch(deleteFromFavorites(media.id));
+		event.preventDefault();
 	};
 	return (
 		<button
