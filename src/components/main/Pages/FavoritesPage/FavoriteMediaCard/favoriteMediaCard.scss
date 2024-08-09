@@ -48,12 +48,16 @@ $TRANSITION: 0.2s ease-in;
 .description {
 	&_buttons {
 		width: 100%;
+		margin-bottom: 10px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
 }
 
+.inFavorites {
+	font-size: 10px;
+}
 @media (width <=1399px) {
 	.favorite-media {
 		width: 25%;

@@ -6,7 +6,7 @@ import { useGetDetailsQuery } from '../../../../../redux/api';
 import { PopUpTitle } from './PopUpComponents/PopUpTitle';
 import { Rating } from '../../../../Rating/Rating';
 import { PopUpOverview } from './PopUpComponents/PopUpOverview';
-import { PopUpGenres } from './PopUpComponents/PopUpGenres';
+import { MediaGenres } from '../../../../MediaGenres/MediaGenres';
 import { PopUpReleaseDate } from './PopUpComponents/PopUpReleaseDate';
 
 const initialPosition = { x: 0, y: 0 };
@@ -71,7 +71,7 @@ export const MediaInformationPopUp = ({ media, showLoader }: MediaInformationPop
 			<Rating rating={data.vote_average} />
 			<PopUpReleaseDate date={mediaType === 'movie' ? data.release_date! : data.first_air_date!} />
 			<PopUpOverview overview={data.overview} />
-			<PopUpGenres genres={data.genres} />
+			<MediaGenres genres={data.genres} />
 		</div>
 	) : null;
 };

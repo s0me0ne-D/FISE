@@ -8,12 +8,15 @@ import { useTrailerKeyUrl } from '../../../../../hooks/useTrailerKeyUrl';
 import { TrailerButton } from '../../TrailerButton/TrailerButton';
 import { DeleteFromFavorites } from '../../../AuthenticationMediaMenu/DeleteFromFavorites';
 import { Rating } from '../../../../Rating/Rating';
+import { useGetDetailsQuery } from '../../../../../redux/api';
+import { MediaGenres } from '../../../../MediaGenres/MediaGenres';
 
 export const FavoriteMediaCard = ({ media }: { media: Media }) => {
 	const mediaType: MediaType = media.title ? 'movie' : 'tv';
 
 	const trailerKeyUrl = useTrailerKeyUrl({ mediaType, id: media.id });
 
+	const { data: details } = useGetDetailsQuery({ mediaType, id: media.id });
 	return (
 		<NavLink to={`/${mediaType}/id/${media.id}`} className='favorite-media'>
 			<div className='favorite-media_container'>
@@ -28,6 +31,7 @@ export const FavoriteMediaCard = ({ media }: { media: Media }) => {
 						<DeleteFromFavorites media={media} />
 					</div>
 					<Rating rating={media.vote_average} isInFavorites />
+					{details && <MediaGenres genres={details.genres} isInFavorites />}
 				</div>
 			</div>
 		</NavLink>

@@ -1,0 +1,13 @@
+.media-genres {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 5px;
+	&_container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
+	&_title {
+		opacity: 0.7;
+	}
+}
