@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMediaType } from '../../../../../utils/getMediaType';
 import { useGetDetailsQuery } from '../../../../../redux/api';
 import { PopUpTitle } from './PopUpComponents/PopUpTitle';
-import { PopUpRating } from './PopUpComponents/PopUpRating';
+import { Rating } from '../../../../Rating/Rating';
 import { PopUpOverview } from './PopUpComponents/PopUpOverview';
 import { PopUpGenres } from './PopUpComponents/PopUpGenres';
 import { PopUpReleaseDate } from './PopUpComponents/PopUpReleaseDate';
@@ -68,7 +68,7 @@ export const MediaInformationPopUp = ({ media, showLoader }: MediaInformationPop
 				mediaType={mediaType}
 				mediaId={media.id}
 			/>
-			<PopUpRating rating={data.vote_average} />
+			<Rating rating={data.vote_average} />
 			<PopUpReleaseDate date={mediaType === 'movie' ? data.release_date! : data.first_air_date!} />
 			<PopUpOverview overview={data.overview} />
 			<PopUpGenres genres={data.genres} />

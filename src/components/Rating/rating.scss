@@ -1,0 +1,22 @@
+.rating {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	span {
+		opacity: 0.7;
+	}
+	&_value {
+		opacity: 1 !important;
+	}
+	div {
+		display: flex;
+		align-items: center;
+
+		svg {
+			width: 12px;
+		}
+	}
+	&.inFavorites {
+		font-size: 12px;
+	}
+}

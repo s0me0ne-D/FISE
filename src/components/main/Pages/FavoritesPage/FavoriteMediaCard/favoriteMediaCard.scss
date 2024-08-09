@@ -45,6 +45,14 @@ $TRANSITION: 0.2s ease-in;
 		}
 	}
 }
+.description {
+	&_buttons {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
 
 @media (width <=1399px) {
 	.favorite-media {

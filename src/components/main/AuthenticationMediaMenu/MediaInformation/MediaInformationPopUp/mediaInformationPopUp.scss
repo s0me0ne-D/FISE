@@ -31,25 +31,6 @@ $TITLE_OPASITY: 0.7;
 			color: rgb(208, 208, 208);
 		}
 	}
-	&_rating {
-		display: flex;
-		align-items: center;
-		gap: 5px;
-		span {
-			opacity: $TITLE_OPASITY;
-		}
-		&_value {
-			opacity: 1 !important;
-		}
-		div {
-			display: flex;
-			align-items: center;
-
-			svg {
-				width: 12px;
-			}
-		}
-	}
 	&_release {
 		display: flex;
 		gap: 5px;
