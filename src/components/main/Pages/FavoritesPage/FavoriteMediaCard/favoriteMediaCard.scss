@@ -1,3 +1,5 @@
+$TRANSITION: 0.2s ease-in;
+
 .favorite-media {
 	width: 20%;
 	height: fit-content;
@@ -5,19 +7,42 @@
 	display: grid;
 	place-content: center;
 	color: white;
-	transition: 0.2s ease-in;
-	border-radius: 5px;
+	transition: $TRANSITION;
+	&_container {
+		position: relative;
+	}
 	.lazy-load-image-background {
 		width: 100%;
 		img {
+			position: relative;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			border-radius: 5px;
+			z-index: 99;
+			transition: $TRANSITION;
 		}
+	}
+	&_description {
+		width: 100%;
+		padding: 20px;
+		position: absolute;
+		bottom: 0px;
+		opacity: 0;
+		background-color: #1f1f1f;
+		border-radius: 0 0 5px 5px;
+		transition: $TRANSITION;
 	}
 	&:hover {
 		transform: scale(1.15);
+		z-index: 999;
+		img {
+			border-radius: 5px 5px 0 0;
+		}
+		.favorite-media_description {
+			transform: translateY(100%);
+			opacity: 1;
+		}
 	}
 }
 

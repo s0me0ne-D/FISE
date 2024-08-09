@@ -52,17 +52,6 @@
 		.trailer-container {
 			width: 300px;
 			margin-top: 10px;
-			.trailer-btn {
-				background-color: $RED_COLOR;
-				border-radius: 5px;
-				padding: 5px 20px;
-				color: #e5e5e5;
-				align-items: center;
-				font-size: 17px;
-				&:hover {
-					background-color: #e31c1c;
-				}
-			}
 		}
 	}
 	.right-column {

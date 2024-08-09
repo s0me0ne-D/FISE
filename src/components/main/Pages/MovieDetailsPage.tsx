@@ -1,35 +1,23 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import './detailsPage.scss';
 import { URL } from '../../../store/URL_SORE';
-import { TrailerButton } from './TrailerButton';
+import { TrailerButton } from './TrailerButton/TrailerButton';
 import { RatingIcon } from '../../../assets/icons/RatingIcon';
 import { DetailsPagePoster } from './DetailsPagePoster';
 import { CubeLoader } from '../../../assets/CubeLoader';
-import { useGetDetailsQuery, useGetTrailersListQuery } from '../../../redux/api';
+import { useGetDetailsQuery } from '../../../redux/api';
 import { MediaType } from '../../../interfaces/media_interface';
-import { Result } from '../../../interfaces/trailers_interface';
+import { useTrailerKeyUrl } from '../../../hooks/useTrailerKeyUrl';
 
 const mediaType: MediaType = 'movie';
 
 export const MovieDetailsPage = () => {
 	const id = useParams();
-	const [trailerKeyUrl, setTrailerKeyUrl] = useState<Result | null>(null);
-
-	const queryParams = { mediaType, id: id.movieId };
+	const queryParams = { mediaType, id: Number(id.movieId) };
+	const trailerKeyUrl = useTrailerKeyUrl(queryParams);
 
 	const { data } = useGetDetailsQuery(queryParams);
-	const { data: trailers } = useGetTrailersListQuery(queryParams);
 
-	useEffect(() => {
-		if (trailers) {
-			trailers.results.forEach((key) => {
-				if (key.name.includes('Trailer')) {
-					setTrailerKeyUrl(key);
-				}
-			});
-		}
-	}, [trailers]);
 	return data ? (
 		<main className='main-details'>
 			{data.backdrop_path ? (
@@ -47,7 +35,7 @@ export const MovieDetailsPage = () => {
 				</div>
 				{trailerKeyUrl ? (
 					<div className='trailer-container'>
-						<TrailerButton trailerKeyUrl={trailerKeyUrl.key} />
+						<TrailerButton trailerKeyUrl={trailerKeyUrl} />
 					</div>
 				) : null}
 			</div>
