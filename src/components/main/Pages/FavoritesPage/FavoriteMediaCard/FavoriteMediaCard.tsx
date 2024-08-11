@@ -14,6 +14,8 @@ import { MediaGenres } from '../../../../MediaGenres/MediaGenres';
 export const FavoriteMediaCard = ({ media }: { media: Media }) => {
 	const [zIndex, setZIndex] = useState<number>(9);
 
+	const title = media.title ? media.title : media.name;
+
 	const mediaType: MediaType = media.title ? 'movie' : 'tv';
 
 	const trailerKeyUrl = useTrailerKeyUrl({ mediaType, id: media.id });
@@ -28,14 +30,21 @@ export const FavoriteMediaCard = ({ media }: { media: Media }) => {
 			onMouseLeave={() => setZIndex(9)}
 		>
 			<div className='favorite-media_container'>
-				<LazyLoadImage
-					src={URL.ORIGINAL_IMG_URL + media.backdrop_path}
-					className='title-background'
-					placeholderSrc={URL.LAZY_LOAD_IMG_URL + media.backdrop_path}
-				/>
+				<div className='title-background-container'>
+					<LazyLoadImage
+						src={URL.ORIGINAL_IMG_URL + media.backdrop_path}
+						placeholderSrc={URL.LAZY_LOAD_IMG_URL + media.backdrop_path}
+					/>
+					<div className='title-background_shadow' />
+					<span className='title-background_name'>{title}</span>
+				</div>
 				<div className='favorite-media_description description'>
 					<div className='description_buttons'>
-						{trailerKeyUrl && <TrailerButton trailerKeyUrl={trailerKeyUrl} isInFavoritesList />}
+						{trailerKeyUrl ? (
+							<TrailerButton trailerKeyUrl={trailerKeyUrl} isInFavoritesList />
+						) : (
+							<div />
+						)}
 						<DeleteFromFavorites media={media} />
 					</div>
 					<Rating rating={media.vote_average} isInFavorites />

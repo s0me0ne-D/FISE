@@ -6,5 +6,8 @@
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
+		&:hover > a:not(:hover) {
+			opacity: 0.8;
+		}
 	}
 }
