@@ -37,6 +37,9 @@ $TRANSITION: 0.2s ease-in;
 		transform: scale(1.15);
 		img {
 			border-radius: 5px 5px 0 0;
+			-webkit-box-shadow: 0px -5px 50px -10px black, 0px -5px 50px -10px black;
+			-moz-box-shadow: 0px -5px 50px -10px black, 0px -5px 50px -10px black;
+			box-shadow: 0px -5px 50px -10px black, 0px -5px 50px -10px black;
 		}
 		.favorite-media_description {
 			transform: translateY(100%);
